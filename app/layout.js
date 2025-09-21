@@ -1,5 +1,5 @@
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./Navbar"; // <-- Navbar lives in app/ (not app/components)
 
 export const metadata = {
   metadataBase: new URL("https://vigorouscleanco.com"),
@@ -12,19 +12,12 @@ export const metadata = {
     url: "https://vigorouscleanco.com",
     siteName: "Vigorous Clean Co.",
     images: [
-      {
-        url: "/og-cover.png",
-        width: 1200,
-        height: 630,
-        alt: "Vigorous Clean Co."
-      }
+      { url: "/og-cover.png", width: 1200, height: 630, alt: "Vigorous Clean Co." }
     ],
     locale: "en_US",
     type: "website"
   },
-  icons: {
-    icon: "/logo.png"
-  }
+  icons: { icon: "/logo.png" }
 };
 
 export default function RootLayout({ children }) {
