@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "./components/Navbar";
 export const metadata = {
   title: "Vigorous Clean Co. — Eco-Friendly Cleaning in LA & OC",
   description: "Transparent flat-rate pricing. Eco & pet-safe products. Book online in minutes.",
