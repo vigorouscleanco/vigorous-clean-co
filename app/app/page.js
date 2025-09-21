@@ -40,7 +40,7 @@ export default function Page() {
     <div className="min-h-screen bg-white text-slate-800">
       <Navbar bookingLink={bookingLink} />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section id="home" className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -52,12 +52,8 @@ export default function Page() {
               One dedicated cleaner for smaller homes — additional staff for larger spaces to finish faster.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={bookingLink} target="_blank" className="rounded-2xl bg-emerald-600 px-5 py-3 text-white font-semibold shadow hover:bg-emerald-700">
-                Book a Cleaning
-              </a>
-              <a href="#pricing" className="rounded-2xl border border-slate-300 px-5 py-3 font-semibold hover:border-emerald-400 hover:text-emerald-700">
-                See Pricing
-              </a>
+              <a href={bookingLink} target="_blank" className="rounded-2xl bg-emerald-600 px-5 py-3 text-white font-semibold shadow hover:bg-emerald-700">Book a Cleaning</a>
+              <a href="#pricing" className="rounded-2xl border border-slate-300 px-5 py-3 font-semibold hover:border-emerald-400 hover:text-emerald-700">See Pricing</a>
             </div>
           </div>
         </div>
@@ -68,7 +64,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl font-bold">Residential Pricing</h2>
           <p className="mt-2 text-slate-600">
-            Charged per day and by square footage. One cleaner per home up to 3,500 sq ft. For 3,500+ sq ft, 
+            Charged per day and by square footage. One cleaner per home up to 3,500 sq ft. For 3,500+ sq ft,
             <span className="font-semibold"> 2 cleaners are mandatory</span>.
           </p>
 
@@ -95,7 +91,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* A La Carte */}
+      {/* À la carte */}
       <section id="alacarte" className="py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl font-bold">À la Carte Services</h2>
@@ -113,4 +109,40 @@ export default function Page() {
 
       {/* Office Pricing */}
       <section id="offices" className="bg-slate-50 py-16 border-y border-slate-200">
-        <
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-3xl font-bold">Office Cleaning</h2>
+          <p className="mt-2 text-slate-600">Per-visit all-inclusive pricing, ideal for recurring service.</p>
+
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="text-slate-600">
+                  <th className="py-3 pr-4">Office Size</th>
+                  <th className="py-3 pr-4">Rate (Per Visit)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                {officeRows.map((r, i) => (
+                  <tr key={i}>
+                    <td className="py-3 pr-4">{r.size}</td>
+                    <td className="py-3 pr-4">{r.rate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="bg-emerald-600 text-white py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-3xl font-bold">Contact Us</h2>
+          <p className="mt-2">Call us at {phone} or email {email} to schedule your cleaning today!</p>
+          <a href={bookingLink} target="_blank" className="mt-4 inline-block rounded-2xl bg-white px-5 py-3 text-emerald-700 font-semibold shadow hover:bg-emerald-50">Book Now</a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
