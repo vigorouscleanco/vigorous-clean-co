@@ -1,6 +1,4 @@
 "use client";
-import Navbar from "../components/Navbar";
-
 export default function Page() {
   const bookingLink = process.env.NEXT_PUBLIC_BOOKING_URL || "#";
   const phone = process.env.NEXT_PUBLIC_PHONE || "(xxx) xxx-xxxx";
