@@ -13,7 +13,15 @@ export default function Navbar() {
           <span className="font-semibold text-lg">Vigorous Clean Co.</span>
         </a>
         <a
-          href="#contact"
+          <a
+  href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-lg bg-white/10 px-3 py-2 hover:bg-white/20"
+>
+  Book Now
+</a>
+
           className="rounded-lg bg-white/10 px-3 py-2 hover:bg-white/20"
         >
           Contact
