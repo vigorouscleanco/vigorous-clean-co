@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 export const metadata = {
   metadataBase: new URL("https://vigorous-clean-co.vercel.app"),
