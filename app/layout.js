@@ -1,112 +1,188 @@
 // app/layout.js
+import "./globals.css";
+
 export const metadata = {
   title: "Vigorous Clean Co. — Eco-Friendly Cleaning in LA & OC",
   description:
-    "Transparent flat-rate residential & office cleaning. Eco & pet-safe products. Book online in minutes.",
-  metadataBase: new URL("https://vigorous-clean-co.vercel.app"),
+    "Transparent flat-rate pricing. Eco & pet-safe products. Book online in minutes.",
   openGraph: {
     title: "Vigorous Clean Co.",
     description:
-      "Transparent flat-rate residential & office cleaning in Los Angeles & Orange County.",
+      "Eco-friendly residential & office cleaning with transparent flat-rate pricing.",
     url: "https://vigorous-clean-co.vercel.app",
     siteName: "Vigorous Clean Co.",
-    images: [{ url: "/og-cover.png", width: 1200, height: 630 }],
   },
-  icons: [{ rel: "icon", url: "/logo.png" }],
+  icons: { icon: "/logo.png" },
 };
 
-import "./globals.css";
-import Navbar from "./components/Navbar";
+const NavLink = ({ href, children }) => (
+  <a href={href} className="px-3 py-2 rounded-lg hover:bg-white/10">
+    {children}
+  </a>
+);
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-slate-50 text-slate-900">
-        {/* Promo bar – ONCE */}
-        <div className="w-full bg-emerald-700 text-white">
-          <div className="mx-auto max-w-6xl px-4 py-2 text-center text-sm">
-            🎉 New clients get <strong>10% off</strong> with code{" "}
-            <span className="rounded-md bg-white/15 px-2 py-0.5 font-semibold tracking-wide">VIGOR10</span> — applied at checkout.
+    <html lang="en">
+      <body className="bg-slate-50 text-slate-800 antialiased">
+        {/* Promo banner – appears ONCE here */}
+        <div className="w-full bg-emerald-700 text-white text-sm">
+          <div className="max-w-6xl mx-auto px-4 py-2 flex items-center gap-2">
+            <span aria-hidden>🎉</span>
+            <span>
+              New clients get <strong>10% off</strong> with code{" "}
+              <strong>VIGOR10</strong> — applied at checkout for first-time
+              clients.
+            </span>
           </div>
         </div>
 
-        <Navbar />
+        {/* Navbar */}
+        <header className="w-full bg-emerald-700 text-white sticky top-0 z-40 shadow-sm">
+          <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" className="flex items-center gap-3">
+              <img
+                src="/Vigorous_Clean_Co_TransparentLogo.png"
+                alt="Vigorous Clean Co."
+                className="h-8 w-8 rounded-full bg-white/90 p-1"
+              />
+              <span className="text-lg font-semibold">Vigorous Clean Co.</span>
+            </a>
+
+            <div className="hidden md:flex items-center gap-1">
+              <NavLink href="/services">Services</NavLink>
+              <NavLink href="/pricing">Pricing</NavLink>
+              <NavLink href="/about">About</NavLink>
+              <NavLink href="/account">Login</NavLink>
+            </div>
+
+            {/* one Book Now button here; removed from hero */}
+            <a
+              href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-emerald-700 font-semibold px-4 py-2 rounded-xl shadow hover:shadow-md"
+            >
+              {/* calendar icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              Book Now
+            </a>
+          </nav>
+        </header>
 
         <main>{children}</main>
 
         {/* Footer */}
-        <footer className="mt-20 border-t bg-white/90">
-          <div className="mx-auto max-w-6xl px-4 py-10 grid gap-10 md:grid-cols-4">
-            {/* Brand */}
+        <footer className="mt-16 border-t bg-white">
+          <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-8">
             <div className="space-y-3">
-              <img src="/Vigorous_Clean_Co_TransparentLogo.png" alt="Vigorous Clean Co." className="h-10 w-auto" />
+              <img
+                src="/Vigorous_Clean_Co_TransparentLogo.png"
+                alt="Vigorous Clean Co."
+                className="h-10 w-10 rounded-full bg-emerald-700/10 p-1"
+              />
               <p className="text-sm text-slate-600">
-                Eco-friendly cleaning across Los Angeles & Orange County with transparent flat-rate pricing.
+                Eco-friendly cleaning with transparent flat-rate pricing. Los
+                Angeles & Orange County.
               </p>
             </div>
 
-            {/* Quick Links */}
             <div>
-              <h4 className="mb-3 font-semibold text-slate-900">Quick Links</h4>
+              <h4 className="font-semibold mb-3">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><a className="hover:text-emerald-700" href="/services">Services</a></li>
-                <li><a className="hover:text-emerald-700" href="/pricing">Pricing</a></li>
-                <li><a className="hover:text-emerald-700" href="/about">About Us</a></li>
-                <li><a className="hover:text-emerald-700" href="/account">Login</a></li>
+                <li>
+                  <a className="hover:underline" href="/pricing">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:underline" href="/services">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:underline" href="/about">
+                    About Us
+                  </a>
+                </li>
               </ul>
             </div>
 
-            {/* Hours (Mon–Sun 8–8) */}
             <div>
-              <h4 className="mb-3 font-semibold text-slate-900">Service Hours</h4>
-              <ul className="space-y-2 text-sm text-slate-700">
-                <li>Open <strong>Monday – Sunday</strong></li>
-                <li><strong>8:00 AM – 8:00 PM</strong></li>
-              </ul>
+              <h4 className="font-semibold mb-3">Hours</h4>
+              <p className="text-sm text-slate-600">
+                Open <strong>7 days</strong> • <strong>8:00 AM – 8:00 PM</strong>
+              </p>
+              <p className="text-sm text-slate-600 mt-2">
+                Service area: LA County & Orange County
+              </p>
             </div>
 
-            {/* Socials */}
             <div>
-              <h4 className="mb-3 font-semibold text-slate-900">Connect</h4>
+              <h4 className="font-semibold mb-3">Connect</h4>
               <div className="flex items-center gap-3">
-                <a href="https://www.instagram.com/vigorouss.co" target="_blank" rel="noreferrer"
-                   className="rounded-full border border-slate-200 p-2 hover:bg-slate-100" aria-label="Instagram" title="Instagram">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6-1a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
+                <a
+                  href="https://instagram.com/vigorouss.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200"
+                  aria-label="Instagram"
+                >
+                  {/* IG icon */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
+                    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                  </svg>
                 </a>
-                <a href="https://www.tiktok.com/@vigorouss.co" target="_blank" rel="noreferrer"
-                   className="rounded-full border border-slate-200 p-2 hover:bg-slate-100" aria-label="TikTok" title="TikTok">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M12.75 2h3.06a6.2 6.2 0 0 0 3.11 3.1v3.06a9.2 9.2 0 0 1-3.11-.85v6.18a6.25 6.25 0 1 1-6.25-6.25c.07 0 .14 0 .21.01v3.06a3.19 3.19 0 1 0 3.19 3.19V2z"/></svg>
+                <a
+                  href="https://tiktok.com/@vigorouss.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200"
+                  aria-label="TikTok"
+                >
+                  {/* TikTok icon */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
+                    <path d="M13 3c1 2 3 3 5 3v3c-2 0-4-1-5-2v7a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3z" />
+                  </svg>
                 </a>
               </div>
-            </div>
-          </div>
-
-          {/* Disclaimer bar */}
-          <div className="border-t">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-xs text-slate-600">
-              <p>
-                © {new Date().getFullYear()} Vigorous Clean Co. All rights reserved.
-                <br className="sm:hidden" />
-                <span className="sm:ml-2">
-                  Disclaimer: While our cleaners are trained professionals and vetted through strict screening, Vigorous Clean Co. is not
-                  liable for loss of personal items. Please secure valuables prior to service.
-                </span>
+              <p className="text-xs text-slate-500 mt-4">
+                Disclaimer: While we handle your property with care, Vigorous
+                Clean Co. is not liable for pre-existing damage or loss of items
+                not secured/declared before service. All cleaners are
+                professionally vetted and screened.
               </p>
-              <img src="/Vigorous_Clean_Co_TransparentLogo.png" alt="Logo" className="h-8 w-8 opacity-80" />
             </div>
           </div>
 
-          {/* Floating Call button (mobile) */}
-          <a
-            href="tel:+14242605986"
-            className="fixed bottom-4 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-700 text-white shadow-lg hover:bg-emerald-800 md:hidden"
-            aria-label="Call Vigorous Clean Co."
-          >
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.24c1.2.4 2.4.6 3.6.6a1 1 0 0 1 1 1v3.7a1 1 0 0 1-1 1A17.6 17.6 0 0 1 3 6a1 1 0 0 1 1-1h3.7a1 1 0 0 1 1 1c0 1.3.2 2.5.6 3.6a1 1 0 0 1-.24 1.1L6.6 10.8z"/></svg>
-          </a>
-
-          {/* AI chat widget hook — paste your provider snippet inside this div later */}
-          <div id="ai-chat-widget-root" />
+          <div className="border-t">
+            <div className="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-500 flex items-center justify-between">
+              <span>© {new Date().getFullYear()} Vigorous Clean Co.</span>
+              <img
+                src="/Vigorous_Clean_Co_TransparentLogo.png"
+                alt=""
+                className="h-8 opacity-70"
+              />
+            </div>
+          </div>
         </footer>
       </body>
     </html>
