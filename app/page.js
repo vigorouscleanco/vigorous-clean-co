@@ -2,76 +2,115 @@
 "use client";
 
 export default function Page() {
-  return (
-    <main>
-      {/* Simple header (one header only) */}
-      <header className="bg-emerald-700 text-white">
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Vigorous Clean Co. logo" className="h-8 w-8" />
-            <span className="font-semibold">Vigorous Clean Co.</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="/services" className="hover:opacity-80">Services</a>
-            <a href="/pricing" className="hover:opacity-80">Pricing</a>
-            <a href="/about" className="hover:opacity-80">About</a>
-            <a href="/account" className="hover:opacity-80">Login</a>
-          </nav>
-          <a
-            href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-white/10 px-4 py-2 hover:bg-white/20"
-          >
-            Book Now
-          </a>
-        </div>
-      </header>
+  const BOOKING_URL =
+    "https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services";
 
-      {/* Hero uses /public/hero-clean.jpg — upload it there */}
+  return (
+    <>
+      {/* HERO (uses /public/hero-home.jpg if you upload it; otherwise shows green panel) */}
       <section
-        className="relative isolate"
         style={{
-          backgroundImage: 'url(/hero-clean.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          position: "relative",
+          minHeight: "60vh",
+          display: "grid",
+          placeItems: "center",
+          textAlign: "center",
+          background:
+            "linear-gradient(180deg, rgba(10,138,102,.10), rgba(10,138,102,.04))",
         }}
       >
-        <div className="bg-slate-900/50">
-          <div className="mx-auto max-w-5xl px-4 py-24 text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-semibold">
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('/hero-home.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.25, // keeps text readable even if the image exists
+          }}
+        />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div className="container">
+            <div className="chip" style={{ marginBottom: 12 }}>
+              🌿 Eco-friendly • Flat-rate • LA & OC
+            </div>
+            <h1 style={{ fontSize: "clamp(34px,6vw,54px)", margin: "10px 0" }}>
               Your Space, Sparkling with Vigor.
             </h1>
-            <p className="mt-4 text-lg opacity-90">
-              Eco-friendly residential & office cleaning with flat-rate transparency.
+            <p style={{ color: "#475569", maxWidth: 760, margin: "0 auto 16px" }}>
+              Residential & office cleaning with transparent flat-rate pricing,
+              pet-safe products, and online booking.
             </p>
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <a
-                href="/pricing"
-                className="rounded-lg bg-white text-emerald-700 px-6 py-3 font-medium hover:bg-white/90"
-              >
-                View Pricing
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <a className="btn btn-solid" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                📅 Book Now
               </a>
-              <a
-                href="/services"
-                className="rounded-lg bg-emerald-600/90 px-6 py-3 font-medium hover:bg-emerald-600"
-              >
-                Our Services
-              </a>
+              <a className="btn" href="/pricing">View Pricing</a>
+              <a className="btn" href="/services">Our Services</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Minimal content so we know build is green */}
-      <section className="mx-auto max-w-5xl px-4 py-12">
-        <h2 className="text-2xl font-semibold">Welcome</h2>
-        <p className="mt-3 text-slate-600">
-          If you can see this page with the hero image and single header, your deployment is good.
-          We’ll add the rest (A-la-carte icons, FAQ, phone/email icons, gallery, etc.) once it’s stable.
+      {/* À LA CARTE PREVIEW (links through to /services) */}
+      <section className="container" style={{ paddingTop: 36, paddingBottom: 10 }}>
+        <h2 style={{ fontSize: "clamp(26px,4.5vw,36px)" }}>À la Carte Services</h2>
+        <p style={{ color: "#64748b", marginTop: 8, marginBottom: 14 }}>
+          Add-ons you can attach to any cleaning. See full list on the services page.
         </p>
+        <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+          {[
+            { icon: "🍽️", text: "Kitchen Only" },
+            { icon: "🛁", text: "Bathrooms Only (per 2)" },
+            { icon: "🛏️", text: "Bedrooms Only (per room)" },
+            { icon: "🧊", text: "Inside Fridge" },
+            { icon: "🔥", text: "Inside Oven" },
+            { icon: "🧼", text: "Carpet Shampoo (per room)" },
+          ].map((item) => (
+            <a
+              key={item.text}
+              href="/services"
+              className="btn"
+              style={{ justifyContent: "space-between", fontWeight: 600 }}
+            >
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontSize: 22 }}>{item.icon}</span>
+                {item.text}
+              </span>
+              <span style={{ color: "var(--green)" }}>See details →</span>
+            </a>
+          ))}
+        </div>
       </section>
-    </main>
+
+      {/* CONTACT STRIP */}
+      <section className="container" style={{ paddingTop: 14, paddingBottom: 40 }}>
+        <div
+          style={{
+            border: "1px solid #e5eaf0",
+            borderRadius: 16,
+            padding: 18,
+            display: "grid",
+            gap: 18,
+            gridTemplateColumns: "1fr",
+          }}
+        >
+          <div>
+            <h3>Contact Us</h3>
+            <p style={{ color: "#64748b" }}>
+              We’d love to help. Reach out and we’ll respond quickly.
+            </p>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
+              <a className="chip" href="tel:+14242605986">📞 (424) 260-5986</a>
+              <a className="chip" href="mailto:vigorouscleanco@gmail.com">✉️ vigorouscleanco@gmail.com</a>
+            </div>
+          </div>
+          <div style={{ alignSelf: "end", color: "#64748b" }}>
+            First-time clients: use <strong>VIGOR10</strong> for 10% off. Applied at checkout.
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
