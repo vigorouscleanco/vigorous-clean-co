@@ -1,31 +1,38 @@
 // app/account/page.js
-"use client";
-import Navbar from "../components/Navbar";
+export const metadata = { title: "Account — Vigorous Clean Co." };
 
-export default function AccountPage() {
+export default function Account() {
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-10">
-        <a href="/" className="text-sm text-emerald-700 hover:underline">← Back to Home</a>
-        <h1 className="mt-2 text-4xl font-bold text-emerald-700">Your Account</h1>
-        <p className="mt-3 max-w-2xl text-slate-700">
-          Coming soon: log in to view your past cleanings, upcoming appointments, and rewards.  
-          Sign up today and get <strong>10% off</strong> your first service with code <strong>VIGOR10</strong>.
-        </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <a href="https://clerk.com/" target="_blank" rel="noreferrer" className="rounded-lg border border-slate-300 px-5 py-3 font-semibold hover:bg-slate-50">
-            Use Clerk (easy, free tier)
-          </a>
-          <a href="https://supabase.com/" target="_blank" rel="noreferrer" className="rounded-lg border border-slate-300 px-5 py-3 font-semibold hover:bg-slate-50">
-            Use Supabase Auth + NextAuth
-          </a>
+    <main className="mx-auto max-w-md px-4 py-16">
+      <a href="/" className="text-sm text-emerald-700 hover:underline">← Back to Home</a>
+
+      <h1 className="mt-3 text-3xl font-extrabold text-emerald-700">Login</h1>
+      <p className="mt-2 text-slate-600">
+        Sign in to view bookings and history (feature coming soon).
+      </p>
+
+      <form className="mt-8 space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" onSubmit={(e)=>e.preventDefault()}>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email</label>
+          <input id="email" type="email" required className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"/>
         </div>
-        <p className="mt-3 text-sm text-slate-500">
-          Tip: Start with Clerk for the fastest setup; later, tie bookings to your Square customer IDs to show service history.
-        </p>
-      </main>
-    </>
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium text-slate-700">Password</label>
+          <input id="password" type="password" required className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"/>
+        </div>
+        <button type="submit" className="w-full rounded-lg bg-emerald-700 px-4 py-2 font-semibold text-white hover:bg-emerald-800" title="Demo only — not wired yet">
+          Sign In
+        </button>
+        <div className="flex items-center justify-between text-sm">
+          <a href="#" className="text-emerald-700 hover:underline">Forgot password?</a>
+          <a href="/signup" className="text-emerald-700 hover:underline">Create account</a>
+        </div>
+      </form>
+
+      <div className="mt-6 text-xs text-slate-500">
+        For now, book via Square — we’ll match your email to your profile after your first booking.
+      </div>
+    </main>
   );
 }
 
