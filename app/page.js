@@ -1,8 +1,11 @@
-'use client';
-const BOOKING_URL =
-  'https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services';
+// app/page.js
+"use client";
 
-// quick inline icons (no uploads needed)
+/* --------- SETTINGS --------- */
+const BOOKING_URL =
+  "https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services";
+
+/* --------- SMALL INLINE ICONS (no libraries) --------- */
 function PhoneIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 0 1 2-2h1l2 4-2 1c1 3 3 5 6 6l1-2 4 2v1a2 2 0 0 1-2 2h-1C9.82 17.82 6.18 14.18 4 9V8Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>)}
 function MailIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/><path d="M3 8l9 6 9-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>)}
 function KitchenIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="9" rx="2" stroke="currentColor" strokeWidth="1.6"/><path d="M6 7h12v3H6z" stroke="currentColor" strokeWidth="1.6"/><circle cx="9" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="8.5" r="1" fill="currentColor"/><circle cx="15" cy="8.5" r="1" fill="currentColor"/></svg>)}
@@ -15,70 +18,54 @@ function MicrowaveIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" 
 function CarpetIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/><path d="M6 10h12M6 14h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>)}
 function WindowIcon(){return(<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.6"/><path d="M12 4v16M4 12h16" stroke="currentColor" strokeWidth="1.6"/></svg>)}
 
-export default function Page() {
-  // LA/OC vibe images — pulled from the web (no uploads)
+/* --------- PAGE --------- */
+export default function HomePage() {
+  // LA/OC vibe photos from Unsplash (no uploads needed)
   const HERO =
-    'https://source.unsplash.com/1600x900/?modern,clean,home,los-angeles,bright';
+    "https://images.unsplash.com/photo-1524758631624-997b1e8b5bb1?q=80&w=1600&auto=format&fit=crop";
   const GALLERY = [
-    'https://source.unsplash.com/800x600/?living-room,los-angeles,modern,bright',
-    'https://source.unsplash.com/800x600/?kitchen,los-angeles,marble,clean',
-    'https://source.unsplash.com/800x600/?office,workspace,los-angeles,daylight',
-    'https://source.unsplash.com/800x600/?bedroom,airbnb,los-angeles,minimal',
-    'https://source.unsplash.com/800x600/?bathroom,spa,los-angeles,tiles',
-    'https://source.unsplash.com/800x600/?lobby,building,los-angeles,interior',
+    "https://images.unsplash.com/photo-1505691723518-36a5ac3b2a59?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1496412705862-e0088f16f791?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1505692952047-1a78307da8f2?q=80&w=1200&auto=format&fit=crop",
   ];
 
-  const alacarte = [
-    { name: 'Kitchen Only', icon: <KitchenIcon /> },
-    { name: 'Bathrooms (per 2)', icon: <BathIcon /> },
-    { name: 'Bedrooms (per room)', icon: <BedIcon /> },
-    { name: 'Living / Common Area', icon: <SofaIcon /> },
-    { name: 'Inside Fridge', icon: <FridgeIcon /> },
-    { name: 'Inside Oven', icon: <OvenIcon /> },
-    { name: 'Microwave', icon: <MicrowaveIcon /> },
-    { name: 'Carpet Shampoo', icon: <CarpetIcon /> },
-    { name: 'Interior Windows', icon: <WindowIcon /> },
-  ];
-
-  const reviews = [
-    { name: 'Sarah W.',  text: 'They handled our move-out clean flawlessly. Everything sparkled!' },
-    { name: 'David R.',  text: 'Our office looks brand new each week. Reliable and thorough.' },
-    { name: 'Jasmine L.',text: 'The team is friendly, on time, and truly detail-oriented.' },
-    { name: 'Miguel A.', text: 'Best Airbnb turnover experience—checklists, photos, the works.' },
-    { name: 'Nina P.',   text: 'Eco products and quality results—my place smells amazing.' },
-    { name: 'Alex K.',   text: 'Flat-rate pricing is so refreshing. No surprises.' },
+  const A_LA_CARTE = [
+    { name: "Kitchen Only",                icon: <KitchenIcon /> },
+    { name: "Bathrooms (per 2)",           icon: <BathIcon /> },
+    { name: "Bedrooms (per room)",         icon: <BedIcon /> },
+    { name: "Living / Common Area",        icon: <SofaIcon /> },
+    { name: "Inside Fridge",               icon: <FridgeIcon /> },
+    { name: "Inside Oven",                 icon: <OvenIcon /> },
+    { name: "Microwave",                   icon: <MicrowaveIcon /> },
+    { name: "Carpet Shampoo",              icon: <CarpetIcon /> },
+    { name: "Interior Windows",            icon: <WindowIcon /> },
   ];
 
   return (
     <main className="min-h-screen">
-      {/* promo bar (once) */}
+      {/* Promo bar */}
       <div className="w-full bg-emerald-700 text-white">
         <div className="mx-auto max-w-6xl px-6 py-2 text-center text-sm">
           🎉 New clients get <strong>10% off</strong> with code <strong>VIGOR10</strong> — first-time clients only.
         </div>
       </div>
 
-      {/* hero with LA photo */}
+      {/* HERO */}
       <section
         className="relative bg-cover bg-center"
         style={{ backgroundImage: `url(${HERO})` }}
       >
-        <div className="bg-black/35">
+        <div className="bg-black/40">
           <div className="mx-auto max-w-6xl px-6 py-20 text-center text-white">
-            <img
-              src="/logo-mark.png"
-              alt="Vigorous Clean Co."
-              width={64}
-              height={64}
-              className="mx-auto mb-6 h-16 w-16 rounded-full bg-white/80 p-2"
-            />
-            <h1 className="text-4xl md:text-6xl font-extrabold">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
               Your Space, Sparkling with Vigor.
             </h1>
-            <p className="mt-4 text-lg text-emerald-50/90">
+            <p className="mt-4 text-lg text-emerald-50/95">
               Eco-friendly residential & office cleaning with transparent flat-rate pricing in LA & OC.
             </p>
-
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href={BOOKING_URL}
@@ -99,7 +86,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* gallery — LA/OC vibe */}
+      {/* GALLERY */}
       <section className="mx-auto max-w-6xl px-6 py-14">
         <h2 className="mb-6 text-3xl font-bold text-emerald-800">Recent Work</h2>
         <p className="mb-8 text-slate-600">Homes, offices, and rentals — tidy, sanitized, photo-ready.</p>
@@ -117,13 +104,33 @@ export default function Page() {
         </div>
       </section>
 
-      {/* à la carte (correct icons) */}
+      {/* WHY CHOOSE US (replaces testimonials) */}
+      <section className="bg-emerald-50">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <h2 className="mb-6 text-3xl font-bold text-emerald-800">Why Choose Vigorous Clean Co.?</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="rounded-2xl bg-white p-5 ring-1 ring-emerald-100">
+              <h3 className="font-semibold text-emerald-800">Transparent Flat Rates</h3>
+              <p className="mt-2 text-slate-700">No hidden fees. Clear pricing by square footage, with optional add-ons.</p>
+            </div>
+            <div className="rounded-2xl bg-white p-5 ring-1 ring-emerald-100">
+              <h3 className="font-semibold text-emerald-800">Eco & Pet-Safe Products</h3>
+              <p className="mt-2 text-slate-700">Healthy, low-fragrance products that clean effectively and safely.</p>
+            </div>
+            <div className="rounded-2xl bg-white p-5 ring-1 ring-emerald-100">
+              <h3 className="font-semibold text-emerald-800">Reliable Pros</h3>
+              <p className="mt-2 text-slate-700">Screened, trained, and consistent cleaners you can trust in your space.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* À LA CARTE (no prices) */}
       <section className="mx-auto max-w-6xl px-6 py-14">
         <h2 className="mb-6 text-3xl font-bold text-emerald-800">À la Carte Services</h2>
         <p className="mb-8 text-slate-600">Popular add-ons and task-based services (pricing on the Pricing page).</p>
-
         <div className="grid md:grid-cols-3 gap-4">
-          {alacarte.map((item) => (
+          {A_LA_CARTE.map((item) => (
             <a
               key={item.name}
               href="/pricing#alacarte"
@@ -136,30 +143,23 @@ export default function Page() {
         </div>
       </section>
 
-      {/* testimonials */}
-      <section className="mx-auto max-w-6xl px-6 py-14">
-        <h2 className="mb-6 text-3xl font-bold text-emerald-800">Loved by Clients</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          {reviews.map((t) => (
-            <blockquote key={t.name} className="rounded-2xl bg-white p-5 ring-1 ring-slate-200">
-              <div className="mb-2 text-amber-500">★★★★★</div>
-              <p className="text-slate-700">{t.text}</p>
-              <footer className="mt-3 text-sm font-semibold text-slate-500">— {t.name}</footer>
-            </blockquote>
-          ))}
-        </div>
+      {/* SERVICE AREAS (LA & OC trust signal) */}
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <h2 className="mb-6 text-3xl font-bold text-emerald-800">Service Areas</h2>
+        <p className="text-slate-700">
+          Los Angeles County & Orange County — including Santa Monica, West Hollywood, Downtown LA, Pasadena, Culver City,
+          Long Beach, Irvine, Anaheim, and nearby neighborhoods.
+        </p>
       </section>
 
-      {/* simple contact row (icons only) */}
+      {/* CONTACT — icons only (chat is in layout) */}
       <section className="mx-auto max-w-6xl px-6 pb-16">
         <div className="grid md:grid-cols-2 gap-4">
           <a href="tel:+14242605986" className="flex items-center gap-3 rounded-2xl bg-white p-5 ring-1 ring-slate-200 hover:shadow">
-            {PhoneIcon()}
-            <span className="font-semibold">(424) 260-5986</span>
+            {PhoneIcon()} <span className="font-semibold">(424) 260-5986</span>
           </a>
           <a href="mailto:vigorouscleanco@gmail.com" className="flex items-center gap-3 rounded-2xl bg-white p-5 ring-1 ring-slate-200 hover:shadow">
-            {MailIcon()}
-            <span className="font-semibold">vigorouscleanco@gmail.com</span>
+            {MailIcon()} <span className="font-semibold">vigorouscleanco@gmail.com</span>
           </a>
         </div>
       </section>
