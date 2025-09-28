@@ -1,32 +1,45 @@
+// app/faq/page.js
 export const metadata = {
   title: "FAQ • Vigorous Clean Co.",
-  description: "Answers to common questions about services, pricing, supplies, scheduling, and more.",
+  description: "Answers to common questions about services, pricing, supplies, and scheduling.",
 };
 
 const QA = [
   {
     q: "Do you bring your own supplies?",
-    a: "Yes. We bring all supplies and equipment needed for standard and deep cleaning, including eco- and pet-safe products. If you prefer we use your equipment (e.g., special vacuum), just let us know in the booking notes.",
+    a: "Yes. We bring all supplies and equipment for standard and deep cleans, including eco- and pet-safe products. If you prefer we use your items (e.g., a specific vacuum or product), note it at booking.",
   },
   {
     q: "Do you service my area?",
-    a: "We cover Los Angeles County and Orange County. If you’re on the border or not sure, contact us with your address—we’ll confirm availability.",
+    a: "We cover Los Angeles County and Orange County. If you’re right on the border or unsure, include your address in the notes and we’ll confirm before the appointment.",
   },
   {
     q: "How much will it cost?",
-    a: "We use transparent, flat-rate pricing by home size or office square footage. À la carte tasks (like inside fridge/oven, interior windows, carpet shampoo) are optional add-ons. See current rates on the Pricing page.",
+    a: "Transparent flat-rate pricing by square footage. Add-ons like inside fridge/oven, interior windows, and carpet shampoo are optional. See live rates on the Pricing page.",
   },
   {
-    q: "Do you use green products for cleaning?",
-    a: "Yes. We prioritize eco-friendly, low-fragrance products that are safe for families and pets, while still being effective.",
+    q: "Do you use green cleaning products?",
+    a: "Yes. Our default kits are eco-friendly and low-fragrance while still effective. Tell us if you have sensitivities and we’ll accommodate.",
   },
   {
-    q: "Do I need to be home during the cleaning?",
-    a: "No. Many clients provide entry instructions (lockbox, front desk, key). If you’ll be home, that’s fine too—our team is efficient and respectful of your space.",
+    q: "Do I need to be home?",
+    a: "No. Many clients provide access via lockbox, front desk, or a trusted neighbor. If you are home, we’ll work efficiently around you.",
   },
   {
     q: "Can I trust your cleaning professionals?",
-    a: "Absolutely. All cleaners are vetted professionals who pass strict screening. We focus on consistency, reliability, and respect for your property.",
+    a: "Absolutely. Cleaners are screened, ID-verified, and trained on our quality checklists and standards. We aim for the same pro each visit when possible.",
+  },
+  {
+    q: "What if it takes more than one day?",
+    a: "We follow clear multi-day pricing: full extra days are billed at the same daily rate; short wrap-ups are ~60% of the daily rate. See details on Pricing.",
+  },
+  {
+    q: "How do recurring discounts work?",
+    a: "Weekly 20% • Bi-weekly 15% • Monthly 10%. Discounts apply per visit after your plan starts.",
+  },
+  {
+    q: "How do I reschedule or cancel?",
+    a: "Please give at least 24 hours’ notice when possible. Use your confirmation email or contact us directly to adjust.",
   },
 ];
 
@@ -41,9 +54,7 @@ export default function FAQPage() {
           <details key={idx} className="group p-6">
             <summary className="cursor-pointer list-none font-semibold text-slate-900 flex items-center justify-between">
               {item.q}
-              <span className="ml-4 text-emerald-700 group-open:rotate-45 transition">
-                +
-              </span>
+              <span className="ml-4 text-emerald-700 group-open:rotate-45 transition">+</span>
             </summary>
             <p className="mt-3 text-slate-700 leading-relaxed">{item.a}</p>
           </details>
@@ -51,11 +62,10 @@ export default function FAQPage() {
       </div>
 
       <p className="mt-10 text-sm text-slate-600">
-        Still have questions? Email us at{" "}
+        Still have questions? Chat with us in the bottom-right or email{" "}
         <a href="mailto:vigorouscleanco@gmail.com" className="text-emerald-700 font-semibold">
           vigorouscleanco@gmail.com
-        </a>{" "}
-        or call{" "}
+        </a>. Prefer a quick call?{" "}
         <a href="tel:+14242605986" className="text-emerald-700 font-semibold">
           (424) 260-5986
         </a>.
