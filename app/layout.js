@@ -28,6 +28,8 @@ export default function RootLayout({ children }) {
           @media(min-width:768px){.footer-grid{grid-template-columns:1fr auto auto}}
           .chip{display:inline-flex;align-items:center;gap:.5rem;background:#eaf7f3;color:#056e52;border-radius:999px;padding:.35rem .7rem;font-size:.85rem}
         `}</style>
+
+        {/* Tawk.to chat */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -45,19 +47,27 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {/* Promo bar */}
-        <div style="background:#06624b;color:#e7fff6;padding:6px 0;text-align:center;font-size:.95rem">
+        {/* Promo bar — fixed: style is an OBJECT now */}
+        <div
+          style={{
+            background: "#06624b",
+            color: "#e7fff6",
+            padding: "6px 0",
+            textAlign: "center",
+            fontSize: ".95rem",
+          }}
+        >
           🎉 New clients get 10% off with code <strong>VIGOR10</strong> — first-time clients.
         </div>
 
-        {/* Simple header (no component imports) */}
+        {/* Simple header */}
         <header>
           <div className="container nav">
             <a className="brand" href="/">
               <img src="/logo.png" alt="Vigorous Clean Co. logo" />
               <strong>Vigorous Clean Co.</strong>
             </a>
-            <nav style={{display:"flex",gap:"18px",alignItems:"center"}}>
+            <nav style={{ display: "flex", gap: "18px", alignItems: "center" }}>
               <a href="/services">Services</a>
               <a href="/pricing">Pricing</a>
               <a href="/about">About</a>
@@ -68,7 +78,7 @@ export default function RootLayout({ children }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span style={{fontSize:"1.05rem"}}>📅</span> Book Now
+                <span style={{ fontSize: "1.05rem" }}>📅</span> Book Now
               </a>
             </nav>
           </div>
@@ -76,25 +86,39 @@ export default function RootLayout({ children }) {
 
         <main>{children}</main>
 
-        {/* Simple footer (no component imports) */}
+        {/* Simple footer */}
         <footer>
           <div className="container footer-grid">
             <div>
-              <div className="brand" style={{color:"var(--green)"}}>
+              <div className="brand" style={{ color: "var(--green)" }}>
                 <img src="/logo.png" alt="Vigorous Clean Co. logo" />
                 <strong>Vigorous Clean Co.</strong>
               </div>
-              <p style={{color:"var(--muted)",marginTop:8}}>
+              <p style={{ color: "var(--muted)", marginTop: 8 }}>
                 Eco-friendly residential & office cleaning in Los Angeles & Orange County.
               </p>
-              <div style={{display:"flex",gap:10,marginTop:10}}>
-                <a className="chip" href="https://instagram.com/vigorouss.co" target="_blank" rel="noreferrer">📸 Instagram</a>
-                <a className="chip" href="https://tiktok.com/@vigorouss.co" target="_blank" rel="noreferrer">🎵 TikTok</a>
+              <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+                <a
+                  className="chip"
+                  href="https://instagram.com/vigorouss.co"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  📸 Instagram
+                </a>
+                <a
+                  className="chip"
+                  href="https://tiktok.com/@vigorouss.co"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  🎵 TikTok
+                </a>
               </div>
             </div>
             <div>
               <strong>Quick Links</strong>
-              <div style={{display:"grid",gap:6,marginTop:8}}>
+              <div style={{ display: "grid", gap: 6, marginTop: 8 }}>
                 <a href="/services">Services</a>
                 <a href="/pricing">Pricing</a>
                 <a href="/about">About</a>
@@ -104,17 +128,17 @@ export default function RootLayout({ children }) {
             </div>
             <div>
               <strong>Service Hours</strong>
-              <div style={{display:"grid",gap:6,marginTop:8,color:"var(--muted)"}}>
+              <div style={{ display: "grid", gap: 6, marginTop: 8, color: "var(--muted)" }}>
                 <span>Open daily • 8:00 AM – 8:00 PM</span>
                 <span>📍 Los Angeles & Orange County</span>
-                <div style={{display:"flex",gap:10,marginTop:6}}>
+                <div style={{ display: "flex", gap: 10, marginTop: 6 }}>
                   <a className="chip" href="tel:+14242605986">📞 (424) 260-5986</a>
                   <a className="chip" href="mailto:vigorouscleanco@gmail.com">✉️ vigorouscleanco@gmail.com</a>
                 </div>
               </div>
             </div>
           </div>
-          <div style={{textAlign:"center",fontSize:12,color:"#94a3b8",padding:"14px 0"}}>
+          <div style={{ textAlign: "center", fontSize: 12, color: "#94a3b8", padding: "14px 0" }}>
             © {new Date().getFullYear()} Vigorous Clean Co. All rights reserved.
           </div>
         </footer>
@@ -122,4 +146,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 
