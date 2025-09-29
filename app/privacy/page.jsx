@@ -1,4 +1,3 @@
-// app/privacy/page.jsx
 export default function Privacy(){
 return (
 <section className="mx-auto max-w-3xl space-y-6">
