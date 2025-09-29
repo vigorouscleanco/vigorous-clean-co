@@ -1,8 +1,10 @@
-export default function Login() {
+export default function LoginPage() {
   return (
-    <div className="container" style={{padding:"28px 24px"}}>
+    <main style={{maxWidth:600,margin:"40px auto",padding:"0 20px",textAlign:"center"}}>
       <h1>Login</h1>
-      <p>Account features coming soon.</p>
-    </div>
+      <p>Client login coming soon. For now, manage appointments via Square.</p>
+      <a href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services" className="btn btn-solid" style={{display:"inline-block",marginTop:16}}>Go to Booking</a>
+    </main>
   );
 }
+
