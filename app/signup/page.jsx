@@ -1,5 +1,3 @@
-// app/signup/page.jsx
-export const metadata = { title: "Sign up | Vigorous Clean Co." };
 export default function Signup(){
 return (
 <section className="mx-auto max-w-sm">
