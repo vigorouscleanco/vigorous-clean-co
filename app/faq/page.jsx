@@ -1,9 +1,8 @@
-// app/faq/page.jsx
 export default function FAQ(){
 const items = [
-{ q: "Do you charge by the hour?", a: "No. We charge a flat day rate by square footage." },
-{ q: "Do you clean exterior windows?", a: "No—interior only." },
-{ q: "Are products pet‑safe?", a: "Yes, we use eco & pet‑safe cleaners." },
+{ q: 'Do you charge by the hour?', a: 'No. We charge a flat day rate by square footage.' },
+{ q: 'Do you clean exterior windows?', a: 'No—interior only.' },
+{ q: 'Are products pet‑safe?', a: 'Yes, we use eco & pet‑safe cleaners.' },
 ];
 return (
 <section className="mx-auto max-w-3xl">
