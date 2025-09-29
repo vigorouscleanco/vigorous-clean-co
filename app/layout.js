@@ -1,15 +1,33 @@
-// app/layout.js
+// app/layout.js  (server component – no "use client")
 export const metadata = {
   title: "Vigorous Clean Co.",
-  description:
-    "Eco-friendly residential & office cleaning in Los Angeles & Orange County. Flat-rate, no hidden fees.",
+  description: "Eco-friendly residential & office cleaning in LA & Orange County.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Tawk chat (your ID as provided) */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.png" />
+        <style>{`
+          :root{--green:#0a8a66;--ink:#0f172a;--muted:#64748b;--bg:#ffffff}
+          *{box-sizing:border-box}
+          body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+          a{text-decoration:none;color:inherit}
+          .container{max-width:1100px;margin-inline:auto;padding:24px}
+          .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:12px;padding:.8rem 1.1rem;border:1px solid #dbe3ea;background:#fff;transition:.2s}
+          .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,24,40,.08)}
+          .btn-solid{background:var(--green);color:#fff;border-color:var(--green)}
+          header{position:sticky;top:0;z-index:40;background:#0b8a66;color:#fff}
+          .nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+          .brand{display:flex;align-items:center;gap:.75rem}
+          .brand img{height:28px;width:auto}
+          footer{border-top:1px solid #e5eaf0;background:#fafcff}
+          .footer-grid{display:grid;grid-template-columns:1fr;gap:16px}
+          @media(min-width:768px){.footer-grid{grid-template-columns:1fr auto auto}}
+          .chip{display:inline-flex;align-items:center;gap:.5rem;background:#eaf7f3;color:#056e52;border-radius:999px;padding:.35rem .7rem;font-size:.85rem}
+        `}</style>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -25,36 +43,14 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.png" />
-        <style>{`
-          :root { --green:#0a8a66; --ink:#0f172a; --muted:#64748b; --bg:#ffffff; }
-          * { box-sizing: border-box; }
-          body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--ink); background: var(--bg); }
-          a { color: inherit; text-decoration: none; }
-          .container{max-width:1100px;margin-inline:auto;padding:24px}
-          .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:12px;padding:.8rem 1.1rem;border:1px solid #dbe3ea;background:#fff;transition:.2s}
-          .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,24,40,.08)}
-          .btn-solid{background:var(--green);color:#fff;border-color:var(--green)}
-          header{position:sticky;top:0;z-index:40;background:linear-gradient(0deg,#0b8a66,#0b8a66);color:#fff}
-          .nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
-          .nav a{opacity:.9}
-          .nav a:hover{opacity:1}
-          .brand{display:flex;align-items:center;gap:.75rem}
-          .brand img{height:28px;width:auto}
-          footer{border-top:1px solid #e5eaf0;background:#fafcff}
-          .footer-grid{display:grid;grid-template-columns: 1fr; gap:16px;}
-          @media (min-width:768px){ .footer-grid{grid-template-columns:1fr auto auto} }
-          .chip{display:inline-flex;align-items:center;gap:.5rem;background:#eaf7f3;color:#056e52;border-radius:999px;padding:.35rem .7rem;font-size:.85rem}
-        `}</style>
       </head>
       <body>
-        {/* TOP PROMO */}
-        <div style={{background:"#06624b",color:"#e7fff6",padding:"6px 0",textAlign:"center",fontSize:"0.94rem"}}>
-          🎉 New clients get 10% off with code <strong>VIGOR10</strong> — applied at checkout for first-time clients.
+        {/* Promo bar */}
+        <div style="background:#06624b;color:#e7fff6;padding:6px 0;text-align:center;font-size:.95rem">
+          🎉 New clients get 10% off with code <strong>VIGOR10</strong> — first-time clients.
         </div>
 
-        {/* SINGLE HEADER (fixes your “double header” issue) */}
+        {/* Simple header (no component imports) */}
         <header>
           <div className="container nav">
             <a className="brand" href="/">
@@ -66,7 +62,12 @@ export default function RootLayout({ children }) {
               <a href="/pricing">Pricing</a>
               <a href="/about">About</a>
               <a href="/login">Login</a>
-              <a className="btn btn-solid" href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services" target="_blank" rel="noopener noreferrer">
+              <a
+                className="btn btn-solid"
+                href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span style={{fontSize:"1.05rem"}}>📅</span> Book Now
               </a>
             </nav>
@@ -75,7 +76,7 @@ export default function RootLayout({ children }) {
 
         <main>{children}</main>
 
-        {/* FOOTER */}
+        {/* Simple footer (no component imports) */}
         <footer>
           <div className="container footer-grid">
             <div>
@@ -121,3 +122,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
