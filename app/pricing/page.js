@@ -6,7 +6,7 @@ export const metadata = {
     'Flat-rate, transparent pricing for eco-friendly residential, office, and move-in/move-out cleaning across Los Angeles & Orange County.',
 };
 
-// EDIT THIS ONCE IF YOUR BOOKING LINK CHANGES
+// EDIT ME ONCE IF YOUR BOOKING LINK CHANGES
 const BOOKING_URL =
   'https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services';
 
@@ -27,292 +27,376 @@ const PRICES = {
   },
 };
 
-// Minimal inline icons (no libraries)
-const Icon = {
-  Home: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 10.5 12 4l9 6.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Office: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M4 21h16V6a1 1 0 0 0-1-1h-7v6H4v10Z" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M8 11v10M12 11v10M15.5 8.5h3M15.5 12h3M15.5 15.5h3" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Move: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 16V9h10v7H3Zm10 0h4l4-4V9h-8" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Kitchen: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M4 4h16v5H4zM4 9h16v11H4z" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M8 4v16M16 4v16" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Bath: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M4 12h16v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4Z" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M6 12V7a3 3 0 1 1 6 0v5" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Bed: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 18v-4a2 2 0 0 1 2-2h14v6M3 18h18" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M6 12h4v2H6z" fill="currentColor"/>
-    </svg>
-  ),
-  Fridge: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="6" y="3" width="12" height="18" rx="2" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M6 10h12M9 7v3" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Oven: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M7 8h2M11 8h2M15 8h2" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Windows: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="4" y="4" width="16" height="16" rx="1.8" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M12 4v16M4 12h16" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Carpet: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="6" y="8" width="12" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M6 10h12M6 14h12" stroke="currentColor" strokeWidth="1.6"/>
-    </svg>
-  ),
-  Microwave: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="4" y="6" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.6"/>
-      <rect x="7" y="9" width="8" height="6" stroke="currentColor" strokeWidth="1.6"/>
-      <circle cx="17.5" cy="12" r="1" fill="currentColor"/>
-      <circle cx="17.5" cy="15" r="1" fill="currentColor"/>
-    </svg>
-  ),
-};
-
-function Price({ amount }) {
+function Plan({ title, price, bullets }) {
   return (
-    <div className="mt-3 flex items-end gap-1">
-      <span className="text-4xl font-extrabold tracking-tight text-slate-900">${amount}</span>
-      <span className="mb-1 text-slate-500">starting</span>
-    </div>
-  );
-}
-
-function Tag({ children }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
-      {children}
-    </span>
-  );
-}
-
-function PlanCard({ icon, title, price, bullets }) {
-  return (
-    <div className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur transition hover:shadow-md">
-      <div className="flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100">
-          {icon}
-        </span>
-        <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
+    <div className="card">
+      <h3 className="cardTitle">{title}</h3>
+      <div className="priceLine">
+        <span className="price">${price}</span>
+        <span className="from">starting</span>
       </div>
-      <Price amount={price} />
-      <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">
+      <ul className="list">
         {bullets.map((b) => (
           <li key={b}>{b}</li>
         ))}
       </ul>
-      <div className="mt-6">
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-        >
-          Book Online
-        </a>
-      </div>
+      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btnPrimary">
+        Book Online
+      </a>
+      <style jsx>{`
+        .card {
+          background: #fff;
+          border: 1px solid #e6e8eb;
+          border-radius: 16px;
+          padding: 20px;
+          box-shadow: 0 6px 14px rgba(16, 24, 40, 0.06);
+        }
+        .cardTitle {
+          margin: 0 0 8px;
+          font-size: 20px;
+          font-weight: 700;
+          color: #0f172a;
+        }
+        .priceLine {
+          display: flex;
+          align-items: flex-end;
+          gap: 6px;
+          margin: 8px 0 10px;
+        }
+        .price {
+          font-size: 34px;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        .from {
+          margin-bottom: 6px;
+          color: #64748b;
+          font-size: 13px;
+        }
+        .list {
+          margin: 6px 0 16px;
+          padding-left: 20px;
+          color: #334155;
+          line-height: 1.55;
+        }
+        .btnPrimary {
+          display: inline-block;
+          background: #059669;
+          color: #fff;
+          padding: 10px 16px;
+          border-radius: 999px;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .btnPrimary:hover {
+          background: #047857;
+        }
+      `}</style>
     </div>
   );
 }
 
-function AlaCard({ icon, label, price, note }) {
+function AlaCard({ label, price, note }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur transition hover:shadow-md">
-      <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100">
-        {icon}
-      </span>
-      <div className="flex-1">
-        <p className="font-medium text-slate-900">{label}</p>
-        {note ? <p className="text-sm text-slate-500">{note}</p> : null}
+    <div className="ala">
+      <div className="alaLeft">
+        <div className="alaTitle">{label}</div>
+        {note ? <div className="alaNote">{note}</div> : null}
       </div>
-      <div className="text-right">
-        <div className="text-sm text-slate-500">from</div>
-        <div className="text-lg font-semibold text-slate-900">${price}</div>
+      <div className="alaRight">
+        <div className="fromSmall">from</div>
+        <div className="alaPrice">${price}</div>
       </div>
+
+      <style jsx>{`
+        .ala {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #fff;
+          border: 1px solid #e6e8eb;
+          border-radius: 14px;
+          padding: 14px 16px;
+          box-shadow: 0 4px 10px rgba(16, 24, 40, 0.05);
+        }
+        .alaTitle {
+          font-weight: 600;
+          color: #0f172a;
+        }
+        .alaNote {
+          font-size: 13px;
+          color: #64748b;
+        }
+        .fromSmall {
+          color: #94a3b8;
+          font-size: 12px;
+          text-align: right;
+        }
+        .alaPrice {
+          font-size: 18px;
+          font-weight: 700;
+          color: #0f172a;
+          text-align: right;
+        }
+      `}</style>
     </div>
   );
 }
 
 export default function PricingPage() {
   return (
-    <main className="bg-gradient-to-b from-emerald-50/40 to-white">
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
-        <div className="rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-500 p-[1px] shadow-sm">
-          <div className="rounded-3xl bg-white/95 px-6 py-10 sm:px-10 sm:py-12">
-            <div className="mx-auto max-w-3xl text-center">
-              <Tag>Los Angeles & Orange County</Tag>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Simple, flat-rate pricing.
-              </h1>
-              <p className="mt-4 text-lg text-slate-600">
-                Eco-friendly cleaning with transparent, starting rates. Book online in minutes — no hidden fees.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-white hover:bg-emerald-700"
-                >
-                  Book Now
-                </a>
-                <a
-                  href="tel:+14242605986"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
-                >
-                  Call (424) 260-5986
-                </a>
-              </div>
-            </div>
+    <main>
+      {/* HERO */}
+      <section className="heroWrap">
+        <div className="hero">
+          <div className="tag">Los Angeles & Orange County</div>
+          <h1>Simple, flat-rate pricing.</h1>
+          <p>
+            Eco-friendly cleaning with transparent, starting rates. Book online in minutes — no hidden fees.
+          </p>
+          <div className="ctaRow">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btnPrimary">
+              Book Now
+            </a>
+            <a href="tel:+14242605986" className="btnGhost">
+              Call (424) 260-5986
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Core packages */}
-      <section className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-        <PlanCard
-          icon={Icon.Home}
-          title="Residential Cleaning"
-          price={PRICES.residentialFrom}
-          bullets={[
-            'Standard & deep clean options',
-            'Kitchens • baths • bedrooms • living areas',
-            'Eco-friendly supplies on request',
-          ]}
-        />
-        <PlanCard
-          icon={Icon.Office}
-          title="Office Cleaning"
-          price={PRICES.officeFrom}
-          bullets={[
-            'Desks • floors • restrooms • breakrooms',
-            'Touch-points • trash & recycling',
-            'Flexible daily or weekly schedules',
-          ]}
-        />
-        <PlanCard
-          icon={Icon.Move}
-          title="Move-In / Move-Out"
-          price={PRICES.moveFrom}
-          bullets={[
-            'Top-to-bottom detail for move days',
-            'Appliance interiors by request',
-            'Inside cabinets • drawers • closets',
-          ]}
-        />
+      {/* CORE PACKAGES */}
+      <section className="section">
+        <div className="grid3">
+          <Plan
+            title="Residential Cleaning"
+            price={PRICES.residentialFrom}
+            bullets={[
+              'Standard & deep clean options',
+              'Kitchens • baths • bedrooms • living areas',
+              'Eco-friendly supplies on request',
+            ]}
+          />
+          <Plan
+            title="Office Cleaning"
+            price={PRICES.officeFrom}
+            bullets={[
+              'Desks • floors • restrooms • breakrooms',
+              'Touch-points • trash & recycling',
+              'Flexible daily or weekly schedules',
+            ]}
+          />
+          <Plan
+            title="Move-In / Move-Out"
+            price={PRICES.moveFrom}
+            bullets={[
+              'Top-to-bottom detail for move days',
+              'Appliance interiors by request',
+              'Inside cabinets • drawers • closets',
+            ]}
+          />
+        </div>
       </section>
 
-      {/* À la carte */}
-      <section className="mx-auto mt-14 max-w-6xl px-4">
-        <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold text-slate-900">À la Carte Services</h2>
-          <a href="/services" className="text-emerald-700 hover:text-emerald-800">
+      {/* À LA CARTE */}
+      <section className="section">
+        <div className="secHead">
+          <h2>À la Carte Services</h2>
+          <a href="/services" className="link">
             See all services →
           </a>
         </div>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <AlaCard icon={Icon.Kitchen}   label="Kitchen Only"                 price={PRICES.alaCarte.kitchen} />
-          <AlaCard icon={Icon.Bath}      label="Bathrooms Only (per 2)"       price={PRICES.alaCarte.bathrooms2} />
-          <AlaCard icon={Icon.Bed}       label="Bedrooms Only (per room)"     price={PRICES.alaCarte.bedroom} />
-          <AlaCard icon={Icon.Fridge}    label="Inside Fridge"                price={PRICES.alaCarte.fridge} />
-          <AlaCard icon={Icon.Oven}      label="Inside Oven"                  price={PRICES.alaCarte.oven} />
-          <AlaCard icon={Icon.Windows}   label="Interior Windows (min 5)"     price={PRICES.alaCarte.windowsEach} note="$10 each" />
-          <AlaCard icon={Icon.Carpet}    label="Carpet Shampoo (per room)"    price={PRICES.alaCarte.carpetRoom} />
-          <AlaCard icon={Icon.Microwave} label="Microwave"                    price={PRICES.alaCarte.microwave} />
+        <div className="grid3">
+          <AlaCard label="Kitchen Only" price={PRICES.alaCarte.kitchen} />
+          <AlaCard label="Bathrooms Only (per 2)" price={PRICES.alaCarte.bathrooms2} />
+          <AlaCard label="Bedrooms Only (per room)" price={PRICES.alaCarte.bedroom} />
+          <AlaCard label="Inside Fridge" price={PRICES.alaCarte.fridge} />
+          <AlaCard label="Inside Oven" price={PRICES.alaCarte.oven} />
+          <AlaCard label="Interior Windows (min 5)" price={PRICES.alaCarte.windowsEach} note="$10 each" />
+          <AlaCard label="Carpet Shampoo (per room)" price={PRICES.alaCarte.carpetRoom} />
+          <AlaCard label="Microwave" price={PRICES.alaCarte.microwave} />
         </div>
-
-        <p className="mt-4 text-sm text-slate-500">
-          Prices shown are starting estimates and may vary by size, condition, and add-ons. You’ll see a clear quote during booking —
-          no surprises.
+        <p className="fine">
+          Prices shown are starting estimates and may vary by size, condition, and add-ons. You’ll see a clear quote during
+          booking — no surprises.
         </p>
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto mt-16 max-w-6xl px-4 pb-16">
-        <h2 className="text-2xl font-semibold text-slate-900">Pricing FAQs</h2>
-        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">
-              Do you bring your own supplies?
-            </summary>
-            <p className="mt-2 text-slate-600">
-              Yes. We bring all standard supplies. If you prefer green products, let us know while booking —
-              we’re happy to use eco-friendly options.
+      <section className="section">
+        <h2>Pricing FAQs</h2>
+        <div className="faq">
+          <details>
+            <summary>Do you bring your own supplies?</summary>
+            <p>
+              Yes. We bring all standard supplies. Prefer green products? Let us know at booking and we’ll use eco-friendly options.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">
-              Do you service my area?
-            </summary>
-            <p className="mt-2 text-slate-600">
-              We cover Los Angeles & Orange County. Add your address during booking and we’ll confirm availability right away.
+          <details>
+            <summary>Do you service my area?</summary>
+            <p>
+              We cover Los Angeles & Orange County. Add your address during booking and we’ll confirm availability instantly.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">
-              How are prices calculated?
-            </summary>
-            <p className="mt-2 text-slate-600">
-              Rates are based on size, scope, and condition. You’ll see a clear quote (and any add-ons) before you confirm.
+          <details>
+            <summary>How are prices calculated?</summary>
+            <p>
+              Rates depend on size, scope, and condition. You’ll see a clear quote (and any add-ons) before you confirm.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">
-              Do I need to be home?
-            </summary>
-            <p className="mt-2 text-slate-600">
+          <details>
+            <summary>Do I need to be home?</summary>
+            <p>
               Not required. Many clients provide access codes or key boxes. We’ll text when we’re on the way and when finished.
             </p>
           </details>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-white hover:bg-emerald-700"
-          >
+        <div className="ctaRow center">
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btnPrimary">
             Book Online
           </a>
-          <a
-            href="tel:+14242605986"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
-          >
+          <a href="tel:+14242605986" className="btnGhost">
             Call (424) 260-5986
           </a>
         </div>
       </section>
+
+      {/* Page styles (no Tailwind needed) */}
+      <style jsx>{`
+        main {
+          background: linear-gradient(180deg, rgba(209, 250, 229, 0.25), #fff 35%);
+        }
+        .heroWrap {
+          padding: 28px 16px 0;
+        }
+        .hero {
+          max-width: 1080px;
+          margin: 0 auto;
+          background: #ffffffea;
+          border: 1px solid #dfe3e8;
+          border-radius: 24px;
+          padding: 34px 28px;
+          box-shadow: 0 10px 25px rgba(16, 24, 40, 0.06);
+          text-align: center;
+        }
+        .tag {
+          display: inline-block;
+          padding: 6px 10px;
+          background: #ecfdf5;
+          color: #047857;
+          border: 1px solid #a7f3d0;
+          border-radius: 999px;
+          font-size: 12px;
+          font-weight: 600;
+        }
+        h1 {
+          margin: 10px 0 8px;
+          font-size: 36px;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        h2 {
+          margin: 0 0 10px;
+          font-size: 26px;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        p {
+          color: #334155;
+          margin: 8px 0 0;
+        }
+        .section {
+          max-width: 1080px;
+          margin: 26px auto 0;
+          padding: 0 16px 6px;
+        }
+        .grid3 {
+          display: grid;
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+          gap: 16px;
+        }
+        @media (min-width: 820px) {
+          .grid3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+        .secHead {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        }
+        .link {
+          color: #047857;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .link:hover {
+          color: #065f46;
+        }
+        .fine {
+          margin-top: 8px;
+          color: #64748b;
+          font-size: 13px;
+        }
+        .faq {
+          display: grid;
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 8px;
+        }
+        .faq details {
+          background: #fff;
+          border: 1px solid #e6e8eb;
+          border-radius: 12px;
+          padding: 10px 14px;
+          box-shadow: 0 4px 10px rgba(16, 24, 40, 0.05);
+        }
+        .faq summary {
+          font-weight: 600;
+          color: #0f172a;
+          cursor: pointer;
+          list-style: none;
+        }
+        .faq p {
+          margin-top: 6px;
+          color: #334155;
+        }
+        .ctaRow {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 14px;
+          justify-content: center;
+        }
+        .ctaRow.center {
+          justify-content: center;
+        }
+        .btnPrimary {
+          background: #059669;
+          color: #fff;
+          padding: 10px 16px;
+          border-radius: 999px;
+          text-decoration: none;
+          font-weight: 700;
+        }
+        .btnPrimary:hover {
+          background: #047857;
+        }
+        .btnGhost {
+          border: 1px solid #cbd5e1;
+          background: #fff;
+          color: #334155;
+          padding: 10px 16px;
+          border-radius: 999px;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .btnGhost:hover {
+          background: #f8fafc;
+        }
+      `}</style>
     </main>
   );
 }
