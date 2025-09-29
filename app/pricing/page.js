@@ -1,81 +1,48 @@
 // app/pricing/page.js
+
 export const metadata = {
   title: 'Pricing | Vigorous Clean Co.',
   description:
-    'Transparent flat-rate cleaning for homes, offices, and move-in/move-out in Los Angeles & Orange County. Eco-friendly, reliable, and easy to book.',
+    'Flat-rate, transparent pricing for eco-friendly residential, office, and move-in/move-out cleaning across Los Angeles & Orange County.',
 };
 
+// EDIT THIS ONCE IF YOUR BOOKING LINK CHANGES
 const BOOKING_URL =
-  'https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services'; // ← replace if your link changes
+  'https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services';
 
-function Badge({ children }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
-      {children}
-    </span>
-  );
-}
+// Starting prices (easy to tweak)
+const PRICES = {
+  residentialFrom: 149,
+  officeFrom: 199,
+  moveFrom: 249,
+  alaCarte: {
+    kitchen: 79,
+    bathrooms2: 89,
+    bedroom: 35,
+    fridge: 35,
+    oven: 35,
+    windowsEach: 10, // min 5
+    carpetRoom: 79,
+    microwave: 20,
+  },
+};
 
-function Card({ title, tags = [], children, ctaText = 'Book Now', href = BOOKING_URL }) {
-  return (
-    <div className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
-        <div className="flex flex-wrap gap-2">
-          {tags.map((t) => (
-            <Badge key={t}>{t}</Badge>
-          ))}
-        </div>
-      </div>
-      <div className="mt-3 text-slate-600 leading-relaxed">{children}</div>
-      <div className="mt-5">
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2ZM5 9h14v10H5V9Z" fill="currentColor"/>
-          </svg>
-          {ctaText}
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function ALaCarteItem({ icon, label, href = '/pricing#alacarte' }) {
-  return (
-    <a
-      href={href}
-      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 text-slate-700 shadow-sm transition hover:shadow-md"
-    >
-      <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100">
-        {icon}
-      </span>
-      <span className="font-medium">{label}</span>
-      <span className="ms-auto text-slate-400">→</span>
-    </a>
-  );
-}
-
-// simple inline icons (no libs)
-const Icons = {
+// Minimal inline icons (no libraries)
+const Icon = {
   Home: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+      <path d="M3 10.5 12 4l9 6.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
     </svg>
   ),
   Office: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 21h18V4a1 1 0 0 0-1-1h-8v7H3v11Z" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M7 12v9M11 12v9M15 10h3M15 13h3M15 16h3" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M4 21h16V6a1 1 0 0 0-1-1h-7v6H4v10Z" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M8 11v10M12 11v10M15.5 8.5h3M15.5 12h3M15.5 15.5h3" stroke="currentColor" strokeWidth="1.6"/>
     </svg>
   ),
   Move: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M3 17V9h10v8H3Zm10 0h4l4-4V9h-8" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+      <path d="M3 16V9h10v7H3Zm10 0h4l4-4V9h-8" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
     </svg>
   ),
   Kitchen: (
@@ -130,120 +97,201 @@ const Icons = {
   ),
 };
 
+function Price({ amount }) {
+  return (
+    <div className="mt-3 flex items-end gap-1">
+      <span className="text-4xl font-extrabold tracking-tight text-slate-900">${amount}</span>
+      <span className="mb-1 text-slate-500">starting</span>
+    </div>
+  );
+}
+
+function Tag({ children }) {
+  return (
+    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+      {children}
+    </span>
+  );
+}
+
+function PlanCard({ icon, title, price, bullets }) {
+  return (
+    <div className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur transition hover:shadow-md">
+      <div className="flex items-center gap-3">
+        <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100">
+          {icon}
+        </span>
+        <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
+      </div>
+      <Price amount={price} />
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">
+        {bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+      <div className="mt-6">
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+        >
+          Book Online
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function AlaCard({ icon, label, price, note }) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur transition hover:shadow-md">
+      <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100">
+        {icon}
+      </span>
+      <div className="flex-1">
+        <p className="font-medium text-slate-900">{label}</p>
+        {note ? <p className="text-sm text-slate-500">{note}</p> : null}
+      </div>
+      <div className="text-right">
+        <div className="text-sm text-slate-500">from</div>
+        <div className="text-lg font-semibold text-slate-900">${price}</div>
+      </div>
+    </div>
+  );
+}
+
 export default function PricingPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+    <main className="bg-gradient-to-b from-emerald-50/40 to-white">
       {/* Hero */}
-      <header className="mx-auto max-w-3xl text-center">
-        <span className="mb-3 inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-100">
-          Transparent & Fair
-        </span>
-        <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Simple, flat-rate pricing.
-        </h1>
-        <p className="mt-4 text-lg text-slate-600">
-          Eco-friendly cleaning with clear options for homes, offices, and move-in/move-out. Book online in minutes.
-        </p>
-      </header>
+      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
+        <div className="rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-500 p-[1px] shadow-sm">
+          <div className="rounded-3xl bg-white/95 px-6 py-10 sm:px-10 sm:py-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <Tag>Los Angeles & Orange County</Tag>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Simple, flat-rate pricing.
+              </h1>
+              <p className="mt-4 text-lg text-slate-600">
+                Eco-friendly cleaning with transparent, starting rates. Book online in minutes — no hidden fees.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-white hover:bg-emerald-700"
+                >
+                  Book Now
+                </a>
+                <a
+                  href="tel:+14242605986"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
+                >
+                  Call (424) 260-5986
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Core packages */}
-      <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <Card
+      <section className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
+        <PlanCard
+          icon={Icon.Home}
           title="Residential Cleaning"
-          tags={['LA & OC', 'Eco-friendly', 'Flat-rate']}
-        >
-          Standard or deep cleaning for apartments, condos, and houses. Kitchens, baths, bedrooms, and living areas —
-          plus à la carte add-ons if needed.
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">
-            <li>Flexible scheduling (Mon–Sun, 8am–8pm)</li>
-            <li>All supplies included; green products available</li>
-            <li>Great for recurring maintenance</li>
-          </ul>
-        </Card>
-
-        <Card
+          price={PRICES.residentialFrom}
+          bullets={[
+            'Standard & deep clean options',
+            'Kitchens • baths • bedrooms • living areas',
+            'Eco-friendly supplies on request',
+          ]}
+        />
+        <PlanCard
+          icon={Icon.Office}
           title="Office Cleaning"
-          tags={['After-hours', 'Reliable', 'Flat-rate']}
-        >
-          Routine office cleaning: desks, floors, restrooms, breakrooms, touch-points, trash & recycling. Ideal for small
-          offices and suites.
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">
-            <li>Custom schedules (daily/weekly)</li>
-            <li>Checklists & quality control</li>
-            <li>Eco-forward, professional staff</li>
-          </ul>
-        </Card>
-
-        <Card
+          price={PRICES.officeFrom}
+          bullets={[
+            'Desks • floors • restrooms • breakrooms',
+            'Touch-points • trash & recycling',
+            'Flexible daily or weekly schedules',
+          ]}
+        />
+        <PlanCard
+          icon={Icon.Move}
           title="Move-In / Move-Out"
-          tags={['Detailed', 'Time-sensitive']}
-        >
-          Thorough, top-to-bottom cleaning for move-ins/outs & turnovers (including Airbnb). Checklists available so
-          you (or your landlord) know it’s done right.
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">
-            <li>Appliance exteriors/interiors on request</li>
-            <li>Inside cabinets, drawers & closets available</li>
-            <li>Ideal before photos or inspections</li>
-          </ul>
-        </Card>
-
-        <Card
-          title="Turnovers (Short-Term Rentals)"
-          tags={['Fast', 'Consistent', 'Laundry add-on']}
-        >
-          Airbnb/STR reset with checklists, linen rotation, restocking, and photo confirmations (optional).
-        </Card>
+          price={PRICES.moveFrom}
+          bullets={[
+            'Top-to-bottom detail for move days',
+            'Appliance interiors by request',
+            'Inside cabinets • drawers • closets',
+          ]}
+        />
       </section>
 
       {/* À la carte */}
-      <section id="alacarte" className="mt-14">
+      <section className="mx-auto mt-14 max-w-6xl px-4">
         <div className="mb-6 flex items-end justify-between">
           <h2 className="text-2xl font-semibold text-slate-900">À la Carte Services</h2>
-          <a href="/services" className="text-emerald-700 hover:text-emerald-800">See all services →</a>
+          <a href="/services" className="text-emerald-700 hover:text-emerald-800">
+            See all services →
+          </a>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <ALaCarteItem icon={Icons.Kitchen} label="Kitchen Only" />
-          <ALaCarteItem icon={Icons.Bath} label="Bathrooms Only (per 2)" />
-          <ALaCarteItem icon={Icons.Bed} label="Bedrooms Only (per room)" />
-          <ALaCarteItem icon={Icons.Fridge} label="Inside Fridge" />
-          <ALaCarteItem icon={Icons.Oven} label="Inside Oven" />
-          <ALaCarteItem icon={Icons.Windows} label="Interior Windows" />
-          <ALaCarteItem icon={Icons.Carpet} label="Carpet Shampoo (per room)" />
-          <ALaCarteItem icon={Icons.Microwave} label="Microwave" />
+          <AlaCard icon={Icon.Kitchen}   label="Kitchen Only"                 price={PRICES.alaCarte.kitchen} />
+          <AlaCard icon={Icon.Bath}      label="Bathrooms Only (per 2)"       price={PRICES.alaCarte.bathrooms2} />
+          <AlaCard icon={Icon.Bed}       label="Bedrooms Only (per room)"     price={PRICES.alaCarte.bedroom} />
+          <AlaCard icon={Icon.Fridge}    label="Inside Fridge"                price={PRICES.alaCarte.fridge} />
+          <AlaCard icon={Icon.Oven}      label="Inside Oven"                  price={PRICES.alaCarte.oven} />
+          <AlaCard icon={Icon.Windows}   label="Interior Windows (min 5)"     price={PRICES.alaCarte.windowsEach} note="$10 each" />
+          <AlaCard icon={Icon.Carpet}    label="Carpet Shampoo (per room)"    price={PRICES.alaCarte.carpetRoom} />
+          <AlaCard icon={Icon.Microwave} label="Microwave"                    price={PRICES.alaCarte.microwave} />
         </div>
 
         <p className="mt-4 text-sm text-slate-500">
-          Need something else? Add it in the booking notes or <a className="text-emerald-700 hover:text-emerald-800" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">ask us during booking</a>.
+          Prices shown are starting estimates and may vary by size, condition, and add-ons. You’ll see a clear quote during booking —
+          no surprises.
         </p>
       </section>
 
-      {/* FAQ (no JS) */}
-      <section className="mt-16">
+      {/* FAQ */}
+      <section className="mx-auto mt-16 max-w-6xl px-4 pb-16">
         <h2 className="text-2xl font-semibold text-slate-900">Pricing FAQs</h2>
-        <div className="mt-4 space-y-3">
-          <details className="rounded-xl border border-slate-200 bg-white p-4">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">Do you bring your own supplies?</summary>
+        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+            <summary className="cursor-pointer list-none font-medium text-slate-900">
+              Do you bring your own supplies?
+            </summary>
             <p className="mt-2 text-slate-600">
-              Yes. Our team brings all standard supplies and tools. If you prefer green products, let us know at booking — we’re happy to use eco-friendly options.
+              Yes. We bring all standard supplies. If you prefer green products, let us know while booking —
+              we’re happy to use eco-friendly options.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white p-4">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">Do you service my area?</summary>
+          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+            <summary className="cursor-pointer list-none font-medium text-slate-900">
+              Do you service my area?
+            </summary>
             <p className="mt-2 text-slate-600">
-              We service Los Angeles & Orange County. If you’re nearby but unsure, add your address in booking and we’ll confirm availability quickly.
+              We cover Los Angeles & Orange County. Add your address during booking and we’ll confirm availability right away.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white p-4">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">How does pricing work?</summary>
+          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+            <summary className="cursor-pointer list-none font-medium text-slate-900">
+              How are prices calculated?
+            </summary>
             <p className="mt-2 text-slate-600">
-              Residential and office pricing is flat-rate based on space size & scope. Move-in/out and add-ons are quoted clearly during booking so there are no surprises.
+              Rates are based on size, scope, and condition. You’ll see a clear quote (and any add-ons) before you confirm.
             </p>
           </details>
-          <details className="rounded-xl border border-slate-200 bg-white p-4">
-            <summary className="cursor-pointer list-none font-medium text-slate-900">Do I need to be home?</summary>
+          <details className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-sm">
+            <summary className="cursor-pointer list-none font-medium text-slate-900">
+              Do I need to be home?
+            </summary>
             <p className="mt-2 text-slate-600">
-              Not required. Many clients provide access codes or key boxes. We’ll text when we’re on the way (and when complete).
+              Not required. Many clients provide access codes or key boxes. We’ll text when we’re on the way and when finished.
             </p>
           </details>
         </div>
@@ -259,7 +307,7 @@ export default function PricingPage() {
           </a>
           <a
             href="tel:+14242605986"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-3 text-slate-700 hover:bg-slate-50"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
           >
             Call (424) 260-5986
           </a>
@@ -268,5 +316,3 @@ export default function PricingPage() {
     </main>
   );
 }
-
-
