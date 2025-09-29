@@ -1,4 +1,3 @@
-// app/terms/page.jsx
 export default function Terms(){
 return (
 <section className="mx-auto max-w-3xl space-y-6">
