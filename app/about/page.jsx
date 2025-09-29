@@ -1,4 +1,3 @@
-// app/about/page.jsx
 export default function About(){
 return (
 <section className="mx-auto max-w-3xl space-y-4">
