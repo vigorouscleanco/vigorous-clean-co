@@ -3,6 +3,7 @@ import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PhoneWidget from "@/components/PhoneWidget";
+import EmailWidget from "@/components/EmailWidget";
 
 export const metadata = {
   title: "Vigorous Clean Co. — Eco-Friendly Home & Office Cleaning",
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        {/* Tawk.to chat (provided snippet) */}
+        {/* Tawk.to chat (your provided snippet) */}
         <Script id="tawk" strategy="afterInteractive">{`
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
           (function(){
@@ -42,7 +43,10 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
+
+        {/* Floating widgets */}
         <PhoneWidget />
+        <EmailWidget />
       </body>
     </html>
   );
