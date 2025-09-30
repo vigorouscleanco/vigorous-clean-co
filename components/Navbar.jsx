@@ -4,10 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
-  { href: "/terms", label: "Terms" }
+  { href: "/terms", label: "Terms" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" }
 ];
 
 export default function Navbar() {
@@ -24,15 +27,13 @@ export default function Navbar() {
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-sm text-gray-700 hover:text-black">{l.label}</Link>
           ))}
-          <a href="tel:+14242605986" className="text-sm font-medium"> (424) 260-5986 </a>
+          <a href="tel:+14242605986" className="text-sm font-medium">(424) 260-5986</a>
           <a href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services" target="_blank" rel="noopener" className="rounded-2xl bg-primary px-4 py-2 text-white text-sm font-medium shadow-soft hover:opacity-90 transition">
             Book Now
           </a>
         </nav>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden rounded-xl border px-3 py-2 text-sm">
-          Menu
-        </button>
+        <button onClick={() => setOpen(!open)} className="md:hidden rounded-xl border px-3 py-2 text-sm">Menu</button>
       </div>
 
       {open && (
@@ -51,3 +52,4 @@ export default function Navbar() {
     </header>
   );
 }
+
