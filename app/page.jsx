@@ -109,23 +109,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CONTACT BLOCK (no contact page, just call/email) */}
+      {/* CONTACT BLOCK (icons + no separate contact page) */}
       <section>
         <div className="container-app py-16 sm:py-20">
           <div className="grid md:grid-cols-2 gap-6">
-            <a href="tel:+14242605986" className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft">
-              <h3 className="font-semibold">Call Us</h3>
-              <p className="text-gray-700 mt-2">(424) 260-5986</p>
+            <a href="tel:+14242605986" className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft flex items-center gap-3">
+              <span className="rounded-xl bg-gray-100 p-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.9 19.9 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.9 19.9 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.64 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.16a2 2 0 0 1 2.11-.45c.84.31 1.72.52 2.62.64A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </span>
+              <div>
+                <h3 className="font-semibold">Call Us</h3>
+                <p className="text-gray-700">(424) 260-5986</p>
+              </div>
             </a>
-            <a href="mailto:vigorouscleanco@gmail.com" className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft">
-              <h3 className="font-semibold">Email</h3>
-              <p className="text-gray-700 mt-2">vigorouscleanco@gmail.com</p>
+
+            <a href="mailto:vigorouscleanco@gmail.com" className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft flex items-center gap-3">
+              <span className="rounded-xl bg-gray-100 p-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/>
+                </svg>
+              </span>
+              <div>
+                <h3 className="font-semibold">Email</h3>
+                <p className="text-gray-700">vigorouscleanco@gmail.com</p>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* FINAL CTA + DISCLAIMER */}
       <section className="section-gradient">
         <div className="container-app py-16 sm:py-20 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold">Ready to see that sparkle?</h2>
@@ -143,7 +158,6 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* On-page disclaimer (loss/theft & fragile items) */}
           <p className="mt-8 text-xs text-gray-500">
             <b>Disclaimer:</b> Cleaners are thoroughly screened and professional; however, Vigorous Clean Co. is not liable for loss or theft of unattended valuables.
             Please secure valuables and disclose fragile/defective items. We are not liable for pre-existing damage or normal wear and tear.
@@ -154,3 +168,4 @@ export default function HomePage() {
     </div>
   );
 }
+
