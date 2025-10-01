@@ -1,13 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import GallerySlider from "@/components/GallerySlider";
+import dynamic from "next/dynamic";
+
+// SAFE dynamic, relative import (no alias)
+const GallerySlider = dynamic(() => import("../components/GallerySlider"), { ssr: false });
 
 export default function HomePage() {
   return (
     <div>
       {/* HERO */}
       <section className="section-gradient">
-        <div className="container-app py-20 sm:py-24">{/* +top space for promo bar */}
+        <div className="container-app py-20 sm:py-24">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium mb-4">
@@ -138,5 +141,4 @@ export default function HomePage() {
   );
 }
 
-}
 
