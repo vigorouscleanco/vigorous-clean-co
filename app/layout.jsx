@@ -15,20 +15,19 @@ export const metadata = {
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    // Transparent iOS share icon (180x180 PNG, transparent)
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }], // transparent PNG
   },
-  // Open Graph (big preview image used by iMessage/FB/etc.)
+
+  // === Social / Share Preview (Open Graph + Twitter) ===
   openGraph: {
-    title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
-      "Eco-friendly cleaning with transparent pricing. New clients save 10% — code VIGOR10.",
+      "Professional eco-friendly home & office cleaning with transparent pricing. Book in minutes.",
     url: "https://vigorouscleanco.com",
     siteName: "Vigorous Clean Co.",
     images: [
       {
-        // Transparent PNG so the chat bubble background shows through
-        url: "/og-image-transparent.png?v=3",
+        url: "/og-vigorous-v4.png", // NEW FILE NAME to bust iMessage cache
         width: 1200,
         height: 630,
         alt: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
@@ -38,13 +37,12 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  // Twitter/X preview (also uses transparent image)
   twitter: {
     card: "summary_large_image",
-    title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
-      "Book an eco-friendly home or office clean in minutes. New clients save 10% — VIGOR10.",
-    images: ["/og-image-transparent.png?v=3"],
+      "Book an eco-friendly clean in minutes. Transparent pricing. Reliable, screened staff.",
+    images: ["/og-vigorous-v4.png"], // match OG image
   },
   robots: { index: true, follow: true },
 };
@@ -66,14 +64,14 @@ export default function RootLayout({ children }) {
           })();
         `}</Script>
 
-        {/* LocalBusiness SEO with your socials */}
+        {/* LocalBusiness SEO with socials and the same image */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Vigorous Clean Co.",
             url: "https://vigorouscleanco.com",
-            image: "https://vigorouscleanco.com/og-image-transparent.png",
+            image: "https://vigorouscleanco.com/og-vigorous-v4.png",
             logo: "https://vigorouscleanco.com/icon-512.png",
             email: "vigorouscleanco@gmail.com",
             telephone: "+1-424-260-5986",
