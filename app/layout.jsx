@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         `}</Script>
 
         <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
+        <main className="flex-1 pt-20">{children}</main>
         <Footer />
 
         {/* Floating phone only (chat bubble is Tawk.to) */}
