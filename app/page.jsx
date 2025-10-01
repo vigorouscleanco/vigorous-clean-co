@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Use a RELATIVE dynamic import so Vercel can always resolve it
+// Safe dynamic import (no alias) for the slider
 const GallerySlider = dynamic(() => import("../components/GallerySlider"), { ssr: false });
 
 export default function HomePage() {
@@ -22,7 +22,8 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 text-lg text-gray-600 max-w-xl">
-                Established in 2025, we provide professional, eco-friendly cleaning for homes, offices, and rentals throughout Los Angeles. We keep every space fresh, welcoming, and worry-free.
+                Established in 2025, we provide professional, eco-friendly cleaning for homes, offices, and rentals
+                throughout Los Angeles. We keep every space fresh, welcoming, and worry-free.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -32,14 +33,14 @@ export default function HomePage() {
                 >
                   View Pricing
                 </Link>
-                <a
-                  href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-                  target="_blank"
-                  rel="noopener"
+
+                {/* Book goes to embedded page on your site */}
+                <Link
+                  href="/book"
                   className="rounded-2xl border border-gray-200 px-6 py-3 font-medium hover:bg-gray-50 transition"
                 >
                   Book Now
-                </a>
+                </Link>
               </div>
 
               <p className="mt-4 text-sm text-gray-500">
@@ -86,13 +87,24 @@ export default function HomePage() {
         <div className="container-app py-16 sm:py-20">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl sm:text-3xl font-semibold">Popular Services</h2>
-            <Link href="/services" className="text-sm font-medium hover:underline">See all services</Link>
+            <Link href="/services" className="text-sm font-medium hover:underline">
+              See all services
+            </Link>
           </div>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Standard Home Clean", desc: "Kitchen, bathrooms, bedrooms, living areas, interior windows & surfaces." },
-              { title: "All-Inclusive Deep Clean", desc: "Baseboards, fixtures, inside appliances, detail work — full refresh." },
-              { title: "Office Clean", desc: "Desks, common areas, bathrooms, trash, interior glass, floors." },
+              {
+                title: "All-Inclusive Deep Clean",
+                desc: "Baseboards, fixtures, inside appliances, detail work — full refresh.",
+              },
+              {
+                title: "Standard Home Areas",
+                desc: "Kitchen, bathrooms, bedrooms, living areas, interior windows & surfaces.",
+              },
+              {
+                title: "Office Clean",
+                desc: "Desks, common areas, bathrooms, trash, interior glass, floors.",
+              },
             ].map((s, i) => (
               <div key={i} className="rounded-2xl bg-white border border-gray-100 p-6 hover:shadow-soft">
                 <h3 className="font-semibold">{s.title}</h3>
@@ -120,20 +132,20 @@ export default function HomePage() {
             We charge per day, not per hour — we stay until it’s clean.
           </p>
           <div className="mt-6">
-            <a
-              href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-              target="_blank"
-              rel="noopener"
+            {/* Book goes to embedded page on your site */}
+            <Link
+              href="/book"
               className="rounded-2xl bg-primary px-8 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
             >
               Book Your Clean
-            </a>
+            </Link>
           </div>
 
           <p className="mt-8 text-xs text-gray-500">
-            <b>Disclaimer:</b> Cleaners are thoroughly screened and professional; however, Vigorous Clean Co. is not liable for loss or theft of unattended valuables.
-            Please secure valuables and disclose fragile/defective items. We are not liable for pre-existing damage or normal wear and tear.
-            Specialty or hazardous tasks are excluded unless agreed in writing.
+            <b>Disclaimer:</b> Cleaners are thoroughly screened and professional; however, Vigorous Clean Co. is not
+            liable for loss or theft of unattended valuables. Please secure valuables and disclose fragile/defective items.
+            We are not liable for pre-existing damage or normal wear and tear. Specialty or hazardous tasks are excluded
+            unless agreed in writing.
           </p>
         </div>
       </section>
