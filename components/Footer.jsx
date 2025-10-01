@@ -13,7 +13,7 @@ export default function Footer() {
             New clients save <b>10%</b> with code <b>VIGOR10</b>.
           </p>
 
-          {/* Contact (icons + text, tidy spacing) */}
+          {/* Contact */}
           <div className="mt-4 space-y-2 text-sm">
             <a href="tel:+14242605986" className="inline-flex items-center gap-2 hover:underline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -45,14 +45,12 @@ export default function Footer() {
 
         {/* CTA + disclaimer */}
         <div className="md:col-span-3">
-          <a
-            href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-            target="_blank"
-            rel="noopener"
+          <Link
+            href="/book"
             className="inline-block rounded-2xl bg-primary px-5 py-2.5 text-white text-sm font-medium shadow-soft hover:opacity-90 transition"
           >
             Book Now
-          </a>
+          </Link>
           <p className="text-xs text-gray-500 mt-4 leading-relaxed">
             Disclaimer: We are not liable for pre-existing damage, normal wear & tear, or items not disclosed as fragile.
             Loss/theft of unattended valuables is not covered. Specialty/hazardous tasks are excluded unless agreed in writing.
@@ -70,4 +68,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 
