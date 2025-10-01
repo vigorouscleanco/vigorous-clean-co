@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        {/* Tawk.to chat */}
+        {/* Tawk.to chat widget */}
         <Script id="tawk" strategy="afterInteractive">{`
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
           (function(){
@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
           })();
         `}</Script>
 
-        {/* LocalBusiness JSON-LD for SEO */}
+        {/* LocalBusiness SEO (with socials) */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -72,11 +72,15 @@ export default function RootLayout({ children }) {
               addressCountry: "US"
             },
             areaServed: "Los Angeles",
-            sameAs: []
+            sameAs: [
+              "https://www.instagram.com/vigorouss.co",
+              "https://www.tiktok.com/@vigorouss.co"
+            ]
           })}
         </Script>
 
         <Navbar />
+        {/* extra padding accounts for promo bar in the navbar */}
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
         <PhoneWidget />
@@ -84,4 +88,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 
