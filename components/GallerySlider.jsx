@@ -38,36 +38,15 @@ export default function GallerySlider() {
             className={`absolute inset-0 transition-opacity duration-500 ${idx === i ? "opacity-100" : "opacity-0"}`}
             aria-hidden={idx !== i}
           >
-            {/* Show full photo without cropping */}
-            <Image
-              src={src}
-              alt={`Gallery ${idx + 1}`}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority={idx === 0}
-            />
+            {/* Show the entire photo without cropping */}
+            <Image src={src} alt={`Gallery ${idx + 1}`} fill sizes="100vw" className="object-contain" priority={idx === 0} />
           </div>
         ))}
       </div>
 
-      {/* Controls */}
-      <button
-        onClick={prev}
-        aria-label="Previous"
-        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft"
-      >
-        ‹
-      </button>
-      <button
-        onClick={next}
-        aria-label="Next"
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft"
-      >
-        ›
-      </button>
+      <button onClick={prev} aria-label="Previous" className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft">‹</button>
+      <button onClick={next} aria-label="Next" className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft">›</button>
 
-      {/* Dots */}
       <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2">
         {IMAGES.map((_, idx) => (
           <button
@@ -81,4 +60,5 @@ export default function GallerySlider() {
     </div>
   );
 }
+
 
