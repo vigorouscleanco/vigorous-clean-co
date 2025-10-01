@@ -9,7 +9,7 @@ const links = [
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/terms", label: "Terms" },
-  { href: "/faq", label: "FAQ" }
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
@@ -35,14 +35,12 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-            target="_blank"
-            rel="noopener"
+          <Link
+            href="/book"
             className="rounded-2xl bg-primary px-4 py-2 text-white text-sm font-medium shadow-soft hover:opacity-90 transition"
           >
             Book Now
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -54,6 +52,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white">
           <div className="container-app py-4 flex flex-col gap-3">
@@ -67,15 +66,13 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <a
-              href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services"
-              target="_blank"
-              rel="noopener"
+            <Link
+              href="/book"
               className="rounded-xl bg-primary px-4 py-2 text-white text-sm font-medium text-center"
               onClick={() => setOpen(false)}
             >
               Book Now
-            </a>
+            </Link>
           </div>
         </div>
       )}
