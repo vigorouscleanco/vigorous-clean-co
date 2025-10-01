@@ -29,6 +29,37 @@ export default function Footer() {
               vigorouscleanco@gmail.com
             </a>
           </div>
+
+          {/* Socials */}
+          <div className="mt-5 flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/vigorouss.co"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              className="rounded-full bg-gray-100 p-2 text-gray-700 hover:bg-gray-200 transition"
+              title="@vigorouss.co on Instagram"
+            >
+              {/* Instagram icon */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.75-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.tiktok.com/@vigorouss.co"
+              target="_blank"
+              rel="noopener"
+              aria-label="TikTok"
+              className="rounded-full bg-gray-100 p-2 text-gray-700 hover:bg-gray-200 transition"
+              title="@vigorouss.co on TikTok"
+            >
+              {/* TikTok icon */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14 3h3.1c.3 1.2 1 2.3 2 3.1A7 7 0 0 0 21 7.9v3.1a8.4 8.4 0 0 1-4-1.2v6.2a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1V12a3.4 3.4 0 1 0 3.4 3.4V3z"/>
+              </svg>
+            </a>
+            <span className="text-sm text-gray-600">@vigorouss.co</span>
+          </div>
         </div>
 
         {/* Links */}
