@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import PhoneWidget from "@/components/PhoneWidget";
 
 export const metadata = {
-  title: "Vigorous Clean Co. — Eco-Friendly Home & Office Cleaning",
+  title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
   description:
-    "Your Space, Sparkling with Vigor. Eco-friendly cleaning services across Los Angeles.",
+    "New clients save 10% with code VIGOR10. Professional eco-friendly home & office cleaning. Book in minutes.",
   metadataBase: new URL("https://vigorouscleanco.com"),
   icons: {
     icon: [
@@ -15,24 +15,36 @@ export const metadata = {
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
+    // Transparent iOS share icon (180x180 PNG, transparent)
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  // Open Graph (big preview image used by iMessage/FB/etc.)
   openGraph: {
-    title: "Vigorous Clean Co.",
+    title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
     description:
-      "Eco-friendly home & office cleaning. Transparent, square-foot pricing. Book in minutes.",
+      "Eco-friendly cleaning with transparent pricing. New clients save 10% — code VIGOR10.",
     url: "https://vigorouscleanco.com",
     siteName: "Vigorous Clean Co.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Vigorous Clean Co." }],
+    images: [
+      {
+        // Transparent PNG so the chat bubble background shows through
+        url: "/og-image-transparent.png?v=3",
+        width: 1200,
+        height: 630,
+        alt: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+        type: "image/png",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
+  // Twitter/X preview (also uses transparent image)
   twitter: {
     card: "summary_large_image",
-    title: "Vigorous Clean Co.",
+    title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
     description:
-      "Eco-friendly home & office cleaning in Los Angeles. Book in minutes.",
-    images: ["/og-image.png"],
+      "Book an eco-friendly home or office clean in minutes. New clients save 10% — VIGOR10.",
+    images: ["/og-image-transparent.png?v=3"],
   },
   robots: { index: true, follow: true },
 };
@@ -54,14 +66,14 @@ export default function RootLayout({ children }) {
           })();
         `}</Script>
 
-        {/* LocalBusiness SEO (with socials) */}
+        {/* LocalBusiness SEO with your socials */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Vigorous Clean Co.",
             url: "https://vigorouscleanco.com",
-            image: "https://vigorouscleanco.com/og-image.png",
+            image: "https://vigorouscleanco.com/og-image-transparent.png",
             logo: "https://vigorouscleanco.com/icon-512.png",
             email: "vigorouscleanco@gmail.com",
             telephone: "+1-424-260-5986",
@@ -80,7 +92,7 @@ export default function RootLayout({ children }) {
         </Script>
 
         <Navbar />
-        {/* extra padding accounts for promo bar in the navbar */}
+        {/* extra top padding for the promo bar in navbar */}
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
         <PhoneWidget />
@@ -88,5 +100,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
 
