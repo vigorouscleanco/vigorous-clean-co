@@ -2,11 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // ensure these exist in /public
+const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // keep these in /public
 
 export default function GallerySlider() {
   const [i, setI] = useState(0);
-  const touchStart = useRef<number | null>(null);
+  const touchStart = useRef(null);
 
   useEffect(() => {
     const id = setInterval(() => setI((p) => (p + 1) % IMAGES.length), 4500);
@@ -16,10 +16,13 @@ export default function GallerySlider() {
   const next = () => setI((p) => (p + 1) % IMAGES.length);
   const prev = () => setI((p) => (p - 1 + IMAGES.length) % IMAGES.length);
 
-  const onTouchStart = (e: React.TouchEvent) => (touchStart.current = e.touches[0].clientX);
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const onTouchStart = (e) => {
+    touchStart.current = e.touches[0] ? e.touches[0].clientX : null;
+  };
+  const onTouchEnd = (e) => {
     if (touchStart.current == null) return;
-    const diff = e.changedTouches[0].clientX - touchStart.current;
+    const endX = e.changedTouches[0] ? e.changedTouches[0].clientX : 0;
+    const diff = endX - touchStart.current;
     if (Math.abs(diff) > 40) (diff < 0 ? next() : prev());
     touchStart.current = null;
   };
@@ -31,7 +34,7 @@ export default function GallerySlider() {
       onTouchEnd={onTouchEnd}
       aria-label="Cleaning work gallery"
     >
-      {/* Aspect ratio box—guarantees full image is visible (no crop) */}
+      {/* Aspect ratio box ensures full photo is visible (no cropping) */}
       <div className="relative aspect-[16/11] sm:aspect-[16/10] lg:aspect-[3/2] bg-white">
         {IMAGES.map((src, idx) => (
           <Image
