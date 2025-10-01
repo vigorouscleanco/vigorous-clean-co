@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // must exist in /public
+const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // must be in /public
 
 export default function GallerySlider() {
   const [i, setI] = useState(0);
@@ -38,7 +38,7 @@ export default function GallerySlider() {
             className={`absolute inset-0 transition-opacity duration-500 ${idx === i ? "opacity-100" : "opacity-0"}`}
             aria-hidden={idx !== i}
           >
-            {/* Show the entire photo without cropping */}
+            {/* show full photo, no cropping */}
             <Image src={src} alt={`Gallery ${idx + 1}`} fill sizes="100vw" className="object-contain" priority={idx === 0} />
           </div>
         ))}
@@ -60,5 +60,4 @@ export default function GallerySlider() {
     </div>
   );
 }
-
 
