@@ -2,14 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // in /public
+const IMAGES = ["/gallery1.jpg", "/gallery2.jpg", "/gallery3.jpg", "/gallery4.jpg"]; // must exist in /public
 
 export default function GallerySlider() {
   const [i, setI] = useState(0);
   const touchStart = useRef(null);
 
   useEffect(() => {
-    const id = setInterval(() => setI((p) => (p + 1) % IMAGES.length), 4000);
+    const id = setInterval(() => setI((p) => (p + 1) % IMAGES.length), 4500);
     return () => clearInterval(id);
   }, []);
 
@@ -20,32 +20,52 @@ export default function GallerySlider() {
   const onTouchEnd = (e) => {
     if (touchStart.current == null) return;
     const diff = e.changedTouches[0].clientX - touchStart.current;
-    if (Math.abs(diff) > 40) diff < 0 ? next() : prev();
+    if (Math.abs(diff) > 40) (diff < 0 ? next() : prev());
     touchStart.current = null;
   };
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden border border-gray-100 shadow-soft"
+      className="relative rounded-2xl overflow-hidden border border-gray-100 shadow-soft bg-white"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       aria-label="Cleaning work gallery"
     >
-      <div className="h-64 sm:h-80 lg:h-96 relative">
+      <div className="relative h-64 sm:h-80 lg:h-[460px] flex items-center justify-center">
         {IMAGES.map((src, idx) => (
           <div
             key={src}
             className={`absolute inset-0 transition-opacity duration-500 ${idx === i ? "opacity-100" : "opacity-0"}`}
             aria-hidden={idx !== i}
           >
-            <Image src={src} alt={`Gallery ${idx + 1}`} fill priority={idx === 0} sizes="100vw" className="object-cover" />
+            {/* Show full photo without cropping */}
+            <Image
+              src={src}
+              alt={`Gallery ${idx + 1}`}
+              fill
+              sizes="100vw"
+              className="object-contain"
+              priority={idx === 0}
+            />
           </div>
         ))}
       </div>
 
       {/* Controls */}
-      <button onClick={prev} aria-label="Previous" className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 px-3 py-2 shadow-soft">‹</button>
-      <button onClick={next} aria-label="Next" className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 px-3 py-2 shadow-soft">›</button>
+      <button
+        onClick={prev}
+        aria-label="Previous"
+        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft"
+      >
+        ‹
+      </button>
+      <button
+        onClick={next}
+        aria-label="Next"
+        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 shadow-soft"
+      >
+        ›
+      </button>
 
       {/* Dots */}
       <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2">
@@ -61,3 +81,4 @@ export default function GallerySlider() {
     </div>
   );
 }
+
