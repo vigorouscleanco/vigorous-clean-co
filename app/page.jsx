@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// SAFE dynamic, relative import (no alias)
+// Use a RELATIVE dynamic import so Vercel can always resolve it
 const GallerySlider = dynamic(() => import("../components/GallerySlider"), { ssr: false });
 
 export default function HomePage() {
@@ -103,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RECENT WORK SLIDER (full images) */}
+      {/* RECENT WORK SLIDER (full images, no crop) */}
       <section className="container-app py-10">
         <h2 className="text-2xl sm:text-3xl font-semibold">Recent Work</h2>
         <p className="text-gray-600 mt-2">Homes, offices, and rentals across Los Angeles.</p>
@@ -140,5 +140,4 @@ export default function HomePage() {
     </div>
   );
 }
-
 
