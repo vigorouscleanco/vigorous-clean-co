@@ -3,6 +3,10 @@ import Link from "next/link";
 export const metadata = { title: "Book — Vigorous Clean Co." };
 
 export default function BookPage() {
+  // Your working Square booking URL (location-specific)
+  const BOOK_URL =
+    "https://book.squareup.com/appointments/0d8cas6ix7qhc2/location/L9K9470312P89/services?single=true";
+
   return (
     <div>
       {/* HERO */}
@@ -52,9 +56,8 @@ export default function BookPage() {
       {/* EMBEDDED SQUARE BOOKING */}
       <section className="container-app pb-12">
         <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-soft">
-          {/* Location-agnostic link so it keeps working if you change locations in Square */}
           <iframe
-            src="https://book.squareup.com/appointments/0d8cas6ix7qhc2/services"
+            src={BOOK_URL}
             title="Vigorous Clean Co. Booking"
             className="w-full"
             style={{ height: "85vh" }}
@@ -65,12 +68,7 @@ export default function BookPage() {
 
         <p className="text-xs text-gray-500 mt-3">
           Trouble viewing the calendar?{" "}
-          <a
-            className="underline"
-            href="https://book.squareup.com/appointments/0d8cas6ix7qhc2/services"
-            target="_blank"
-            rel="noopener"
-          >
+          <a className="underline" href={BOOK_URL} target="_blank" rel="noopener">
             Open booking in a new tab
           </a>
           .
@@ -82,17 +80,17 @@ export default function BookPage() {
         <div className="rounded-xl bg-gray-50 border border-gray-100 p-5 text-sm text-gray-700">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Please ensure safe access, electricity, and running water at the property during the appointment.
+              We charge <b>per day</b> (up to ~8 hours per cleaner). If you need a specific start time, add it in the
+              booking notes or text us at{" "}
+              <a className="underline" href="tel:+14242605986">
+                (424) 260-5986
+              </a>.
             </li>
             <li>
               By booking you agree to our{" "}
               <Link href="/terms" className="underline">Terms &amp; Disclaimer</Link>. Questions? Email{" "}
               <a className="underline" href="mailto:vigorouscleanco@gmail.com">
                 vigorouscleanco@gmail.com
-              </a>{" "}
-              or text{" "}
-              <a className="underline" href="tel:+14242605986">
-                (424) 260-5986
               </a>.
             </li>
           </ul>
