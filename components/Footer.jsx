@@ -1,104 +1,143 @@
 // components/Footer.jsx
 import Link from "next/link";
-import { Phone, Mail, Instagram, Music2 } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-gray-100">
-      <div className="container-app py-12 grid md:grid-cols-3 gap-10">
-        {/* Brand & contact */}
-        <div>
-          <h3 className="text-xl font-semibold">Vigorous Clean Co.</h3>
-          <p className="text-gray-600 mt-2 max-w-md">
-            Eco-friendly cleaning for homes, offices & rentals across Los Angeles.
-          </p>
+    <footer className="border-t border-gray-100 bg-white">
+      <div className="container-app py-12 md:py-16">
+        {/* Top */}
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Left: brand + contact */}
+          <div>
+            <h3 className="text-2xl font-semibold">Vigorous Clean Co.</h3>
+            <p className="mt-3 text-gray-600 max-w-md">
+              Eco-friendly cleaning for homes, offices & rentals across Los Angeles. New
+              clients save <span className="font-semibold">10%</span> with code{" "}
+              <span className="font-semibold">VIGOR10</span>.
+            </p>
 
-          <div className="mt-4 space-y-2">
-            <a
-              href="tel:+14242605986"
-              className="inline-flex items-center gap-2 text-gray-800 hover:text-primary"
-            >
-              <Phone className="h-5 w-5" />
-              (424) 260-5986
-            </a>
-            <a
-              href="mailto:vigorouscleanco@gmail.com"
-              className="inline-flex items-center gap-2 text-gray-800 hover:text-primary"
-            >
-              <Mail className="h-5 w-5" />
-              vigorouscleanco@gmail.com
-            </a>
+            <div className="mt-5 space-y-3 text-gray-700">
+              <a href="tel:+14242605986" className="inline-flex items-center gap-3">
+                <PhoneIcon className="h-5 w-5" />
+                (424) 260-5986
+              </a>
+              <a
+                href="mailto:vigorouscleanco@gmail.com"
+                className="inline-flex items-center gap-3"
+              >
+                <MailIcon className="h-5 w-5" />
+                vigorouscleanco@gmail.com
+              </a>
+            </div>
+
+            <div className="mt-5 flex items-center gap-4">
+              <a
+                href="https://instagram.com/vigorouss.co"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                className="h-10 w-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+              >
+                <InstagramIcon className="h-5 w-5" />
+              </a>
+              <a
+                href="https://tiktok.com/@vigorouss.co"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok"
+                className="h-10 w-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+              >
+                <TikTokIcon className="h-5 w-5" />
+              </a>
+              <span className="text-gray-600">@vigorouss.co</span>
+            </div>
           </div>
-        </div>
 
-        {/* Company nav */}
-        <div>
-          <h4 className="font-semibold">Company</h4>
-          <ul className="mt-3 space-y-2 text-gray-700">
-            <li>
-              <Link href="/about" className="hover:text-primary">About</Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-primary">Services</Link>
-            </li>
-            <li>
-              <Link href="/pricing" className="hover:text-primary">Pricing</Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-primary">Terms</Link>
-            </li>
-            <li>
-              <Link href="/faq" className="hover:text-primary">FAQ</Link>
-            </li>
-          </ul>
-        </div>
+          {/* Middle: links */}
+          <div>
+            <h4 className="font-semibold text-lg">Company</h4>
+            <ul className="mt-4 space-y-3 text-gray-700">
+              <li>
+                <Link href="/about" className="hover:underline">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:underline">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="hover:underline">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:underline">
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:underline">
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-        {/* Book — no disclaimer here */}
-        <div>
-          <h4 className="font-semibold">Book</h4>
-          <div className="mt-3">
+          {/* Right: CTA (disclaimer removed) */}
+          <div className="md:text-right">
             <Link
               href="/book"
               className="inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
             >
               Book Now
             </Link>
-          </div>
 
-          {/* No extra disclaimer paragraph — it’s on the Terms page only */}
+            {/* Disclaimer block was here — removed */}
+          </div>
         </div>
-      </div>
 
-      <div className="border-t border-gray-100">
-        <div className="container-app py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Vigorous Clean Co. All rights reserved. Los Angeles, CA
-          </p>
-
-          {/* Socials */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://instagram.com/vigorouss.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-700 hover:text-primary"
-            >
-              <Instagram className="h-5 w-5" />
-              Instagram
-            </a>
-            <a
-              href="https://tiktok.com/@vigorouss.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-700 hover:text-primary"
-            >
-              <Music2 className="h-5 w-5" />
-              TikTok
-            </a>
-          </div>
+        {/* Bottom */}
+        <div className="mt-12 border-t border-gray-100 pt-6 flex items-center justify-between text-sm text-gray-500">
+          <p>© 2025 Vigorous Clean Co. All rights reserved.</p>
+          <p>Los Angeles, CA</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+/* --- tiny inline icons (no extra packages needed) --- */
+function PhoneIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72c.12.89.31 1.76.57 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.15a2 2 0 0 1 2.11-.45c.84.26 1.71.45 2.6.57A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+function MailIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+      <path d="m22 6-10 7L2 6" />
+    </svg>
+  );
+}
+function InstagramIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+function TikTokIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M14.5 3c.4 2.1 1.8 3.8 3.8 4.1v2.5c-1.6-.03-3.1-.55-4.3-1.48v5.9a5.5 5.5 0 1 1-5-5.47v2.7a2.8 2.8 0 1 0 2 2.68V3h3.5z" />
+    </svg>
   );
 }
 
