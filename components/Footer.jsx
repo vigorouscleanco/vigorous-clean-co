@@ -4,59 +4,51 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-white">
-      <div className="container-app py-12 md:py-16">
+      <div className="container-app py-10 md:py-12">
         {/* Top */}
-        <div className="grid md:grid-cols-3 gap-10">
-          {/* Left: brand + contact */}
+        <div className="grid gap-10 md:grid-cols-3">
+          {/* Left: brand & contact */}
           <div>
-            <h3 className="text-2xl font-semibold">Vigorous Clean Co.</h3>
-            <p className="mt-3 text-gray-600 max-w-md">
+            <h3 className="text-[26px] font-semibold leading-tight">Vigorous Clean Co.</h3>
+            <p className="mt-3 text-gray-600 max-w-lg">
               Eco-friendly cleaning for homes, offices & rentals across Los Angeles. New
               clients save <span className="font-semibold">10%</span> with code{" "}
               <span className="font-semibold">VIGOR10</span>.
             </p>
 
-            <div className="mt-5 space-y-3 text-gray-700">
-              <a href="tel:+14242605986" className="inline-flex items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 text-gray-700">
+              <a href="tel:+14242605986" className="inline-flex items-center gap-2 hover:text-gray-900">
                 <PhoneIcon className="h-5 w-5" />
                 (424) 260-5986
               </a>
               <a
                 href="mailto:vigorouscleanco@gmail.com"
-                className="inline-flex items-center gap-3"
+                className="inline-flex items-center gap-2 hover:text-gray-900"
               >
                 <MailIcon className="h-5 w-5" />
                 vigorouscleanco@gmail.com
               </a>
             </div>
 
-            <div className="mt-5 flex items-center gap-4">
-              <a
+            <div className="mt-5 flex items-center gap-3">
+              <SocialIcon
                 href="https://instagram.com/vigorouss.co"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                className="h-10 w-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-              >
-                <InstagramIcon className="h-5 w-5" />
-              </a>
-              <a
+                label="Instagram"
+                Icon={InstagramIcon}
+              />
+              <SocialIcon
                 href="https://tiktok.com/@vigorouss.co"
-                target="_blank"
-                rel="noopener"
-                aria-label="TikTok"
-                className="h-10 w-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-              >
-                <TikTokIcon className="h-5 w-5" />
-              </a>
-              <span className="text-gray-600">@vigorouss.co</span>
+                label="TikTok"
+                Icon={TikTokIcon}
+              />
+              <span className="text-gray-600 ml-1">@vigorouss.co</span>
             </div>
           </div>
 
-          {/* Middle: links */}
+          {/* Middle: quick links */}
           <div>
             <h4 className="font-semibold text-lg">Company</h4>
-            <ul className="mt-4 space-y-3 text-gray-700">
+            <ul className="mt-4 space-y-2.5 text-gray-700">
               <li>
                 <Link href="/about" className="hover:underline">
                   About
@@ -85,21 +77,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Right: CTA (disclaimer removed) */}
-          <div className="md:text-right">
-            <Link
-              href="/book"
-              className="inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
-            >
-              Book Now
-            </Link>
-
-            {/* Disclaimer block was here — removed */}
+          {/* Right: CTA card (clean) */}
+          <div className="md:justify-self-end">
+            <div className="rounded-2xl border border-gray-100 p-6 shadow-soft/30 bg-white">
+              <Link
+                href="/book"
+                className="inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
+              >
+                Book Now
+              </Link>
+              {/* Add subtle reassurance (optional): */}
+              {/* <p className="mt-3 text-sm text-gray-500">Secure online booking via Square.</p> */}
+            </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 border-t border-gray-100 pt-6 flex items-center justify-between text-sm text-gray-500">
+        <div className="mt-8 border-t border-gray-100 pt-5 flex items-center justify-between text-sm text-gray-500">
           <p>© 2025 Vigorous Clean Co. All rights reserved.</p>
           <p>Los Angeles, CA</p>
         </div>
@@ -108,7 +102,22 @@ export default function Footer() {
   );
 }
 
-/* --- tiny inline icons (no extra packages needed) --- */
+/* --- helpers --- */
+function SocialIcon({ href, label, Icon }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      aria-label={label}
+      className="h-10 w-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition"
+    >
+      <Icon className="h-5 w-5" />
+    </a>
+  );
+}
+
+/* --- icons (inline, no packages) --- */
 function PhoneIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
@@ -129,7 +138,7 @@ function InstagramIcon(props) {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none" />
     </svg>
   );
 }
