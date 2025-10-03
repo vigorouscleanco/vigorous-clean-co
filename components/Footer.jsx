@@ -5,14 +5,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-white">
       <div className="container-app py-10 md:py-12">
-        {/* Top: two balanced columns */}
-        <div className="grid gap-10 md:grid-cols-2">
-          {/* Left: brand & contact */}
+        {/* TOP: 3 columns on md+; stacks on mobile */}
+        <div className="grid gap-10 md:grid-cols-3">
+          {/* 1) Brand + contact */}
           <div>
             <h3 className="text-[26px] font-semibold leading-tight">Vigorous Clean Co.</h3>
-            <p className="mt-3 text-gray-600 max-w-lg">
-              Eco-friendly cleaning for homes, offices & rentals across Los Angeles. New
-              clients save <span className="font-semibold">10%</span> with code{" "}
+            <p className="mt-3 text-gray-600 max-w-xl">
+              Eco-friendly cleaning for homes, offices & rentals across Los Angeles. New clients
+              save <span className="font-semibold">10%</span> with code{" "}
               <span className="font-semibold">VIGOR10</span>.
             </p>
 
@@ -45,43 +45,42 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right: quick links */}
+          {/* 2) Company links */}
           <div>
             <h4 className="font-semibold text-lg">Company</h4>
             <ul className="mt-4 space-y-2.5 text-gray-700">
-              <li>
-                <Link href="/about" className="hover:underline">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:underline">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:underline">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:underline">
-                  Terms
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:underline">
-                  FAQ
-                </Link>
-              </li>
+              <li><Link href="/about" className="hover:underline">About</Link></li>
+              <li><Link href="/services" className="hover:underline">Services</Link></li>
+              <li><Link href="/pricing" className="hover:underline">Pricing</Link></li>
+              <li><Link href="/terms" className="hover:underline">Terms</Link></li>
+              <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
             </ul>
+          </div>
+
+          {/* 3) Quick Actions (desktop/tablet only) */}
+          <div className="hidden md:flex md:flex-col md:items-end">
+            <div className="rounded-2xl border border-gray-100 p-5 shadow-sm w-full max-w-xs">
+              <p className="text-sm text-gray-500">Serving</p>
+              <p className="font-medium">Los Angeles, CA</p>
+
+              <div className="mt-4">
+                <Link
+                  href="/book"
+                  className="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-2.5 text-white font-medium shadow-soft hover:opacity-90 transition w-full"
+                >
+                  Book Now
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar: Book Now lives here to avoid the big gap */}
+        {/* BOTTOM: copyright + (mobile) Book Now so it sits above chat widgets */}
         <div className="mt-8 border-t border-gray-100 pt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-gray-500">© 2025 Vigorous Clean Co. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+
+          {/* Book button only on mobile to avoid bottom-right “gap” on desktop */}
+          <div className="md:hidden flex items-center justify-between gap-4">
             <span className="text-sm text-gray-500">Los Angeles, CA</span>
             <Link
               href="/book"
