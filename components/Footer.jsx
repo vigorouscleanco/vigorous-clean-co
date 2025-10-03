@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-white">
       <div className="container-app py-10 md:py-12">
-        {/* Top */}
-        <div className="grid gap-10 md:grid-cols-3">
+        {/* Top: two balanced columns */}
+        <div className="grid gap-10 md:grid-cols-2">
           {/* Left: brand & contact */}
           <div>
             <h3 className="text-[26px] font-semibold leading-tight">Vigorous Clean Co.</h3>
@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle: quick links */}
+          {/* Right: quick links */}
           <div>
             <h4 className="font-semibold text-lg">Company</h4>
             <ul className="mt-4 space-y-2.5 text-gray-700">
@@ -76,33 +76,27 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Right: CTA card (clean) */}
-          <div className="md:justify-self-end">
-            <div className="rounded-2xl border border-gray-100 p-6 shadow-soft/30 bg-white">
-              <Link
-                href="/book"
-                className="inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
-              >
-                Book Now
-              </Link>
-              {/* Add subtle reassurance (optional): */}
-              {/* <p className="mt-3 text-sm text-gray-500">Secure online booking via Square.</p> */}
-            </div>
-          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-8 border-t border-gray-100 pt-5 flex items-center justify-between text-sm text-gray-500">
-          <p>© 2025 Vigorous Clean Co. All rights reserved.</p>
-          <p>Los Angeles, CA</p>
+        {/* Bottom bar: Book Now lives here to avoid the big gap */}
+        <div className="mt-8 border-t border-gray-100 pt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-gray-500">© 2025 Vigorous Clean Co. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-gray-500">Los Angeles, CA</span>
+            <Link
+              href="/book"
+              className="rounded-2xl bg-primary px-6 py-2.5 text-white font-medium shadow-soft hover:opacity-90 transition"
+            >
+              Book Now
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-/* --- helpers --- */
+/* helpers */
 function SocialIcon({ href, label, Icon }) {
   return (
     <a
@@ -117,7 +111,7 @@ function SocialIcon({ href, label, Icon }) {
   );
 }
 
-/* --- icons (inline, no packages) --- */
+/* inline icons */
 function PhoneIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
