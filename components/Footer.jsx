@@ -104,49 +104,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold">Company</h4>
             <ul className="mt-4 space-y-3 text-gray-700">
               <li>
-                <Link href="/about" className="hover:text-primary">
-                  About
-                </Link>
+                <Link href="/about" className="hover:text-primary">About</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-primary">
-                  Services
-                </Link>
+                <Link href="/services" className="hover:text-primary">Services</Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-primary">
-                  Pricing
-                </Link>
+                <Link href="/pricing" className="hover:text-primary">Pricing</Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-primary">
-                  Terms
-                </Link>
+                <Link href="/terms" className="hover:text-primary">Terms</Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-primary">
-                  FAQ
-                </Link>
+                <Link href="/faq" className="hover:text-primary">FAQ</Link>
               </li>
             </ul>
           </div>
 
-          {/* Right: Quick actions card to balance the row */}
+          {/* Right: Book card (Call Us removed) */}
           <div className="md:pl-6">
             <div className="rounded-2xl border border-gray-100 p-5 shadow-sm">
-              <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
                 <Link
                   href="/book"
                   className="rounded-2xl bg-primary px-6 py-2.5 text-white font-medium shadow-soft hover:opacity-90 transition"
                 >
                   Book Now
                 </Link>
-                <a
-                  href="tel:+14242605986"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-3 py-2 text-sm hover:bg-gray-50"
-                >
-                  <IconPhone /> Call Us
-                </a>
               </div>
 
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -163,7 +147,7 @@ export default function Footer() {
               <p className="mt-4 text-xs text-gray-500">Same-day openings may be available.</p>
             </div>
 
-            {/* Mobile mini bar (shows under the card on small screens) */}
+            {/* Mobile mini bar */}
             <div className="mt-4 grid grid-cols-2 items-center gap-3 md:hidden">
               <div className="text-right">
                 <p className="text-xs text-gray-500">Serving</p>
@@ -190,3 +174,4 @@ export default function Footer() {
     </footer>
   );
 }
+
