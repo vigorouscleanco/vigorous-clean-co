@@ -1,33 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import SquareWidget from "../components/SquareWidget"; // relative path from /app/book
 
 export const metadata = { title: "Book — Vigorous Clean Co." };
 
 export default function BookPage() {
-  // ✅ From your Square “Widget code” (keep it EXACT)
-  const SQUARE_WIDGET_JS =
-    "https://app.squareup.com/appointments/buyer/widget/m37vogyxyg3cxb/L9K9470312P89.js";
-
-  // ✅ Same URL but WITHOUT .js (used for the fallback link)
+  // Same widget URL but WITHOUT .js — used for the fallback link
   const SQUARE_WIDGET_LINK =
     "https://app.squareup.com/appointments/buyer/widget/m37vogyxyg3cxb/L9K9470312P89";
-
-  const mountRef = useRef(null);
-
-  // Load the Square widget script when this page renders
-  useEffect(() => {
-    if (!mountRef.current) return;
-    mountRef.current.innerHTML = ""; // clear anything old
-    const s = document.createElement("script");
-    s.src = SQUARE_WIDGET_JS;
-    s.async = true;
-    mountRef.current.appendChild(s);
-    return () => {
-      if (mountRef.current) mountRef.current.innerHTML = "";
-    };
-  }, [SQUARE_WIDGET_JS]);
 
   return (
     <div>
@@ -54,10 +33,10 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* SQUARE WIDGET (script embed mounts here) */}
+      {/* SQUARE WIDGET */}
       <section className="container-app pb-12">
         <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-soft">
-          <div ref={mountRef} className="min-h-[75vh]" />
+          <SquareWidget />
         </div>
 
         <p className="text-xs text-gray-500 mt-3">
