@@ -23,8 +23,8 @@ export default function TermsPage() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Pricing & Scope */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Pricing &amp; Scope</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Pricing &amp; Scope</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               We charge per day (per cleaner) or per visit based on square footage. Quotes are
               estimates based on the information provided. Larger spaces may require multiple days
               or additional cleaners.
@@ -33,8 +33,8 @@ export default function TermsPage() {
 
           {/* Access & Safety */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Access &amp; Safety</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Access &amp; Safety</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               Client agrees to provide safe access, electricity, and running water, and to disclose
               hazards (e.g., pets, chemicals, broken fixtures). Unsafe tasks may be declined.
             </p>
@@ -42,22 +42,22 @@ export default function TermsPage() {
 
           {/* Exclusions */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Exclusions</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Exclusions</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               Exterior windows, hazardous material removal, and high-risk ladder work are excluded
               unless agreed in writing.
             </p>
           </div>
 
-          {/* Valuables & Special Care Items (softer title + copy) */}
+          {/* Valuables & Special Care Items */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Valuables &amp; Special Care Items</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Valuables &amp; Special Care Items</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               We handle your home with care. For peace of mind, please store cash, jewelry, and
               other small valuables before service and let us know about any fragile or
               irreplaceable items you’d like us to avoid.
             </p>
-            <p className="mt-3 text-gray-700">
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               While we work carefully, Vigorous Clean Co. can’t accept responsibility for{" "}
               <b>unsecured valuables</b>, <b>pre-existing or undisclosed damage</b>, or{" "}
               <b>normal wear and tear</b>. If something needs attention during service, we’ll let
@@ -68,8 +68,8 @@ export default function TermsPage() {
 
           {/* Our Staff */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Our Staff</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Our Staff</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               Our cleaners are professionally screened and trained to deliver consistent, reliable,
               and respectful service in your space.
             </p>
@@ -77,8 +77,8 @@ export default function TermsPage() {
 
           {/* Cancellations & Satisfaction */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Cancellations &amp; Satisfaction</h3>
-            <p className="mt-3 text-gray-700">
+            <h3 className="text-lg font-semibold">Cancellations &amp; Satisfaction</h3>
+            <p className="mt-3 text-gray-700 text-[15px] md:text-[16px] leading-7">
               Please follow the cancellation terms shown during booking to avoid fees. If something
               was missed, contact us within <b>24 hours</b> and we’ll make it right with a prompt
               re-clean or practical resolution.
@@ -93,3 +93,4 @@ export default function TermsPage() {
     </div>
   );
 }
+
