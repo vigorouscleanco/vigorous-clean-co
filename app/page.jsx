@@ -141,12 +141,6 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <p className="mt-8 text-xs text-gray-500">
-            <b>Disclaimer:</b> Cleaners are thoroughly screened and professional; however, Vigorous Clean Co. is not
-            liable for loss or theft of unattended valuables. Please secure valuables and disclose fragile/defective items.
-            We are not liable for pre-existing damage or normal wear and tear. Specialty or hazardous tasks are excluded
-            unless agreed in writing.
-          </p>
         </div>
       </section>
     </div>
