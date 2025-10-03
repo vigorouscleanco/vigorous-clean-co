@@ -1,9 +1,8 @@
+// app/components/SquareWidget.jsx
 "use client";
-
 import { useEffect, useRef } from "react";
 
 export default function SquareWidget() {
-  // ✅ Your exact Square widget JS URL
   const SQUARE_WIDGET_JS =
     "https://app.squareup.com/appointments/buyer/widget/m37vogyxyg3cxb/L9K9470312P89.js";
 
