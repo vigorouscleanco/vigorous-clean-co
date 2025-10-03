@@ -18,7 +18,7 @@ export default function TermsPage() {
         </div>
       </section>
 
-      {/* GRID CARDS (same layout you already have) */}
+      {/* GRID CARDS */}
       <section className="container-app py-10">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Pricing & Scope */}
@@ -49,20 +49,20 @@ export default function TermsPage() {
             </p>
           </div>
 
-          {/* Loss, Theft & Fragile Items (SOFTER WORDING) */}
+          {/* Valuables & Special Care Items (softer title + copy) */}
           <div className="rounded-2xl border border-gray-100 p-6 shadow-soft">
-            <h3 className="text-xl font-semibold">Loss, Theft &amp; Fragile Items</h3>
+            <h3 className="text-xl font-semibold">Valuables &amp; Special Care Items</h3>
             <p className="mt-3 text-gray-700">
-              We handle your home with care. To keep everything safe, please store cash, jewelry,
-              and other small valuables before service and let us know about any fragile or
+              We handle your home with care. For peace of mind, please store cash, jewelry, and
+              other small valuables before service and let us know about any fragile or
               irreplaceable items you’d like us to avoid.
             </p>
             <p className="mt-3 text-gray-700">
               While we work carefully, Vigorous Clean Co. can’t accept responsibility for{" "}
               <b>unsecured valuables</b>, <b>pre-existing or undisclosed damage</b>, or{" "}
-              <b>normal wear and tear</b>. If an incident occurs during service, we’ll notify you
-              promptly and work toward a reasonable solution. Please report any concerns within{" "}
-              <b>24 hours</b>.
+              <b>normal wear and tear</b>. If something needs attention during service, we’ll let
+              you know promptly and work toward a reasonable solution. Please report any concerns
+              within <b>24 hours</b>.
             </p>
           </div>
 
@@ -93,4 +93,3 @@ export default function TermsPage() {
     </div>
   );
 }
-
