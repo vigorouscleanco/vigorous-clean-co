@@ -1,10 +1,13 @@
 import Link from "next/link";
-import SquareWidget from "../components/SquareWidget"; // relative path from /app/book
+import dynamic from "next/dynamic";
+
+// Load SquareWidget only in the browser (avoids any SSR issues)
+const SquareWidget = dynamic(() => import("../components/SquareWidget"), { ssr: false });
 
 export const metadata = { title: "Book — Vigorous Clean Co." };
 
 export default function BookPage() {
-  // Same widget URL but WITHOUT .js — used for the fallback link
+  // Same URL as the widget but without .js for the fallback link
   const SQUARE_WIDGET_LINK =
     "https://app.squareup.com/appointments/buyer/widget/m37vogyxyg3cxb/L9K9470312P89";
 
