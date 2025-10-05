@@ -1,6 +1,5 @@
 import Link from "next/link";
-// Use a RELATIVE import to avoid alias/case issues
-import SquareWidget from "../../components/SquareWidget";
+import SquareWidget from "../components/SquareWidget";
 
 export const metadata = {
   title: "Book Your Cleaning | Vigorous Clean Co.",
@@ -39,18 +38,6 @@ export default function BookPage() {
               View Pricing
             </Link>
           </div>
-
-          {/* New vs Returning note */}
-          <div className="mt-6 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4 text-emerald-900">
-            <p className="text-sm leading-relaxed">
-              <strong>New client?</strong> Book the <strong>All-Inclusive (Deep)</strong> for your first visit.
-              <br className="hidden sm:block" />
-              <strong>Returning client on a plan?</strong> Book any date and write <em>“maintenance/standard”</em> in the notes — we’ll apply your
-              <strong> weekly / bi-weekly / monthly</strong> discount.
-              <br className="hidden sm:block" />
-              <strong>Returning without a plan?</strong> If your last deep was within ~60–90 days, you can request a one-time maintenance at our regular per-day rate (no recurring discount).
-            </p>
-          </div>
         </div>
       </section>
 
@@ -63,7 +50,8 @@ export default function BookPage() {
               If you need a specific start time, add it in the booking notes. See our{" "}
               <Link href="/terms" className="underline hover:no-underline">
                 Terms
-              </Link>.
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -74,57 +62,52 @@ export default function BookPage() {
         <div className="container-app py-8 sm:py-10">
           <h2 className="text-2xl sm:text-3xl font-semibold">Recurring Client Savings</h2>
           <p className="text-gray-600 mt-2 max-w-2xl">
-            After your first <span className="font-medium">All-Inclusive Deep Clean</span>, switch to maintenance cleans and save on every visit.
-            Discounts apply to the same per-day rate used for your home’s size.
+            After your first (All-Inclusive) visit, switch to maintenance cleans and save on every
+            visit. Discounts apply to the same per-day rate used for your home’s size.
           </p>
 
           <div className="mt-6 grid md:grid-cols-3 gap-6">
             <div className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition">
               <div className="text-5xl font-semibold text-primary">20%</div>
               <div className="mt-2 font-semibold">Weekly</div>
-              <p className="text-gray-600 mt-2">Best shine—kitchen, baths, dusting & floors stay consistently fresh.</p>
+              <p className="text-gray-600 mt-2">
+                Best shine—kitchen, baths, dusting & floors stay consistently fresh.
+              </p>
             </div>
+
             <div className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition">
               <div className="text-5xl font-semibold text-primary">15%</div>
               <div className="mt-2 font-semibold">Every 2 Weeks</div>
-              <p className="text-gray-600 mt-2">Most popular—great balance of price and upkeep.</p>
+              <p className="text-gray-600 mt-2">
+                Most popular—great balance of price and upkeep.
+              </p>
             </div>
+
             <div className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition">
               <div className="text-5xl font-semibold text-primary">10%</div>
               <div className="mt-2 font-semibold">Monthly</div>
-              <p className="text-gray-600 mt-2">A reliable refresh each month to keep things under control.</p>
+              <p className="text-gray-600 mt-2">
+                A reliable refresh each month to keep things under control.
+              </p>
             </div>
           </div>
 
-          <div className="mt-6 grid sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl bg-gray-50 border border-gray-100 p-5">
-              <h3 className="font-semibold">How it works</h3>
-              <ol className="mt-2 list-decimal pl-5 text-gray-700 space-y-1">
-                <li>Book your first visit here (All-Inclusive deep clean).</li>
-                <li>After the first visit, we set up your recurring schedule.</li>
-                <li>Your recurring discount is applied from visit #2 onward.</li>
-              </ol>
-              <p className="text-xs text-gray-500 mt-3">
-                Discounts are applied by our team when we create your recurring series in Square.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-gray-100 p-5">
-              <h3 className="font-semibold">Existing client?</h3>
-              <p className="text-gray-700 mt-2">
-                Already had your first visit and want to switch to maintenance? Text us at{" "}
-                <a href="tel:+14242605986" className="underline">
-                  (424) 260-5986
-                </a>{" "}
-                and we’ll set your discount and cadence (weekly / bi-weekly / monthly).
-              </p>
-            </div>
+          <div className="mt-6 rounded-2xl bg-gray-50 border border-gray-100 p-5">
+            <h3 className="font-semibold">How it works</h3>
+            <ol className="mt-2 list-decimal pl-5 text-gray-700 space-y-1">
+              <li>Book your first visit here (All-Inclusive deep clean).</li>
+              <li>After the first visit, we set up your recurring schedule for you.</li>
+              <li>Your recurring discount (above) is applied from visit #2 onward.</li>
+            </ol>
+            <p className="text-xs text-gray-500 mt-3">
+              Discounts are applied by our team when we create your recurring series in Square.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* SQUARE WIDGET (local container so it unmounts on page change) */}
-      <section className="container-app pb-28 relative z-[1]">
+      {/* EMBEDDED SQUARE WIDGET (isolated & self-cleaning) */}
+      <section className="container-app pb-10">
         <SquareWidget />
       </section>
     </div>
