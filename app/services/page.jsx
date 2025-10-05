@@ -1,16 +1,9 @@
-import Link from "next/link";
+export const metadata = { title: "Services — Vigorous Clean Co." };
 
-export const metadata = {
-  title: "Services — Vigorous Clean Co.",
-  description:
-    "Eco-friendly, pet-safe cleaning for homes, offices, and rentals across Los Angeles & Orange County.",
-};
-
-/* ------- DATA ------- */
 const services = [
   {
-    title: "Standard Home Clean",
-    badges: ["Maintenance", "Existing clients"],
+    title: "Standard Home Clean (Recurring)",
+    badge: "Maintenance",
     items: [
       "Kitchen & appliances exterior",
       "Bathrooms & fixtures",
@@ -22,7 +15,7 @@ const services = [
   },
   {
     title: "Deep Clean (All-Inclusive)",
-    badges: ["First visit"],
+    badge: "First visit",
     items: [
       "Everything in Standard",
       "Baseboards & trim",
@@ -33,7 +26,7 @@ const services = [
   },
   {
     title: "Office Clean",
-    badges: [],
+    badge: "Business",
     items: [
       "Desks & common areas",
       "Bathrooms",
@@ -52,119 +45,83 @@ const products = {
     "Mrs. Meyer’s Multi-Surface",
     "Better Life All-Purpose",
   ],
-  Bathroom: [
-    "Seventh Generation Bathroom",
-    "ECOS Bathroom",
-    "Method Antibac Bathroom",
-  ],
+  Bathroom: ["Seventh Generation Bathroom", "ECOS Bathroom", "Method Antibac Bathroom"],
   "Kitchen/Degreasers": [
     "Ecover Cream Scrub",
     "Better Life Kitchen & Bath Scrubber",
     "Method Heavy Duty Degreaser",
   ],
-  "Glass/Windows": [
-    "Seventh Generation Glass",
-    "Method Glass + Surface",
-    "ECOS Window",
-  ],
+  "Glass/Windows": ["Seventh Generation Glass", "Method Glass + Surface", "ECOS Window"],
   Floors: ["Bona Hardwood", "Method Squirt + Mop", "ECOS Vinegar Floor"],
   "Carpet/Upholstery": [
     "Biokleen Carpet & Rug Shampoo",
     "ECOS Pet Stain & Odor Remover",
     "Nature’s Miracle Stain & Odor Eliminator",
   ],
-  Disinfectants: [
-    "Seventh Generation Wipes",
-    "CleanWell Botanical Spray",
-    "Benefect Decon 30",
-  ],
+  Disinfectants: ["Seventh Generation Wipes", "CleanWell Botanical Spray", "Benefect Decon 30"],
 };
 
-/* ------- SMALL UI HELPERS (JS ONLY) ------- */
-function Badge({ label }) {
-  const styles = {
-    "First visit": "bg-primary/10 text-primary",
+function Tag({ children, tone = "default" }) {
+  const tones = {
+    default: "bg-gray-100 text-gray-700",
     Maintenance: "bg-emerald-100 text-emerald-800",
-    "Existing clients": "bg-gray-100 text-gray-700",
+    "First visit": "bg-primary/10 text-primary",
+    Business: "bg-sky-100 text-sky-800",
   };
-  const cls =
-    styles[label] || "bg-gray-100 text-gray-700";
-
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>
-      {label}
+    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${tones[tone] || tones.default}`}>
+      {children}
     </span>
   );
 }
 
-/* ------- PAGE ------- */
 export default function ServicesPage() {
   return (
     <div className="container-app py-14">
-      {/* Header */}
       <h1 className="text-3xl font-semibold">Our Services</h1>
       <p className="text-gray-600 mt-4 max-w-2xl">
-        Eco-friendly and pet-safe cleaning for homes, offices, and rentals. We price
-        by square footage per day — never by the hour.
+        Eco-friendly and pet-safe cleaning for homes, offices, and rentals. We price by square
+        footage per day — never by the hour.
       </p>
 
-      {/* Legend / flow hint */}
-      <div className="mt-6 rounded-2xl border border-gray-100 bg-white p-4 sm:p-5">
-        <p className="text-sm sm:text-base text-gray-700">
-          <span className="font-medium">New here?</span> Start with{" "}
-          <span className="font-semibold">Deep Clean (All-Inclusive)</span>.{" "}
-          <span className="font-medium">Returning?</span> Move to{" "}
-          <span className="font-semibold">Standard Home Clean</span>{" "}
-          <span className="text-gray-500">(maintenance)</span> — and save with recurring options.
-        </p>
-      </div>
-
-      {/* Services grid */}
       <div className="mt-8 grid md:grid-cols-3 gap-6">
-        {services.map((s) => (
-          <div
-            key={s.title}
-            className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition bg-white"
-          >
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-semibold text-lg">{s.title}</h3>
-              {s.badges.map((b) => (
-                <Badge key={b} label={b} />
-              ))}
+        {services.map((s, i) => (
+          <div key={i} className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft">
+            <div className="flex items-center gap-2">
+              <h3 className="font-semibold">{s.title}</h3>
+              {s.badge && <Tag tone={s.badge}>{s.badge}</Tag>}
             </div>
-
-            <ul className="mt-4 space-y-3 text-gray-700">
-              {s.items.map((it) => (
-                <li key={it} className="flex gap-2">
-                  <span className="select-none">•</span>
-                  <span>{it}</span>
-                </li>
+            <ul className="mt-3 text-gray-600 list-disc list-inside space-y-1">
+              {s.items.map((it, idx) => (
+                <li key={idx}>{it}</li>
               ))}
             </ul>
           </div>
         ))}
       </div>
 
-      {/* Call-to-action row */}
-      <div className="mt-8 flex flex-col sm:flex-row gap-3">
-        <Link
-          href="/book"
-          className="rounded-2xl bg-primary px-5 py-3 text-center text-white font-medium shadow-soft hover:opacity-90 transition"
-        >
-          Book Your First Clean
-        </Link>
-        <Link
-          href="/book"
-          className="rounded-2xl border border-gray-200 px-5 py-3 text-center font-medium hover:bg-gray-50 transition"
-        >
-          See Recurring Savings
-        </Link>
+      {/* Which clean should I book? */}
+      <div className="mt-10 rounded-2xl bg-grayLight p-6 border border-gray-100">
+        <h2 className="text-xl font-semibold">Which clean should I book?</h2>
+        <div className="mt-4 grid md:grid-cols-3 gap-4 text-gray-700">
+          <div className="rounded-xl bg-white border border-gray-100 p-4">
+            <div className="text-sm font-semibold">Step 1</div>
+            <p className="mt-1">New client? Start with an <strong>All-Inclusive Deep Clean</strong>.</p>
+          </div>
+          <div className="rounded-xl bg-white border border-gray-100 p-4">
+            <div className="text-sm font-semibold">Step 2</div>
+            <p className="mt-1">Love the result? Switch to <strong>Standard (Recurring)</strong> maintenance.</p>
+          </div>
+          <div className="rounded-xl bg-white border border-gray-100 p-4">
+            <div className="text-sm font-semibold">Step 3</div>
+            <p className="mt-1">Choose weekly, bi-weekly, or monthly for automatic <strong>recurring savings</strong>.</p>
+          </div>
+        </div>
       </div>
 
       {/* Products */}
       <div className="mt-12 rounded-2xl bg-grayLight p-6">
-        <h2 className="text-xl font-semibold">Eco &amp; Pet-Friendly Products We Use</h2>
-
+        <h2 className="text-xl font-semibold">Eco & Pet-Friendly Products We Use</h2>
         <div className="mt-4 grid md:grid-cols-2 gap-6">
           {Object.entries(products).map(([cat, items]) => (
             <div key={cat} className="rounded-xl border border-gray-100 p-4 bg-white">
@@ -177,7 +134,6 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
-
         <p className="text-xs text-gray-500 mt-4">
           Only approved products are used to ensure safety and consistency for all clients.
         </p>
