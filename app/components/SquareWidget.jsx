@@ -1,41 +1,52 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 /**
- * Loads Square Appointments widget only on the Book page.
- * Cleans up the injected container when you navigate away,
- * so it doesn’t linger under the footer on other pages.
+ * Square Appointments widget, sandboxed to this component only.
+ * - Injects the Square script into a local wrapper.
+ * - Cleans up DOM and iframes on unmount (prevents “sticking” across pages).
  */
 export default function SquareWidget() {
+  const mountRef = useRef(null);
+
   useEffect(() => {
-    const WIDGET_SRC =
+    if (!mountRef.current) return;
+
+    // Local wrapper that Square will render into
+    const root = document.createElement("div");
+    root.setAttribute("data-square-root", "true");
+    mountRef.current.appendChild(root);
+
+    // Square embed script (same id you’ve been using)
+    const script = document.createElement("script");
+    script.src =
       "https://app.squareup.com/appointments/buyer/widget/m37vogyxyg3cxb/L9K9470312P89.js";
-    const SCRIPT_ID = "sq-appointments-script";
+    script.async = true;
 
-    // Add the script once (keep it for faster back/forward nav)
-    let script = document.getElementById(SCRIPT_ID);
-    if (!script) {
-      script = document.createElement("script");
-      script.id = SCRIPT_ID;
-      script.async = true;
-      script.src = WIDGET_SRC;
-      document.body.appendChild(script);
-    }
+    root.appendChild(script);
 
-    // Cleanup: Square injects its own container under our div.
-    // Remove that DOM so it doesn’t stay around after navigation.
+    // Cleanup: remove everything we injected and any stray Square iframes
     return () => {
-      const injected =
-        document.querySelector("[data-sq-embed]") ||
-        document.getElementById("sq-appointments");
-      if (injected && injected.parentNode) {
-        injected.parentNode.removeChild(injected);
+      if (mountRef.current) {
+        mountRef.current.innerHTML = "";
       }
-      // We intentionally keep the <script> so the next visit is instant.
+      // Belt & suspenders: remove any iframes Square may have appended elsewhere
+      try {
+        const rogueIframes = document.querySelectorAll(
+          'iframe[src*="squareup.com"], iframe[src*="square"]'
+        );
+        rogueIframes.forEach((iframe) => {
+          const parent = iframe.closest("div");
+          parent?.remove?.();
+        });
+      } catch {
+        /* ignore */
+      }
     };
   }, []);
 
-  // This placeholder is where Square mounts the widget
-  return <div id="sq-appointments" data-sq-embed className="min-h-[600px]" />;
+  // z-0 keeps it under sticky UI; relative helps keep everything contained
+  return <div ref={mountRef} className="relative z-0" />;
 }
+
