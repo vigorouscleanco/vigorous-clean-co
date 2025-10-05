@@ -1,5 +1,12 @@
-export const metadata = { title: "Services — Vigorous Clean Co." };
+import Link from "next/link";
 
+export const metadata = {
+  title: "Services — Vigorous Clean Co.",
+  description:
+    "Eco-friendly, pet-safe cleaning for homes, offices, and rentals across Los Angeles & Orange County.",
+};
+
+/* ------- DATA ------- */
 const services = [
   {
     title: "Standard Home Clean",
@@ -73,31 +80,32 @@ const products = {
   ],
 };
 
-function Badge({ label }: { label: string }) {
-  const styles: Record<string, string> = {
+/* ------- SMALL UI HELPERS (JS ONLY) ------- */
+function Badge({ label }) {
+  const styles = {
     "First visit": "bg-primary/10 text-primary",
     Maintenance: "bg-emerald-100 text-emerald-800",
     "Existing clients": "bg-gray-100 text-gray-700",
   };
   const cls =
-    styles[label] ??
-    "bg-gray-100 text-gray-700"; /* safe fallback if new labels appear */
+    styles[label] || "bg-gray-100 text-gray-700";
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${cls}`}>
+    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>
       {label}
     </span>
   );
 }
 
+/* ------- PAGE ------- */
 export default function ServicesPage() {
   return (
     <div className="container-app py-14">
       {/* Header */}
       <h1 className="text-3xl font-semibold">Our Services</h1>
       <p className="text-gray-600 mt-4 max-w-2xl">
-        Eco-friendly and pet-safe cleaning for homes, offices, and rentals. We price by
-        square footage per day — never by the hour.
+        Eco-friendly and pet-safe cleaning for homes, offices, and rentals. We price
+        by square footage per day — never by the hour.
       </p>
 
       {/* Legend / flow hint */}
@@ -107,16 +115,15 @@ export default function ServicesPage() {
           <span className="font-semibold">Deep Clean (All-Inclusive)</span>.{" "}
           <span className="font-medium">Returning?</span> Move to{" "}
           <span className="font-semibold">Standard Home Clean</span>{" "}
-          <span className="text-gray-500">(maintenance)</span> — and save with recurring
-          options.
+          <span className="text-gray-500">(maintenance)</span> — and save with recurring options.
         </p>
       </div>
 
       {/* Services grid */}
       <div className="mt-8 grid md:grid-cols-3 gap-6">
-        {services.map((s, i) => (
+        {services.map((s) => (
           <div
-            key={i}
+            key={s.title}
             className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition bg-white"
           >
             <div className="flex items-center gap-2 flex-wrap">
@@ -127,8 +134,8 @@ export default function ServicesPage() {
             </div>
 
             <ul className="mt-4 space-y-3 text-gray-700">
-              {s.items.map((it, idx) => (
-                <li key={idx} className="flex gap-2">
+              {s.items.map((it) => (
+                <li key={it} className="flex gap-2">
                   <span className="select-none">•</span>
                   <span>{it}</span>
                 </li>
@@ -138,20 +145,20 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      {/* CTA row */}
+      {/* Call-to-action row */}
       <div className="mt-8 flex flex-col sm:flex-row gap-3">
-        <a
+        <Link
           href="/book"
           className="rounded-2xl bg-primary px-5 py-3 text-center text-white font-medium shadow-soft hover:opacity-90 transition"
         >
           Book Your First Clean
-        </a>
-        <a
-          href="/book#recurring"
+        </Link>
+        <Link
+          href="/book"
           className="rounded-2xl border border-gray-200 px-5 py-3 text-center font-medium hover:bg-gray-50 transition"
         >
           See Recurring Savings
-        </a>
+        </Link>
       </div>
 
       {/* Products */}
