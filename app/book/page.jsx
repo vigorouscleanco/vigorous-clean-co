@@ -31,13 +31,24 @@ export default function BookPage() {
               Open Booking in New Tab
             </a>
 
-            {/* No phone CTA here—your floating phone widget covers calls */}
             <Link
               href="/pricing"
               className="rounded-2xl border border-gray-200 px-5 py-3 text-center font-medium hover:bg-gray-50 transition"
             >
               View Pricing
             </Link>
+          </div>
+
+          {/* New vs Returning note */}
+          <div className="mt-6 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4 text-emerald-900">
+            <p className="text-sm leading-relaxed">
+              <strong>New client?</strong> Please book the{" "}
+              <strong>All-Inclusive (Deep)</strong> for your first visit.
+              <br className="hidden sm:block" />
+              <strong>Returning client?</strong> Book any date and write{" "}
+              <em>“maintenance/standard”</em> in the notes — we’ll apply your{" "}
+              <strong>weekly / bi-weekly / monthly</strong> recurring discount automatically.
+            </p>
           </div>
         </div>
       </section>
@@ -51,7 +62,8 @@ export default function BookPage() {
               If you need a specific start time, add it in the booking notes. See our{" "}
               <Link href="/terms" className="underline hover:no-underline">
                 Terms
-              </Link>.
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -62,8 +74,8 @@ export default function BookPage() {
         <div className="container-app py-8 sm:py-10">
           <h2 className="text-2xl sm:text-3xl font-semibold">Recurring Client Savings</h2>
           <p className="text-gray-600 mt-2 max-w-2xl">
-            After your first (All-Inclusive) visit, switch to maintenance cleans and save on every
-            visit. Discounts apply to the same per-day rate used for your home’s size.
+            After your first (All-Inclusive) visit, switch to maintenance (Standard) cleans and save
+            on every visit. Discounts apply to the same per-day rate used for your home’s size.
           </p>
 
           <div className="mt-6 grid md:grid-cols-3 gap-6">
@@ -119,6 +131,5 @@ export default function BookPage() {
     </div>
   );
 }
-
 
 
