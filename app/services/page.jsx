@@ -38,29 +38,6 @@ const services = [
   },
 ];
 
-const products = {
-  "All-Purpose": [
-    "Seventh Generation Multi-Surface",
-    "Method All-Purpose",
-    "Mrs. Meyer’s Multi-Surface",
-    "Better Life All-Purpose",
-  ],
-  Bathroom: ["Seventh Generation Bathroom", "ECOS Bathroom", "Method Antibac Bathroom"],
-  "Kitchen/Degreasers": [
-    "Ecover Cream Scrub",
-    "Better Life Kitchen & Bath Scrubber",
-    "Method Heavy Duty Degreaser",
-  ],
-  "Glass/Windows": ["Seventh Generation Glass", "Method Glass + Surface", "ECOS Window"],
-  Floors: ["Bona Hardwood", "Method Squirt + Mop", "ECOS Vinegar Floor"],
-  "Carpet/Upholstery": [
-    "Biokleen Carpet & Rug Shampoo",
-    "ECOS Pet Stain & Odor Remover",
-    "Nature’s Miracle Stain & Odor Eliminator",
-  ],
-  Disinfectants: ["Seventh Generation Wipes", "CleanWell Botanical Spray", "Benefect Decon 30"],
-};
-
 function Tag({ children, tone = "default" }) {
   const tones = {
     default: "bg-gray-100 text-gray-700",
@@ -69,7 +46,11 @@ function Tag({ children, tone = "default" }) {
     Business: "bg-sky-100 text-sky-800",
   };
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${tones[tone] || tones.default}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
+        tones[tone] || tones.default
+      }`}
+    >
       {children}
     </span>
   );
@@ -86,7 +67,10 @@ export default function ServicesPage() {
 
       <div className="mt-8 grid md:grid-cols-3 gap-6">
         {services.map((s, i) => (
-          <div key={i} className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft">
+          <div
+            key={i}
+            className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft"
+          >
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{s.title}</h3>
               {s.badge && <Tag tone={s.badge}>{s.badge}</Tag>}
@@ -106,36 +90,32 @@ export default function ServicesPage() {
         <div className="mt-4 grid md:grid-cols-3 gap-4 text-gray-700">
           <div className="rounded-xl bg-white border border-gray-100 p-4">
             <div className="text-sm font-semibold">Step 1</div>
-            <p className="mt-1">New client? Start with an <strong>All-Inclusive Deep Clean</strong>.</p>
+            <p className="mt-1">
+              New client? Start with an <strong>All-Inclusive Deep Clean</strong>.
+            </p>
           </div>
           <div className="rounded-xl bg-white border border-gray-100 p-4">
             <div className="text-sm font-semibold">Step 2</div>
-            <p className="mt-1">Love the result? Switch to <strong>Standard (Recurring)</strong> maintenance.</p>
+            <p className="mt-1">
+              Love the result? Switch to <strong>Standard (Recurring)</strong> maintenance.
+            </p>
           </div>
           <div className="rounded-xl bg-white border border-gray-100 p-4">
             <div className="text-sm font-semibold">Step 3</div>
-            <p className="mt-1">Choose weekly, bi-weekly, or monthly for automatic <strong>recurring savings</strong>.</p>
+            <p className="mt-1">
+              Choose weekly, bi-weekly, or monthly for automatic{" "}
+              <strong>recurring savings</strong>.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Products */}
-      <div className="mt-12 rounded-2xl bg-grayLight p-6">
-        <h2 className="text-xl font-semibold">Eco & Pet-Friendly Products We Use</h2>
-        <div className="mt-4 grid md:grid-cols-2 gap-6">
-          {Object.entries(products).map(([cat, items]) => (
-            <div key={cat} className="rounded-xl border border-gray-100 p-4 bg-white">
-              <h4 className="font-medium">{cat}</h4>
-              <ul className="mt-2 text-gray-700 list-disc list-inside">
-                {items.map((name) => (
-                  <li key={name}>{name}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="text-xs text-gray-500 mt-4">
-          Only approved products are used to ensure safety and consistency for all clients.
+      {/* Eco & Pet-Friendly Section (Minimal + Professional) */}
+      <div className="mt-12 rounded-2xl bg-grayLight p-6 border border-gray-100">
+        <h2 className="text-xl font-semibold">Eco & Pet-Friendly Cleaning</h2>
+        <p className="text-gray-700 mt-3 max-w-3xl">
+          We care about your home, your pets, and the planet. Every cleaning uses
+          eco-friendly, non-toxic products that deliver a spotless finish — safely.
         </p>
       </div>
     </div>
