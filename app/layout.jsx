@@ -15,10 +15,8 @@ export const metadata = {
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }], // transparent PNG
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-
-  // === Social / Share Preview (Open Graph + Twitter) ===
   openGraph: {
     title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
@@ -27,7 +25,7 @@ export const metadata = {
     siteName: "Vigorous Clean Co.",
     images: [
       {
-        url: "/og-vigorous-v4.png", // NEW FILE NAME to bust iMessage cache
+        url: "/og-vigorous-v4.png",
         width: 1200,
         height: 630,
         alt: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
@@ -42,7 +40,7 @@ export const metadata = {
     title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
       "Book an eco-friendly clean in minutes. Transparent pricing. Reliable, screened staff.",
-    images: ["/og-vigorous-v4.png"], // match OG image
+    images: ["/og-vigorous-v4.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -51,20 +49,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        {/* Tawk.to chat widget */}
+        {/* Tawk.to chat widget - auto popup disabled */}
         <Script id="tawk" strategy="afterInteractive">{`
-          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+          var Tawk_API = Tawk_API || {};
+          Tawk_API.onLoad = function() {
+            Tawk_API.hideWidget(); // Start hidden
+            Tawk_API.showWidget(); // Show minimized bubble only
+          };
+          var Tawk_LoadStart = new Date();
           (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/68d8270b34dcdf19500f9061/1j665h18j';
-            s1.charset='UTF-8';
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68d8270b34dcdf19500f9061/1j665h18j';
+            s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
+            s0.parentNode.insertBefore(s1, s0);
           })();
         `}</Script>
 
-        {/* LocalBusiness SEO with socials and the same image */}
+        {/* LocalBusiness SEO */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -90,7 +94,6 @@ export default function RootLayout({ children }) {
         </Script>
 
         <Navbar />
-        {/* extra top padding for the promo bar in navbar */}
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
         <PhoneWidget />
