@@ -15,8 +15,10 @@ export const metadata = {
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }], // transparent PNG
   },
+
+  // === Social / Share Preview (Open Graph + Twitter) ===
   openGraph: {
     title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
@@ -40,7 +42,7 @@ export const metadata = {
     title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
     description:
       "Book an eco-friendly clean in minutes. Transparent pricing. Reliable, screened staff.",
-    images: ["/og-vigorous-v4.png"],
+    images: ["/og-vigorous-v4.png"], // match OG image
   },
   robots: { index: true, follow: true },
 };
@@ -49,13 +51,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        {/* Tawk.to chat widget - auto popup disabled */}
+        {/* Tawk.to chat widget — keep widget, stop auto popup */}
         <Script id="tawk" strategy="afterInteractive">{`
-          var Tawk_API = Tawk_API || {};
-          Tawk_API.onLoad = function() {
-            Tawk_API.hideWidget(); // Start hidden
-            Tawk_API.showWidget(); // Show minimized bubble only
+          var Tawk_API = window.Tawk_API || {};
+          // ✅ Prevent the "How can I help?" window from opening by itself
+          Tawk_API.onLoad = function () {
+            try { Tawk_API.minimize(); } catch (e) {}
           };
+
           var Tawk_LoadStart = new Date();
           (function(){
             var s1 = document.createElement("script"),
@@ -68,7 +71,7 @@ export default function RootLayout({ children }) {
           })();
         `}</Script>
 
-        {/* LocalBusiness SEO */}
+        {/* LocalBusiness SEO with socials and the same image */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -94,6 +97,7 @@ export default function RootLayout({ children }) {
         </Script>
 
         <Navbar />
+        {/* extra top padding for the promo bar in navbar */}
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
         <PhoneWidget />
@@ -101,4 +105,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
