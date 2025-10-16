@@ -22,8 +22,8 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 text-lg text-gray-600 max-w-xl">
-                Established in 2025, we provide professional, eco-friendly cleaning for homes, offices, and rentals
-                throughout Los Angeles. We keep every space fresh, welcoming, and worry-free.
+                We provide professional, eco-friendly cleaning for homes, offices, and rentals
+                throughout Los Angeles & Orange County. We keep every space fresh, welcoming, and worry-free.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
