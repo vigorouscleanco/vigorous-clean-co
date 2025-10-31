@@ -26,12 +26,6 @@ export default function HomePage() {
                 throughout Los Angeles & Orange County. We keep every space fresh, welcoming, and worry-free.
               </p>
 
-              {/* New-client promo (no code needed) */}
-              <p className="mt-4 inline-block rounded-full bg-emerald-50 px-3 py-1 text-sm text-emerald-700">
-                New clients receive <span className="font-semibold">10% off</span> their first cleaning —
-                discount is applied after service is completed.
-              </p>
-
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/pricing"
@@ -137,12 +131,6 @@ export default function HomePage() {
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             We charge per day, not per hour — we stay until it’s clean.
           </p>
-
-          {/* gentle reminder about the new-client discount */}
-          <p className="mt-3 text-sm text-emerald-700">
-            New to Vigorous Clean Co.? Enjoy <span className="font-semibold">10% off</span> your first cleaning — applied after service.
-          </p>
-
           <div className="mt-6">
             {/* Book goes to embedded page on your site */}
             <Link
@@ -157,5 +145,6 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
