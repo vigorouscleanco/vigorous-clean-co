@@ -39,7 +39,8 @@ export default function AboutPage() {
         <h3 className="font-semibold">Service Area</h3>
         <p className="text-gray-600 mt-2">Greater Los Angeles.</p>
         <p className="text-gray-600 mt-4">
-          New clients save <b>10%</b> with code <b>VIGOR10</b>. We’d love to take cleaning off your to-do list.
+          New clients receive <b>10% off</b> their first cleaning — discount is applied after service completion.
+          We’d love to take cleaning off your to-do list.
         </p>
       </div>
     </div>
