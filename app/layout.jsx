@@ -1,91 +1,103 @@
-"use client";
+import "./globals.css";
+import Script from "next/script";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import PhoneWidget from "@/components/PhoneWidget";
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
+export const metadata = {
+  title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+  description:
+    "New clients save 10% with code VIGOR10. Professional eco-friendly home & office cleaning. Book in minutes.",
+  metadataBase: new URL("https://vigorouscleanco.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
+    description:
+      "Professional eco-friendly home & office cleaning with transparent pricing. Book in minutes.",
+    url: "https://vigorouscleanco.com",
+    siteName: "Vigorous Clean Co.",
+    images: [
+      {
+        url: "/og-vigorous-v4.png",
+        width: 1200,
+        height: 630,
+        alt: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+        type: "image/png",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
+    description:
+      "Book an eco-friendly clean in minutes. Transparent pricing. Reliable, screened staff.",
+    images: ["/og-vigorous-v4.png"],
+  },
+  robots: { index: true, follow: true },
+};
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Optional: close mobile menu when resizing up
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) setIsOpen(false);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+export default function RootLayout({ children }) {
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
-      {/* ✅ Updated green announcement bar */}
-      <div className="bg-green-50 text-center text-green-700 text-sm py-2">
-        New clients receive <b>10% off</b> their first cleaning — discount applied after service completion.
-      </div>
+    <html lang="en">
+      <body className="min-h-screen flex flex-col">
+        {/* Tawk.to chat widget */}
+        <Script id="tawk" strategy="afterInteractive">{`
+          var Tawk_API = window.Tawk_API || {};
+          Tawk_API.onLoad = function () {
+            try { Tawk_API.minimize(); } catch (e) {}
+          };
+          var Tawk_LoadStart = new Date();
+          (function(){
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68d8270b34dcdf19500f9061/1j665h18j';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1, s0);
+          })();
+        `}</Script>
 
-      <nav className="container-app flex items-center justify-between py-4">
-        {/* Logo */}
-        <Link href="/" className="text-lg font-semibold flex items-center gap-2">
-          <img src="/logo.svg" alt="Vigorous Clean Co." className="h-6 w-auto" />
-          <span>Vigorous Clean Co.</span>
-        </Link>
+        <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Vigorous Clean Co.",
+            url: "https://vigorouscleanco.com",
+            image: "https://vigorouscleanco.com/og-vigorous-v4.png",
+            logo: "https://vigorouscleanco.com/icon-512.png",
+            email: "vigorouscleanco@gmail.com",
+            telephone: "+1-424-260-5986",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Los Angeles",
+              addressRegion: "CA",
+              addressCountry: "US"
+            },
+            areaServed: "Los Angeles",
+            sameAs: [
+              "https://www.instagram.com/vigorouss.co",
+              "https://www.tiktok.com/@vigorouss.co"
+            ]
+          })}
+        </Script>
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="/">Home</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/pricing">Pricing</Link>
-          <Link href="/about">About</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/faq">FAQ</Link>
-
-          <Link
-            href="/book"
-            className="rounded-full bg-primary text-white px-4 py-2 font-medium hover:opacity-90 transition"
-          >
-            Book Now
-          </Link>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-gray-700 focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-      </nav>
-
-      {/* Mobile dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="flex flex-col items-center gap-4 py-4">
-            <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-            <Link href="/services" onClick={() => setIsOpen(false)}>Services</Link>
-            <Link href="/pricing" onClick={() => setIsOpen(false)}>Pricing</Link>
-            <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
-            <Link href="/terms" onClick={() => setIsOpen(false)}>Terms</Link>
-            <Link href="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
-
-            <Link
-              href="/book"
-              onClick={() => setIsOpen(false)}
-              className="rounded-full bg-primary text-white px-5 py-2 font-medium hover:opacity-90 transition"
-            >
-              Book Now
-            </Link>
-          </div>
-        </div>
-      )}
-    </header>
+        <Navbar />
+        <main className="flex-1 pt-20">{children}</main>
+        <Footer />
+        <PhoneWidget />
+      </body>
+    </html>
   );
 }
+
 
