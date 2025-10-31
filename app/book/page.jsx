@@ -4,7 +4,7 @@ import SquareWidget from "../components/SquareWidget";
 export const metadata = {
   title: "Book Your Cleaning | Vigorous Clean Co.",
   description:
-    "Simple per-day pricing and secure online booking. New clients receive 10% off their first cleaning. Book today!.",
+    "Simple per-day pricing and secure online booking. New clients receive 10% off their first cleaning — discount applied after service completion.",
 };
 
 export default function BookPage() {
@@ -15,9 +15,9 @@ export default function BookPage() {
         <div className="container-app py-10 sm:py-14">
           <h1 className="text-3xl sm:text-4xl font-semibold">Book Your Cleaning</h1>
           <p className="mt-3 text-gray-600 max-w-2xl">
-            We keep it simple: per-day pricing and secure online booking. New clients save{" "}
-            <span className="font-semibold">10%</span> with code{" "}
-            <span className="font-semibold">VIGOR10</span>.
+            We keep it simple: per-day pricing and secure online booking.{" "}
+            New clients receive <span className="font-semibold">10% off</span> their first cleaning — 
+            discount applied after service completion.
           </p>
 
           {/* actions row */}
@@ -116,5 +116,6 @@ export default function BookPage() {
     </div>
   );
 }
+
 
 
