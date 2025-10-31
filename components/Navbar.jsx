@@ -19,7 +19,7 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-gray-100">
       {/* Promo bar */}
       <div className="bg-primary/10 text-primary text-xs sm:text-sm text-center px-3 py-2">
-        New clients receive <b>10% off</b> their first cleaning — discount applied after service completion.
+        New clients save <b>10%</b> with code <b>VIGOR10</b>. Book today!
       </div>
 
       {/* Main nav */}
