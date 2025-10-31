@@ -109,7 +109,9 @@ export default function PricingPage() {
               For new clients or long jobs, we require full prepayment when booking. See our{" "}
               <a href="/terms" className="underline">Terms</a> for the full cancellation policy.
             </li>
-            <li>Use code <b>VIGOR10</b> for 10% off your first booking.</li>
+            <li>
+              New clients receive <b>10% off</b> their first cleaning — discount is applied after service completion.
+            </li>
           </ul>
         </div>
       </section>
