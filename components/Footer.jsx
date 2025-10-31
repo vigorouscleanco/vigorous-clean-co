@@ -12,7 +12,8 @@ export default function Footer() {
 
             <p className="mt-3 text-gray-600 max-w-xl">
               Eco-friendly cleaning for homes, offices & rentals across Los Angeles & Orange County.
-              New clients save <span className="font-semibold">10%</span> with code <span className="font-semibold">VIGOR10</span>.
+              New clients receive <span className="font-semibold">10% off</span> their first cleaning —
+              discount is applied after service is completed.
             </p>
 
             {/* contact */}
