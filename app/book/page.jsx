@@ -4,7 +4,7 @@ import SquareWidget from "../components/SquareWidget";
 export const metadata = {
   title: "Book Your Cleaning | Vigorous Clean Co.",
   description:
-    "Simple per-day pricing and secure online booking. New clients save 10% with code VIGOR10.",
+    "Simple per-day pricing and secure online booking. New clients receive 10% off their first cleaning. Book today!.",
 };
 
 export default function BookPage() {
