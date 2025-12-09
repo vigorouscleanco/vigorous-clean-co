@@ -5,70 +5,74 @@ export default function PricingPage() {
     <div>
       {/* HERO */}
       <section className="container-app py-12">
-        <h1 className="text-3xl font-semibold">Simple Square-Foot Pricing</h1>
+        <h1 className="text-3xl font-semibold">Simple First-Time Deep Clean Pricing</h1>
         <p className="text-gray-600 mt-2 max-w-2xl">
-          Flat daily rates — never hourly. Each day is one cleaner (up to ~8 hours).
-          Larger spaces may require multiple days or additional cleaners.
+          Every new home starts with a one-time All-Inclusive Deep Clean. After that, returning
+          clients switch to a discounted Maintenance Clean for regular upkeep.
         </p>
 
         <div className="mt-4 rounded-xl bg-primary/10 text-primary px-4 py-3 text-sm">
-          <b>First time?</b> Start with <b>All-Inclusive (Deep Clean)</b>.
-          After your first visit, ask us about our <b>Maintenance Clean (Returning Clients)</b> rate.
+          <b>First time with us?</b> Your first visit is always an{" "}
+          <b>All-Inclusive (Deep Clean)</b>. Once we&apos;ve seen your home, we&apos;ll confirm your
+          <b> Maintenance Clean</b> rate based on size and how often you&apos;d like service.
         </div>
       </section>
 
       {/* RESIDENTIAL */}
       <section className="container-app pb-4">
-        <h2 className="text-xl sm:text-2xl font-semibold">Residential (Per Day)</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold">Residential — First-Time Deep Clean</h2>
+
+        <p className="text-gray-600 text-sm mt-1">
+          Flat daily rates — never hourly. One cleaner for up to ~8 hours. Most homes are cleaned in
+          a single day.
+        </p>
 
         <div className="mt-4 grid gap-6">
-          {/* Deep Clean column only */}
+          {/* Deep Clean column */}
           <div className="rounded-2xl border border-gray-100 p-6">
-            <h3 className="font-semibold">All-Inclusive (Deep Clean)</h3>
+            <h3 className="font-semibold">All-Inclusive Deep Clean (Required for New Homes)</h3>
 
             <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-3 text-sm">
               <div className="flex justify-between gap-6">
-                <span>0–500 sq ft</span>
-                <span className="font-medium">$130 / day</span>
+                <span>0–800 sq ft</span>
+                <span className="font-medium">$185 / day</span>
               </div>
               <div className="flex justify-between gap-6">
-                <span>501–1,000 sq ft</span>
-                <span className="font-medium">$205 / day</span>
-              </div>
-              <div className="flex justify-between gap-6">
-                <span>1,001–1,500 sq ft</span>
+                <span>801–1,500 sq ft</span>
                 <span className="font-medium">$245 / day</span>
               </div>
               <div className="flex justify-between gap-6">
-                <span>1,501–2,000 sq ft</span>
+                <span>1,501–2,200 sq ft</span>
                 <span className="font-medium">$295 / day</span>
               </div>
               <div className="flex justify-between gap-6">
-                <span>2,001–2,500 sq ft</span>
-                <span className="font-medium">$335 / day</span>
+                <span>2,201–3,000 sq ft</span>
+                <span className="font-medium">$345 / day</span>
               </div>
 
               {/* Larger homes → custom quote */}
               <div className="flex justify-between gap-6">
-                <span>2,501–3,500 sq ft</span>
-                <span className="text-gray-600">Custom Quote</span>
-              </div>
-              <div className="flex justify-between gap-6">
-                <span>3,501–5,000 sq ft</span>
-                <span className="text-gray-600">Custom Quote</span>
-              </div>
-              <div className="flex justify-between gap-6">
-                <span>5,001–7,500 sq ft</span>
-                <span className="text-gray-600">Custom Quote</span>
-              </div>
-              <div className="flex justify-between gap-6">
-                <span>7,501+ sq ft</span>
+                <span>3,001+ sq ft</span>
                 <span className="text-gray-600">Custom Quote</span>
               </div>
             </div>
 
             <p className="text-xs text-gray-500 mt-3">
-              All-Inclusive adds inside fridge &amp; oven, carpet shampoo, and interior windows.
+              All-Inclusive includes a full top-to-bottom deep clean, plus inside fridge &amp; oven,
+              baseboards, interior windows, and detailed bathroom/kitchen work.
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              If your home is right on the edge between sizes, we&apos;ll round in your favor or
+              give a custom quote so pricing still feels fair.
+            </p>
+
+            <hr className="my-4 border-gray-100" />
+
+            <p className="text-xs text-gray-600">
+              <span className="font-semibold">Maintenance Cleans (Returning Clients):</span>{" "}
+              After your first visit, recurring cleanings are discounted and priced based on
+              frequency (weekly, bi-weekly, or monthly). We&apos;ll confirm your exact rate during
+              your first clean.
             </p>
           </div>
         </div>
@@ -101,16 +105,28 @@ export default function PricingPage() {
       <section className="container-app pb-14">
         <div className="rounded-2xl bg-gray-50 border border-gray-100 p-5 text-sm text-gray-600">
           <ul className="list-disc pl-5 space-y-2">
-            <li>Pricing is per day, per cleaner. We stay until the job is complete for the day.</li>
             <li>
-              Larger homes/offices may require multiple days or additional cleaners (quoted ahead of time).
+              Pricing is per day, per cleaner. We stay until the job is complete for the day (up to
+              ~8 hours).
+            </li>
+            <li>
+              Larger homes/offices may require multiple days or additional cleaners (quoted ahead of
+              time).
+            </li>
+            <li>
+              Every new home starts with a one-time All-Inclusive Deep Clean. Ongoing Maintenance
+              Cleans are discounted and quoted after your first visit.
             </li>
             <li>
               For new clients or long jobs, we require full prepayment when booking. See our{" "}
-              <a href="/terms" className="underline">Terms</a> for the full cancellation policy.
+              <a href="/terms" className="underline">
+                Terms
+              </a>{" "}
+              for the full cancellation policy.
             </li>
             <li>
-              New clients receive <b>10% off</b> their first cleaning — discount is applied after service completion.
+              New clients receive <b>10% off</b> their first cleaning — discount is applied after
+              service completion.
             </li>
           </ul>
         </div>
@@ -120,7 +136,9 @@ export default function PricingPage() {
       <section className="section-gradient">
         <div className="container-app py-12 text-center">
           <h3 className="text-2xl font-semibold">Ready to book your clean?</h3>
-          <p className="text-gray-600 mt-2">Transparent pricing. Eco-friendly products. Reliable staff.</p>
+          <p className="text-gray-600 mt-2">
+            Transparent pricing. Eco-friendly products. Reliable staff.
+          </p>
           <div className="mt-6">
             <a
               href="/book"
@@ -134,4 +152,5 @@ export default function PricingPage() {
     </div>
   );
 }
+
 
