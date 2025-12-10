@@ -6,13 +6,7 @@ export default function PricingPage() {
       {/* HERO */}
       <section className="container-app py-12">
         <h1 className="text-3xl font-semibold">
-          Simple First-Time Deep Clean Pricing
-        </h1>
-        <p className="text-gray-600 mt-2 max-w-2xl">
-          Every new home starts with a one-time All-Inclusive Deep Clean. After that,
-          returning clients switch to a discounted Maintenance Clean for regular upkeep.
-        </p>
-
+         
         <div className="mt-4 rounded-xl bg-primary/10 text-primary px-4 py-3 text-sm">
           <b>First time with us?</b> Your first visit is always an{" "}
           <b>All-Inclusive Deep Clean</b>. Once we&apos;ve seen your home, we&apos;ll
