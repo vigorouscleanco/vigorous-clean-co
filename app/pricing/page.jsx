@@ -113,7 +113,6 @@ export default function PricingPage() {
               Larger homes/offices may require multiple days or additional
               cleaners (quoted ahead of time).
             </li>
-            </li>
             <li>
               New clients receive <b>10% off</b> their first cleaning — discount
               is applied after service completion.
