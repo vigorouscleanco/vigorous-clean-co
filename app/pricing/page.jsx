@@ -114,8 +114,7 @@ export default function PricingPage() {
               cleaners (quoted ahead of time).
             </li>
             <li>
-              New clients receive <b>10% off</b> their first cleaning — discount
-              is applied after service completion.
+              New clients receive <b>10% off</b> their first cleaning — and earn extra discounts for you and your referrals. 
             </li>
           </ul>
         </div>
