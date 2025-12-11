@@ -113,13 +113,6 @@ export default function PricingPage() {
               Larger homes/offices may require multiple days or additional
               cleaners (quoted ahead of time).
             </li>
-            <li>
-              For new clients or long jobs, we require full prepayment when
-              booking. See our{" "}
-              <a href="/terms" className="underline">
-                Terms
-              </a>{" "}
-              for the full cancellation policy.
             </li>
             <li>
               New clients receive <b>10% off</b> their first cleaning — discount
