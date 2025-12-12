@@ -11,7 +11,7 @@ export default function Footer() {
             <h3 className="text-2xl font-semibold">Vigorous Clean Co.</h3>
 
             <p className="mt-3 text-gray-600 max-w-xl">
-              Eco-friendly cleaning for homes, offices & rentals across Los Angeles & Orange County.
+              Eco-friendly cleaning for homes, offices & rentals across Los Angeles & South Bay.
               New clients receive <span className="font-semibold">10% off</span> their first cleaning —
               discount is applied after service is completed.
             </p>
