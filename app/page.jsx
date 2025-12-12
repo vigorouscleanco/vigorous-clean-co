@@ -4,15 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Safe dynamic import for the slider
-const GallerySlider = dynamic(() => import("../components/GallerySlider"), { ssr: false });
+// NOTE: Your file is /components/GallerySlider.jsx (not GallerySlider)
+// If you renamed the component to GallerySlider.jsx, change this import accordingly.
+const GallerySlider = dynamic(() => import("../components/GallerySlider"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   return (
     <div>
       {/* HERO – full-bleed background photo */}
       <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh]">
-        {/* Background image */}
         <Image
           src="/hero-home.jpg"
           alt="Fresh, professionally cleaned living room"
@@ -77,7 +79,7 @@ export default function HomePage() {
                 <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
                   📍
                 </span>
-                Los Angeles &amp; South Bay service area
+                Los Angeles &amp; South Bay
               </div>
             </div>
           </div>
@@ -104,7 +106,7 @@ export default function HomePage() {
               },
               {
                 step: "Step 2",
-                title: "We deep clean &amp; confirm your maintenance rate",
+                title: "We deep clean & confirm your maintenance rate",
                 desc: "After we see your home once, we confirm the best maintenance price for your frequency.",
               },
               {
@@ -113,7 +115,10 @@ export default function HomePage() {
                 desc: "Weekly, bi-weekly, or monthly maintenance to keep your home consistently fresh.",
               },
             ].map((x, i) => (
-              <div key={i} className="rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-soft transition">
+              <div
+                key={i}
+                className="rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-soft transition"
+              >
                 <div className="text-xs font-semibold text-primary">{x.step}</div>
                 <h3 className="mt-2 font-semibold text-lg">{x.title}</h3>
                 <p className="text-gray-600 mt-2">{x.desc}</p>
@@ -138,11 +143,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* REPLACE "POPULAR SERVICES" WITH: TRUST + WHAT'S INCLUDED */}
+      {/* WHAT'S INCLUDED + WHY BOOK US (replaces “Popular Services”) */}
       <section className="bg-grayLight">
         <div className="container-app py-16 sm:py-20">
           <div className="max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-semibold">What’s Included in Your First-Time Deep Clean</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold">
+              What’s Included in Your First-Time Deep Clean
+            </h2>
             <p className="text-gray-600 mt-2">
               A true reset — so your maintenance visits stay simple, faster, and more affordable.
             </p>
@@ -174,17 +181,35 @@ export default function HomePage() {
               </div>
 
               <div className="mt-4 text-xs text-gray-500">
-                Homes with heavy buildup, lots of pet hair, or clutter may require extra time (we’ll always communicate before).
+                Homes with heavy buildup, lots of pet hair, or clutter may require extra time — we’ll always
+                communicate before.
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/pricing"
+                  className="rounded-2xl border border-gray-200 px-5 py-2.5 text-sm font-medium hover:bg-gray-50 transition"
+                >
+                  See pricing details →
+                </Link>
+                <Link
+                  href="/book"
+                  className="rounded-2xl bg-primary px-5 py-2.5 text-white text-sm font-medium shadow-soft hover:opacity-90 transition"
+                >
+                  Check availability
+                </Link>
               </div>
             </div>
 
-            {/* Trust / badges */}
+            {/* Why book us */}
             <div className="rounded-2xl bg-white border border-gray-100 p-6">
               <h3 className="font-semibold">Why customers book us</h3>
 
               <div className="mt-4 space-y-3 text-sm text-gray-700">
                 <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">🧾</span>
+                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                    🧾
+                  </span>
                   <div>
                     <div className="font-medium">Flat-rate pricing</div>
                     <div className="text-gray-600 text-sm">No hourly surprises.</div>
@@ -192,7 +217,9 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">🌿</span>
+                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                    🌿
+                  </span>
                   <div>
                     <div className="font-medium">Eco &amp; pet-safe</div>
                     <div className="text-gray-600 text-sm">Products chosen with families in mind.</div>
@@ -200,31 +227,15 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">📍</span>
+                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                    ✅
+                  </span>
                   <div>
-                    <div className="font-medium">Local LA team</div>
-                    <div className="text-gray-600 text-sm">Serving Greater LA + South Bay.</div>
+                    <div className="font-medium">Checklist standards</div>
+                    <div className="text-gray-600 text-sm">Consistent results each visit.</div>
                   </div>
                 </div>
-
-                <div className="pt-2">
-                  <Link href="/pricing" className="text-sm font-medium text-primary hover:underline">
-                    See pricing details →
-                  </Link>
-                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Service areas row (optional but converts well) */}
-          <div className="mt-8 rounded-2xl bg-white border border-gray-100 p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-              </div>
-              <Link
-                href="/book"
-                className="rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition w-fit"
-              >
             </div>
           </div>
         </div>
@@ -274,6 +285,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
