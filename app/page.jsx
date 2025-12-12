@@ -4,15 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Safe dynamic import for the slider
-const GallerySlider = dynamic(() => import("../components/GallerySlider"), { ssr: false });
+// Safe dynamic import for the slider (matches your /components/GallerySlider.jsx)
+const GallerySlider = dynamic(() => import("../components/GallerySlider"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   return (
     <div>
       {/* HERO – full-bleed background photo */}
-      <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh]">
-        {/* Background image */}
+      <section className="relative h-[72vh] sm:h-[82vh] lg:h-[86vh]">
         <Image
           src="/hero-home.jpg"
           alt="Fresh, professionally cleaned living room"
@@ -21,14 +22,12 @@ export default function HomePage() {
           className="object-cover"
         />
 
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/55 via-black/40 to-black/15" />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/60 via-black/40 to-black/10" />
 
-        {/* Content */}
         <div className="relative z-10 h-full">
           <div className="container-app h-full flex flex-col justify-center">
-            {/* Top pill */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-gray-100 backdrop-blur mb-4 w-fit">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-gray-100 backdrop-blur mb-4">
               <span className="h-2 w-2 rounded-full bg-emerald-400 inline-block" />
               Eco-Friendly · Pet-Safe · Locally Operated
             </div>
@@ -42,7 +41,6 @@ export default function HomePage() {
               Serving homes and small offices across Los Angeles &amp; the South Bay.
             </p>
 
-            {/* CTAs */}
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/book"
@@ -59,197 +57,103 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Quick badges (no reviews) */}
-            <div className="mt-6 grid gap-2 text-xs sm:text-sm text-gray-100/90 max-w-2xl">
+            {/* Trust badges (facts only) */}
+            <div className="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-gray-100/90">
               <div className="inline-flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
                   🧼
                 </span>
-                First-time deep clean required for all new homes
+                First-time deep clean required for new homes
               </div>
               <div className="inline-flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
                   🌿
                 </span>
                 Eco &amp; pet-friendly products
               </div>
               <div className="inline-flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
                   📍
                 </span>
-                Los Angeles &amp; South Bay service area
+                LA &amp; South Bay coverage
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* HOW IT WORKS (keeps conversion focused; replaces "Popular Services") */}
       <section>
         <div className="container-app py-16 sm:py-20">
           <div className="max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl font-semibold">How Vigorous Clean Co. Works</h2>
-            <p className="text-gray-600 mt-3">
-              Simple, flat-rate cleaning designed for busy LA households. Every new client starts with a
-              one-time All-Inclusive Deep Clean — then we keep things maintained with discounted ongoing visits.
+            <h2 className="text-2xl sm:text-3xl font-semibold">How it works</h2>
+            <p className="text-gray-600 mt-2">
+              Simple, flat-rate cleaning designed for busy LA homes. Every new client starts with a deep clean,
+              then you switch to discounted maintenance visits.
             </p>
           </div>
 
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {[
               {
                 step: "Step 1",
-                title: "Book your first-time Deep Clean",
-                desc: "Choose your home size and pick a date that works for you.",
+                title: "Book your first-time deep clean",
+                desc: "Choose your day and home size. We’ll confirm details and show up ready.",
               },
               {
                 step: "Step 2",
-                title: "We deep clean &amp; confirm your maintenance rate",
-                desc: "After we see your home once, we confirm the best maintenance price for your frequency.",
+                title: "All-Inclusive Deep Clean",
+                desc: "A full reset: kitchens, bathrooms, baseboards, and detailed attention where it matters.",
               },
               {
                 step: "Step 3",
-                title: "Stay clean with discounted upkeep",
-                desc: "Weekly, bi-weekly, or monthly maintenance to keep your home consistently fresh.",
+                title: "Switch to maintenance (discounted)",
+                desc: "Pick weekly, bi-weekly, or monthly visits to keep your home consistently fresh.",
               },
             ].map((x, i) => (
-              <div key={i} className="rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-soft transition">
+              <div
+                key={i}
+                className="rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-soft transition"
+              >
                 <div className="text-xs font-semibold text-primary">{x.step}</div>
                 <h3 className="mt-2 font-semibold text-lg">{x.title}</h3>
                 <p className="text-gray-600 mt-2">{x.desc}</p>
+
+                {i === 0 && (
+                  <div className="mt-4">
+                    <Link href="/book" className="text-sm font-medium text-primary hover:underline">
+                      Check availability →
+                    </Link>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/book"
-              className="rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
-            >
-              Book Now
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-2xl border border-gray-200 px-6 py-3 font-medium hover:bg-gray-50 transition"
-            >
-              View Pricing
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* REPLACE "POPULAR SERVICES" WITH: TRUST + WHAT'S INCLUDED */}
-      <section className="bg-grayLight">
-        <div className="container-app py-16 sm:py-20">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-semibold">What’s Included in Your First-Time Deep Clean</h2>
-            <p className="text-gray-600 mt-2">
-              A true reset — so your maintenance visits stay simple, faster, and more affordable.
-            </p>
-          </div>
-
-          <div className="mt-10 grid lg:grid-cols-3 gap-6">
-            {/* Included list */}
-            <div className="rounded-2xl bg-white border border-gray-100 p-6 lg:col-span-2">
-              <h3 className="font-semibold">Included (most homes)</h3>
-
-              <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm text-gray-700">
-                {[
-                  "Kitchen + bathrooms detailed",
-                  "Dusting (surfaces, fixtures)",
-                  "Vacuum + mop floors",
-                  "Baseboards & edges",
-                  "Inside fridge & oven",
-                  "Interior windows (as accessible)",
-                  "Trash removal & tidy-up",
-                  "High-touch disinfect (handles, switches)",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <span className="mt-0.5 h-5 w-5 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[12px]">
-                      ✓
-                    </span>
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 text-xs text-gray-500">
-                Homes with heavy buildup, lots of pet hair, or clutter may require extra time (we’ll always communicate before).
-              </div>
+      {/* RECENT WORK SLIDER (bigger / more full-width on mobile) */}
+      <section className="py-10">
+        <div className="container-app">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-semibold">Recent work</h2>
+              <p className="text-gray-600 mt-2">
+                Tap through real cleanings from around Los Angeles.
+              </p>
             </div>
 
-            {/* Trust / badges */}
-            <div className="rounded-2xl bg-white border border-gray-100 p-6">
-              <h3 className="font-semibold">Why customers book us</h3>
-
-              <div className="mt-4 space-y-3 text-sm text-gray-700">
-                <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">🧾</span>
-                  <div>
-                    <div className="font-medium">Flat-rate pricing</div>
-                    <div className="text-gray-600 text-sm">No hourly surprises.</div>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">🌿</span>
-                  <div>
-                    <div className="font-medium">Eco &amp; pet-safe</div>
-                    <div className="text-gray-600 text-sm">Products chosen with families in mind.</div>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">📍</span>
-                  <div>
-                    <div className="font-medium">Local LA team</div>
-                    <div className="text-gray-600 text-sm">Serving LA + South Bay.</div>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <Link href="/pricing" className="text-sm font-medium text-primary hover:underline">
-                    See pricing details →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Service areas row (optional but converts well) */}
-          <div className="mt-8 rounded-2xl bg-white border border-gray-100 p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <h3 className="font-semibold">Service Area</h3>
-                <p className="text-gray-600 text-sm mt-1">
-                  Los Angeles + South Bay (Torrance, Gardena, Hawthorne, Inglewood, Carson, Long Beach, and nearby).
-                </p>
-              </div>
-              <Link
-                href="/book"
-                className="rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition w-fit"
-              >
-                Check Availability
-              </Link>
-            </div>
+            <Link href="/book" className="text-sm font-medium hover:underline">
+              Book now
+            </Link>
           </div>
         </div>
-      </section>
 
-      {/* PHOTO GALLERY / WORK */}
-      <section className="container-app py-12 sm:py-14">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Recent Work</h2>
-            <p className="text-gray-600 mt-2">Tap through real cleanings from around Los Angeles.</p>
+        {/* This wrapper makes the carousel feel larger on mobile */}
+        <div className="mt-6 container-app">
+          <div className="-mx-4 sm:mx-0">
+            <GallerySlider />
           </div>
-          <Link href="/book" className="text-sm font-medium hover:underline">
-            Book now
-          </Link>
-        </div>
-
-        <div className="mt-6">
-          <GallerySlider />
         </div>
       </section>
 
@@ -258,10 +162,9 @@ export default function HomePage() {
         <div className="container-app py-16 sm:py-20 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold">Ready for that first deep clean?</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            We start every new client with an All-Inclusive Deep Clean. After that, switch to discounted
-            maintenance visits that fit your schedule.
+            Start with an All-Inclusive Deep Clean, then switch to discounted maintenance visits that fit your schedule.
           </p>
-          <div className="mt-6 flex justify-center gap-3 flex-wrap">
+          <div className="mt-6 flex justify-center gap-3">
             <Link
               href="/book"
               className="rounded-2xl bg-primary px-8 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
@@ -280,6 +183,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
