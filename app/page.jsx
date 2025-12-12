@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// IMPORTANT: path is ../components, not ./components
+// Safe dynamic import for the slider
 const GallerySlider = dynamic(() => import("../components/GallerySlider"), {
   ssr: false,
 });
@@ -12,87 +12,124 @@ const GallerySlider = dynamic(() => import("../components/GallerySlider"), {
 export default function HomePage() {
   return (
     <div>
-      {/* HERO */}
-      <section className="section-gradient">
-        <div className="container-app py-20 sm:py-24">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            {/* LEFT: TEXT */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium mb-4">
-                <span className="h-2 w-2 rounded-full bg-primary inline-block" />{" "}
-                Eco-Friendly · Pet-Safe · Professional
-              </div>
+      {/* HERO – full-bleed background photo */}
+      <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh]">
+        {/* Background image */}
+        <Image
+          src="/hero-home.jpg"
+          alt="Fresh, professionally cleaned living room"
+          fill
+          priority
+          className="object-cover"
+        />
 
-              <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">
-                Your Space,{" "}
-                <span className="text-primary">Sparkling with Vigor</span>
-              </h1>
+        {/* Dark gradient overlay so text is readable */}
+        <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/55 via-black/40 to-black/10" />
 
-              <p className="mt-5 text-lg text-gray-600 max-w-xl">
-                We provide professional, eco-friendly cleaning for homes, offices,
-                and rentals throughout Los Angeles &amp; Orange County. One visit
-                or ongoing — we keep every space fresh, welcoming, and worry-free.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/pricing"
-                  className="rounded-2xl bg-primary px-6 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
-                >
-                  View Pricing
-                </Link>
-
-                <Link
-                  href="/book"
-                  className="rounded-2xl border border-gray-200 px-6 py-3 font-medium hover:bg-gray-50 transition"
-                >
-                  Book Now
-                </Link>
-              </div>
-
-              <p className="mt-4 text-sm text-gray-500">
-                Flat daily rates · Reliable screened staff · Eco-conscious products
-              </p>
+        {/* Content */}
+        <div className="relative z-10 h-full">
+          <div className="container-app h-full flex flex-col justify-center">
+            {/* Top pill / badge row */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-gray-100 backdrop-blur mb-4">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 inline-block" />
+              Eco-Friendly · Pet-Safe · Locally Operated
             </div>
 
-            {/* RIGHT: BIG IMAGE (FILLS THE CARD) */}
-            <div className="relative rounded-2xl shadow-soft overflow-hidden ring-1 ring-gray-100 h-[260px] sm:h-[360px] md:h-[480px]">
-              <Image
-                src="/hero-home.jpg"
-                alt="Vigorous Clean Co. — professional eco-friendly cleaning"
-                fill
-                className="object-cover"
-                priority
-              />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-white max-w-2xl">
+              Your Home,{" "}
+              <span className="text-emerald-300">Vigorously Clean.</span>
+            </h1>
+
+            <p className="mt-5 text-base sm:text-lg text-gray-100/90 max-w-xl">
+              Flat-rate, first-time deep cleans followed by affordable maintenance
+              visits. Serving homes and small offices across Los Angeles &amp; the
+              South Bay.
+            </p>
+
+            {/* Primary CTAs */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/book"
+                className="rounded-2xl bg-primary px-6 py-3 text-white text-sm sm:text-base font-medium shadow-soft hover:opacity-90 transition"
+              >
+                Book a First-Time Deep Clean
+              </Link>
+
+              <Link
+                href="/pricing"
+                className="rounded-2xl border border-white/60 bg-white/10 px-6 py-3 text-sm sm:text-base font-medium text-white hover:bg-white/20 transition"
+              >
+                View Pricing
+              </Link>
+            </div>
+
+            {/* Trust badges (no reviews, just facts) */}
+            <div className="mt-6 flex flex-wrap gap-4 text-xs sm:text-sm text-gray-100/90">
+              <div className="inline-flex items-center gap-2">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
+                  🧼
+                </span>
+                First-Time Deep Clean Required for All New Homes
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
+                  🌿
+                </span>
+                Eco &amp; pet-friendly products
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <span className="h-5 w-5 rounded-full bg-white/15 flex items-center justify-center text-[11px]">
+                  📍
+                </span>
+                Serving LA &amp; South Bay
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURE CARDS */}
+      {/* HOW IT WORKS (replaces old “feature cards” section) */}
       <section>
         <div className="container-app py-16 sm:py-20">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl sm:text-3xl font-semibold">
+              How Vigorous Clean Co. Works
+            </h2>
+            <p className="text-gray-600 mt-3">
+              Simple, flat-rate cleaning designed for busy LA households. Every
+              new client starts with a deep clean, then we keep things maintained.
+            </p>
+          </div>
+
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
             {[
               {
-                title: "Transparent Pricing",
-                desc: "Flat daily rates by square footage. No hourly games or surprises.",
+                label: "Step 1",
+                title: "First-Time Deep Clean",
+                desc: "We do a full top-to-bottom reset: baseboards, fixtures, kitchen, bathrooms, and detail work so everything starts fresh.",
               },
               {
-                title: "Eco & Pet-Friendly",
-                desc: "Approved products only — safe for kids, pets, and sensitive spaces.",
+                label: "Step 2",
+                title: "Pick Your Schedule",
+                desc: "Weekly, bi-weekly, or monthly maintenance cleans based on your home size and how fast it gets lived in.",
               },
               {
-                title: "Professional Quality",
-                desc: "Screened cleaners with checklists, standards, and real accountability.",
+                label: "Step 3",
+                title: "Relax, We Handle It",
+                desc: "Same style every visit, eco-friendly products, and clear pricing — no hourly guessing or surprise add-ons.",
               },
-            ].map((f, i) => (
+            ].map((item, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-gray-100 p-6 hover:shadow-soft transition"
+                className="rounded-2xl border border-gray-100 p-6 bg-white hover:shadow-soft transition"
               >
-                <h3 className="font-semibold text-lg">{f.title}</h3>
-                <p className="text-gray-600 mt-2">{f.desc}</p>
+                <span className="inline-flex items-center rounded-full bg-primary/10 text-primary text-xs font-semibold px-3 py-1">
+                  {item.label}
+                </span>
+                <h3 className="font-semibold text-lg mt-3">{item.title}</h3>
+                <p className="text-gray-600 mt-2 text-sm sm:text-base">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -112,20 +149,20 @@ export default function HomePage() {
             {[
               {
                 title: "All-Inclusive Deep Clean",
-                desc: "Baseboards, fixtures, inside appliances, detail work — a full reset.",
+                desc: "Baseboards, fixtures, inside fridge & oven, detail work — a full reset for new clients.",
               },
               {
-                title: "Standard Home Cleaning",
-                desc: "Kitchen, bathrooms, bedrooms, living areas, interior windows & surfaces.",
+                title: "Maintenance Clean",
+                desc: "Kitchen, bathrooms, living areas, dusting, mopping & vacuuming to keep things fresh.",
               },
               {
-                title: "Office & Commercial",
-                desc: "Desks, common areas, bathrooms, trash, interior glass, and floors.",
+                title: "Office & Workspace",
+                desc: "Desks, common areas, trash, bathrooms, and floors — ideal for small offices and studios.",
               },
             ].map((s, i) => (
               <div
                 key={i}
-                className="rounded-2xl bg-white border border-gray-100 p-6 hover:shadow-soft transition"
+                className="rounded-2xl bg-white border border-gray-100 p-6 hover:shadow-soft"
               >
                 <h3 className="font-semibold">{s.title}</h3>
                 <p className="text-gray-600 mt-2">{s.desc}</p>
@@ -136,16 +173,11 @@ export default function HomePage() {
       </section>
 
       {/* RECENT WORK SLIDER */}
-      <section className="container-app py-16 sm:py-20">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Recent Work</h2>
-            <p className="text-gray-600 mt-2">
-              A glimpse of the homes and offices we&apos;ve cleaned across Los Angeles.
-            </p>
-          </div>
-        </div>
-
+      <section className="container-app py-10">
+        <h2 className="text-2xl sm:text-3xl font-semibold">Recent Work</h2>
+        <p className="text-gray-600 mt-2">
+          A peek at homes and offices we&apos;ve cleaned across Los Angeles.
+        </p>
         <div className="mt-6">
           <GallerySlider />
         </div>
@@ -155,18 +187,24 @@ export default function HomePage() {
       <section className="section-gradient">
         <div className="container-app py-16 sm:py-20 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold">
-            Ready to see that sparkle?
+            Ready for that first deep clean?
           </h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            We charge per day, not per hour — one cleaner, up to ~8 hours. We stay
-            until it feels right, not when the clock runs out.
+            We start every new client with an All-Inclusive Deep Clean. After that, you
+            can switch to discounted maintenance visits that fit your schedule.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex justify-center gap-3">
             <Link
               href="/book"
               className="rounded-2xl bg-primary px-8 py-3 text-white font-medium shadow-soft hover:opacity-90 transition"
             >
-              Book Your Clean
+              Book Now
+            </Link>
+            <Link
+              href="/pricing"
+              className="rounded-2xl border border-gray-200 px-8 py-3 font-medium hover:bg-gray-50 transition"
+            >
+              View Pricing
             </Link>
           </div>
         </div>
@@ -174,6 +212,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
