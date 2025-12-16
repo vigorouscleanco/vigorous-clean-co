@@ -85,7 +85,7 @@ export default function Footer() {
             <div className="mt-6 grid grid-cols-2 gap-6 text-sm">
               <div>
                 <p className="font-semibold">Serving</p>
-                <p className="text-gray-600">Los Angeles & Orange County</p>
+                <p className="text-gray-600">Los Angeles & South Bay</p>
               </div>
               <div>
                 <p className="font-semibold">Hours</p>
