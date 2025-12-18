@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "Los Angeles and Orange County.",
+    a: "Los Angeles, South Bay and Orange County.",
   },
   {
     q: "Are your cleaners screened?",
