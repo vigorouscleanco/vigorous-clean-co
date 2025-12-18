@@ -34,23 +34,23 @@ export default function PricingPage() {
             <div className="mt-4 space-y-3 text-sm">
               <div className="flex justify-between gap-6">
                 <span>Up to 500 sq ft</span>
-                <span className="font-medium">$165 / day</span>
+                <span className="font-medium">$175 / day</span>
               </div>
               <div className="flex justify-between gap-6">
                 <span>501–1,000 sq ft</span>
-                <span className="font-medium">$225 / day</span>
+                <span className="font-medium">$245 / day</span>
               </div>
               <div className="flex justify-between gap-6">
                 <span>1,001–1,500 sq ft</span>
-                <span className="font-medium">$275 / day</span>
+                <span className="font-medium">$295 / day</span>
               </div>
               <div className="flex justify-between gap-6">
                 <span>1,501–2,000 sq ft</span>
-                <span className="font-medium">$305 / day</span>
+                <span className="font-medium">$335 / day</span>
               </div>
               <div className="flex justify-between gap-6">
                 <span>2,001–2,500 sq ft</span>
-                <span className="font-medium">$345 / day</span>
+                <span className="font-medium">$365 / day</span>
               </div>
               <div className="flex justify-between gap-6">
                 <span>2,501+ sq ft</span>
