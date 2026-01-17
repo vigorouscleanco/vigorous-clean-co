@@ -148,7 +148,7 @@ export default function HomePage() {
         <div className="container-app py-16 sm:py-20">
           <div className="max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-semibold">
-              What’s Included in Your First-Time Deep Clean
+              What’s Included in Your Deep Clean
             </h2>
             <p className="text-gray-600 mt-2">
               A true reset — so your maintenance visits stay simple, faster, and more affordable.
