@@ -17,7 +17,7 @@ export default function PricingPage() {
       {/* RESIDENTIAL */}
       <section className="container-app pb-4">
         <h1 className="text-xl sm:text-2xl font-semibold">
-          Residential — First-Time Deep Clean
+          Residential — First Time Deep Clean
         </h1>
         <p className="text-gray-600 text-sm mt-1">
           Flat daily pricing — never hourly. One cleaner for up to ~8 hours.
