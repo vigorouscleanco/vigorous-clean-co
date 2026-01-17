@@ -5,10 +5,14 @@ import Footer from "@/components/Footer";
 import PhoneWidget from "@/components/PhoneWidget";
 
 export const metadata = {
-  title: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
-  description:
-    "New clients save 10% with code VIGOR10. Professional eco-friendly home & office cleaning. Book in minutes.",
   metadataBase: new URL("https://vigorouscleanco.com"),
+
+  // ✅ SEO Title + Description (no promo code)
+  title: "Eco-Friendly House Cleaning in Los Angeles | Vigorous Clean Co.",
+  description:
+    "Professional eco-friendly house cleaning in Los Angeles and the South Bay. Trusted local cleaners for homes and small offices. New clients receive 10% off their first cleaning — no promo code needed.",
+
+  // ✅ Icons
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -17,10 +21,12 @@ export const metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+
+  // ✅ Open Graph (social previews)
   openGraph: {
-    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
+    title: "Eco-Friendly House Cleaning in Los Angeles | Vigorous Clean Co.",
     description:
-      "Professional eco-friendly home & office cleaning with transparent pricing. Book in minutes.",
+      "Eco-friendly house cleaning in Los Angeles and the South Bay. Trusted local cleaners for homes and small offices. New clients receive 10% off their first cleaning — no promo code needed.",
     url: "https://vigorouscleanco.com",
     siteName: "Vigorous Clean Co.",
     images: [
@@ -28,24 +34,27 @@ export const metadata = {
         url: "/og-vigorous-v4.png",
         width: 1200,
         height: 630,
-        alt: "Vigorous Clean Co. — Eco-Friendly Cleaning in Los Angeles",
+        alt: "Vigorous Clean Co. — Eco-Friendly House Cleaning in Los Angeles",
         type: "image/png",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+
+  // ✅ Twitter card
   twitter: {
     card: "summary_large_image",
-    title: "Eco-Friendly Cleaning in Los Angeles — 10% Off (VIGOR10)",
+    title: "Eco-Friendly House Cleaning in Los Angeles | Vigorous Clean Co.",
     description:
-      "Book an eco-friendly clean in minutes. Transparent pricing. Reliable, screened staff.",
+      "Professional eco-friendly house cleaning in Los Angeles and the South Bay. Trusted local cleaners for homes and small offices. New clients receive 10% off their first cleaning — no promo code needed.",
     images: ["/og-vigorous-v4.png"],
   },
+
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
@@ -67,6 +76,7 @@ export default function RootLayout({ children }) {
           })();
         `}</Script>
 
+        {/* LocalBusiness schema */}
         <Script id="ldjson" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -81,13 +91,14 @@ export default function RootLayout({ children }) {
               "@type": "PostalAddress",
               addressLocality: "Los Angeles",
               addressRegion: "CA",
-              addressCountry: "US"
+              addressCountry: "US",
             },
-            areaServed: "Los Angeles",
+            // ✅ Stronger service-area signal (can still be a string or array)
+            areaServed: ["Los Angeles", "South Bay, CA"],
             sameAs: [
               "https://www.instagram.com/vigorouss.co",
-              "https://www.tiktok.com/@vigorouss.co"
-            ]
+              "https://www.tiktok.com/@vigorouss.co",
+            ],
           })}
         </Script>
 
