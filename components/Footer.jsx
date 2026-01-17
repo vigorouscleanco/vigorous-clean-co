@@ -101,7 +101,7 @@ export default function Footer() {
 
         {/* bottom line */}
         <div className="mt-10 border-t pt-6 text-sm text-gray-500">
-          © 2025 Vigorous Clean Co. All rights reserved.
+          © 2026 Vigorous Clean Co. All rights reserved.
         </div>
       </div>
     </footer>
