@@ -3,7 +3,7 @@ export const metadata = { title: "FAQ — Vigorous Clean Co." };
 const faqs = [
   {
     q: "Do you bring supplies and equipment?",
-    a: "Yes — we bring all eco- and pet-friendly products and basic equipment.",
+    a: "Yes — we bring all eco- and pet-friendly products and basic equipment — with stronger solutions available upon request.",
   },
   {
     q: "Do you clean exterior windows?",
