@@ -91,7 +91,7 @@ export default function ServicesPage() {
           <div className="rounded-xl bg-white border border-gray-100 p-4">
             <div className="text-sm font-semibold">Step 1</div>
             <p className="mt-1">
-              New client? Start with an <strong>All-Inclusive Deep Clean</strong>.
+              New client? We recommend to start with an <strong>All-Inclusive Deep Clean</strong>.
             </p>
           </div>
           <div className="rounded-xl bg-white border border-gray-100 p-4">
@@ -115,7 +115,7 @@ export default function ServicesPage() {
         <h2 className="text-xl font-semibold">Eco & Pet-Friendly Cleaning</h2>
         <p className="text-gray-700 mt-3 max-w-3xl">
           We care about your home, your pets, and the planet. Every cleaning uses
-          eco-friendly, non-toxic products that deliver a spotless finish — safely.
+          eco-friendly, non-toxic products that deliver a spotless finish safely — with stronger solutions available upon request.
         </p>
       </div>
     </div>
