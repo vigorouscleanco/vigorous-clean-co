@@ -6,7 +6,7 @@ export default function PricingPage() {
       {/* FIRST-TIME BANNER */}
       <section className="container-app pt-8 pb-4">
         <div className="rounded-xl bg-primary/10 text-primary px-4 py-3 text-sm">
-          <b>First-time customers:</b> Your first visit always includes an{" "}
+          <b>First-time customers:</b> We recommend your first visit always includes an{" "}
           <b>All-Inclusive Deep Clean</b>. After we&apos;ve cleaned your home
           once, we&apos;ll confirm your discounted{" "}
           <b>Maintenance Clean</b> rate based on home size and how often you&apos;d
@@ -27,7 +27,7 @@ export default function PricingPage() {
         <div className="mt-4 grid gap-6">
           <div className="rounded-2xl border border-gray-100 p-6">
             <h2 className="font-semibold">
-              All-Inclusive Deep Clean (Required for New Homes)
+              All-Inclusive Deep Clean (Recommended for New Homes)
             </h2>
 
             {/* SIZE / PRICE LIST */}
