@@ -67,7 +67,7 @@ export default function HomePage() {
                 <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
                   🧼
                 </span>
-                First-time deep clean required for all new homes
+                First-time deep clean recommended for all new homes
               </div>
               <div className="inline-flex items-center gap-2">
                 <span className="h-6 w-6 rounded-full bg-white/15 flex items-center justify-center text-[12px]">
@@ -92,7 +92,7 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <h2 className="text-3xl sm:text-4xl font-semibold">How Vigorous Clean Co. Works</h2>
             <p className="text-gray-600 mt-3">
-              Simple, flat-rate cleaning designed for busy LA households. Every new client starts with a
+              Simple, flat-rate cleaning designed for busy LA households. We recommend every new client starts with a
               one-time All-Inclusive Deep Clean — then we keep things maintained with discounted ongoing visits.
             </p>
           </div>
@@ -263,7 +263,7 @@ export default function HomePage() {
         <div className="container-app py-16 sm:py-20 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold">Ready for that first deep clean?</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            We start every new client with an All-Inclusive Deep Clean. After that, switch to discounted
+            We recommend we start every new client with an All-Inclusive Deep Clean. After that, switch to discounted
             maintenance visits that fit your schedule.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
